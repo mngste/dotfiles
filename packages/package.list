@@ -7,5 +7,7 @@ pulseaudio
 rsync
 stow
 vim
+neovim
+python3-neovim
 code
 thunar
