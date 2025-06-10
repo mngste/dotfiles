@@ -1,153 +1,347 @@
 {
   "layer": "top",
   "position": "top",
-  "height": 32,
-  "spacing": 0,
   "modules-left": [
-    "hyprland/workspaces",
-    "tray",
-    "custom/lock",
-    "custom/reboot",
-    "custom/power"
-  ],
-  "modules-center": ["hyprland/window"],
-  "modules-right": [
-    "network",
-    "battery",
-    "bluetooth",
-    "pulseaudio",
-    "backlight",
-    "custom/temperature",
+    "custom/logo",
+    "clock",
+    "disk",
     "memory",
     "cpu",
-    "clock"
+    "temperature",
+    "custom/powerDraw"
   ],
-  "hyprland/workspaces": {
-    "disable-scroll": false,
-    "all-outputs": true,
-    "format": "{icon}",
-    "on-click": "activate",
-    "persistent-workspaces": {
-    "*":[1,2,3,4,5,6,7,8,9]
-    },
-    "format-icons": {
-      "1": "󰣇",
-      "2": "󰈹",
-      "3": "󰇮",
-      "4": "",
-      "5": "",
-      "6": "",
-      "7": "",
-      "8": "",
-      "9": "󰖳",
-      "default": ""
-    }
-  },
-  "custom/lock": {
-  "format": "<span color='#00FFFF'>  </span>",
-  "on-click": "hyprlock",
-  "tooltip": true,
-  "tooltip-format": "锁屏"
-  },
-  "custom/reboot": {
-    "format": "<span color='#FFD700'>  </span>",
-    "on-click": "systemctl reboot",
-    "tooltip": true,
-    "tooltip-format": "重启"
-  },
-  "custom/power": {
-    "format": "<span color='#FF4040'>  </span>",
-    "on-click": "systemctl poweroff",
-    "tooltip": true,
-    "tooltip-format": "关机"
-  },
-  "network": {
-    "format-wifi": "<span color='#00FFFF'> 󰤨 </span>{essid} ",
-    "format-ethernet": "<span color='#7FFF00'> </span>Wired ",
-    "tooltip-format": "<span color='#FF1493'> 󰅧 </span>{bandwidthUpBytes}  <span color='#00BFFF'> 󰅢 </span>{bandwidthDownBytes}",
-    "format-linked": "<span color='#FFA500'> 󱘖 </span>{ifname} (No IP) ",
-    "format-disconnected": "<span color='#FF4040'>  </span>Disconnected ",
-    "format-alt": "<span color='#00FFFF'> 󰤨 </span>{signalStrength}% ",
-    "interval": 1
-  },
-  "battery": {
-    "states": {
-      "warning": 30,
-      "critical": 15
-    },
-    "format": "<span color='#28CD41'> {icon} </span>{capacity}% ",
-    "format-charging": " 󱐋{capacity}%",
-	  "interval": 1,
-    "format-icons": ["󰂎", "󰁼", "󰁿", "󰂁", "󰁹"],
-    "tooltip": true
-  },
-  "pulseaudio": {
-    "format": "<span color='#00FF7F'>{icon}</span>{volume}% ",
-    "format-muted": "<span color='#FF4040'> 󰖁 </span>0% ",
-    "format-icons": {
-      "headphone": "<span color='#BF00FF'>  </span>",
-      "hands-free": "<span color='#BF00FF'>  </span>",
-      "headset": "<span color='#BF00FF'>  </span>",
-      "phone": "<span color='#00FFFF'>  </span>",
-      "portable": "<span color='#00FFFF'>  </span>",
-      "car": "<span color='#FFA500'>  </span>",
-      "default": [
-        "<span color='#808080'>  </span>",
-        "<span color='#FFFF66'>  </span>",
-        "<span color='#00FF7F'>  </span>"
-      ]
-    },
-    "on-click-right": "pavucontrol -t 3",
-    "on-click": "pactl -- set-sink-mute 0 toggle",
-    "tooltip": true,
-    "tooltip-format": "当前系统声音: {volume}%"
-  },
-  "custom/temperature": {
-    "exec": "sensors | awk '/^Package id 0:/ {print int($4)}'",
-    "format": "<span color='#FFA500'> </span>{}°C ",
-    "interval": 5,
-    "tooltip": true,
-    "tooltip-format": "当前 CPU 温度: {}°C"
-  },
-  "memory": {
-    "format": "<span color='#8A2BE2'>  </span>{used:0.1f}G/{total:0.1f}G ",
-    "tooltip": true,
-    "tooltip-format": "当前内存占比: {used:0.2f}G/{total:0.2f}G"
-  },
-  "cpu": {
-    "format": "<span color='#FF9F0A'>  </span>{usage}% ",
-    "tooltip": true
+  "modules-center": [
+    "hyprland/workspaces",
+    "mpd"
+  ],
+  "modules-right": [
+    "hyprland/window",
+    "tray",
+    "custom/updates",
+    "custom/clipboard",
+    "group/blight",
+    "idle_inhibitor",
+    "custom/colorpicker",
+    "bluetooth",
+    "group/audio",
+    "custom/hotspot",
+    "group/networking",
+    "battery"
+  ],
+  "reload_style_on_change": true,
+  "custom/logo": {
+    "format": "󰊠",
+    "tooltip": false,
+    "on-click": "~/.config/rofi/scripts/powermenu.sh"
   },
   "clock": {
+    "format": "{:%I:%M:%S %p}",
     "interval": 1,
-    "timezone": "Asia/Chengdu",
-    "format": "<span color='#BF00FF'>  </span>{:%H:%M} ",
-    "tooltip": true,
-    "tooltip-format": "{:L%Y 年 %m 月 %d 日, %A}"
+    "tooltip-format": "\n<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "calendar-weeks-pos": "right",
+    "today-format": "<span color='#7645AD'><b><u>{}</u></b></span>",
+    "format-calendar": "<span color='#aeaeae'><b>{}</b></span>",
+    "format-calendar-weeks": "<span color='#aeaeae'><b>W{:%V}</b></span>",
+    "format-calendar-weekdays": "<span color='#aeaeae'><b>{}</b></span>"
+  },
+  "hyprland/language": {
+    "format": "Lang: {long}",
+    "format-fr": "AMERICA, HELL YEAH!",
+    "format-tr": "As bayrakları",
+    "keyboard-name": "at-translated-set-2-keyboard"
+  },
+  "disk": {
+    "interval": 30,
+    "format": " {percentage_used}%",
+    "path": "/"
+  },
+  "memory": {
+    "format": " {percentage}%"
+  },
+  "cpu": {
+    "interval": 1,
+    "format": " {usage}%",
+    "format-icons": [
+      "▁",
+      "▂",
+      "▃",
+      "▄",
+      "▅",
+      "▆",
+      "▇",
+      "█"
+    ],
+  },
+  "temperature": {
+    "format": " {temperatureC}°C",
+    "format-critical": " {temperatureC}°C",
+    "interval": 1,
+    "critical-threshold": 80,
+    "on-click": "foot btop",
+  },
+  "custom/powerDraw": {
+    "format": "{}",
+    "interval": 1,
+    "exec": "~/.config/waybar/scripts/powerdraw.sh",
+    "return-type": "json"
+  },
+  "hyprland/workspaces": {
+    "format": "<span font='18px'>{icon}</span>",
+    "format-icons": {
+      "1": "O",
+      "2": "२",
+      "3": "३",
+      "4": "४",
+      "5": "५",
+      "6": "६",
+      "default": ""
+    },
+    "persistent-workspaces": {
+      "*": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    }
+  },
+  "hyprland/window": {
+    "format": "( {class} )",
+    "rewrite": {
+      "(.*) - Mozilla Firefox": "🌎 $1",
+      "org.telegram.desktop": "> [$1]",
+      "org.gnome.Nautilus": "> [$1]",
+      "(.*) - zsh": "> [$1]"
+    }
   },
   "tray": {
-    "icon-size": 17,
-    "spacing": 6
+    "icon-size": 12,
+    "spacing": 10
+  },
+  "custom/updates": {
+    "format": "{}",
+    "interval": 60,
+    "exec": "~/.config/waybar/scripts/checkupdate.sh",
+    "return-type": "json",
+    "exec-if": "exit 0",
+  },
+  "custom/clipboard": {
+    // "exec": "echo '󰅍'",
+    "interval": 5,
+    "tooltip": true,
+    // "tooltip-format": "{output}",
+    // "exec-tooltip": "sh -c cliphist list | head -n 5",
+    "on-click": "sh -c 'cliphist list | rofi -dmenu | cliphist decode | wl-copy'"
+  },
+  "group/blight": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 500,
+      "transition-left-to-right": false
+    },
+    "modules": [
+      "backlight",
+      "backlight/slider"
+    ]
   },
   "backlight": {
     "device": "intel_backlight",
-    "format": "<span color='#FFD700'>{icon}</span>{percent}% ",
-    "tooltip": true,
-    "tooltip-format": "当前屏幕亮度: {percent}%",
+    "format": "<span font='12'>{icon}</span>",
     "format-icons": [
-      "<span color='#696969'> 󰃞 </span>",  // 暗 - 深灰
-      "<span color='#A9A9A9'> 󰃝 </span>",  // 中 - 灰
-      "<span color='#FFFF66'> 󰃟 </span>",  // 亮 - 柠檬黄
-      "<span color='#FFD700'> 󰃠 </span>"   // 最亮 - 金色
-    ]
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+    ],
+    "on-scroll-down": "light -U 10",
+    "on-scroll-up": "light -A 10",
+    "smooth-scrolling-threshold": 1
+  },
+  "backlight/slider": {
+    "min": 0,
+    "max": 100,
+    "orientation": "horizontal",
+    "device": "intel_backlight"
+  },
+  "idle_inhibitor": {
+    "format": "<span font='12'>{icon}</span>",
+    "format-icons": {
+      "activated": "󰾪",
+      "deactivated": "󰅶"
+    }
+  },
+  "custom/colorpicker": {
+    "format": "{}",
+    "return-type": "json",
+    "interval": "once",
+    "exec": "~/.config/waybar/scripts/colorpicker.sh -j",
+    "on-click": "sleep 1 && ~/.config/waybar/scripts/colorpicker.sh",
   },
   "bluetooth": {
-    "format": "<span color='#00BFFF'>  </span>{status} ",
-    "format-connected": "<span color='#00BFFF'>  </span>{device_alias} ",
-    "format-connected-battery": "<span color='#00BFFF'>  </span>{device_alias}{device_battery_percentage}% ",
+    "format-on": "󰂰",
+    "format-off": "",
+    "format-disabled": "󰂲",
+    "format-connected": "󰂴",
+    "format-connected-battery": "{device_battery_percentage}% 󰂴",
     "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
     "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+    "on-click": "rofi-bluetooth",
+  },
+  "pulseaudio": {
+    "format": "{icon}",
+    "format-bluetooth": "󰂰",
+    "format-muted": "",
+    "tooltip-format": "{volume}% {icon}",
+    "format-icons": {
+      "headphones": "",
+      "bluetooth": "󰥰",
+      "handsfree": "",
+      "headset": "󱡬",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": [
+        "🕨",
+        "🕩",
+        "🕪"
+      ]
+    },
+    "scroll-step": 5,
+    "justify": "center",
+    "on-click": "amixer sset Master toggle",
+    "on-click-right": "pavucontrol",
+    "tooltip-format": "{volume}%  {icon}",
+    "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
+    "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%"
+  },
+  "pulseaudio#mic": {
+    "format": "{format_source}",
+    "format-source": "",
+    "format-source-muted": "",
+    "tooltip-format": "{volume}% {format_source} ",
+    "on-click": "pactl set-source-mute 0 toggle",
+    "on-scroll-down": "pactl set-source-volume 0 -1%",
+    "on-scroll-up": "pactl set-source-volume 0 +1%"
+  },
+  "group/audio": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 500,
+      "transition-left-to-right": false
+    },
+    "modules": [
+      "pulseaudio",
+      "pulseaudio#mic",
+      "pulseaudio/slider"
+    ]
+  },
+  "pulseaudio/slider": {
+    "min": 0,
+    "max": 140,
+    "orientation": "horizontal"
+  },
+  "custom/hotspot": {
+    "format": "{icon}",
+    "interval": 1,
+    "tooltip": true,
+    "return-type": "json",
+    "format-icons": {
+      "active": "󱜠",
+      "notactive": "󱜡"
+    },
+    "exec": "waybar-hotspot -a watch",
+    "on-click": "waybar-hotspot -a toggle",
+  },
+  "network": {
+    "format-wifi": " ",
+    "format-ethernet": "󰈀",
+    "format-disconnected": "󱐅",
+    "tooltip-format": "{ipaddr}",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%)  | {ipaddr}",
+    "tooltip-format-ethernet": "{ifname} 🖧 | {ipaddr}",
+    "tooltip-format-ethernet": "{bandwidthTotalBytes}",
+    "on-click": "networkmanager_dmenu"
+  },
+  "network#speed": {
+    "format": "{bandwidthDownBits}",
+    "interval": 1,
+    "tooltip-format": "{ipaddr}",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%)   \n{ipaddr} | {frequency} MHz{icon} ",
+    "tooltip-format-ethernet": "{ifname} 󰈀 \n{ipaddr} | {frequency} MHz{icon} ",
+    "tooltip-format-disconnected": "Not Connected to any type of Network",
+    "tooltip": true,
+    "on-click": "pgrep -x rofi &>/dev/null && notify-send rofi || networkmanager_dmenu"
+  },
+  "group/networking": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 500,
+      "transition-left-to-right": false
+    },
+    "modules": [
+      "network",
+      "network#speed"
+    ]
+  },
+  "battery": {
+    "interval": 1,
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 20
+    },
+    "tooltip": true,
+    "format": "{capacity}% <span font='16px'>{icon}</span>",
+    "format-time": "{H}h {M}min",
+    "tooltip": "{time}",
+    "format-charging": "{capacity}% <span font='16px'>{icon}</span>",
+    "format-plugged": "{capacity}% 󰠠",
+    // "format-alt": "{time} {icon}",
+    "format-icons": [
+      "󰪞",
+      "󰪟",
+      "󰪠",
+      "󰪡",
+      "󰪢",
+      "󰪣",
+      "󰪤",
+      "󰪥"
+    ],
+    "on-click": "~/.config/rofi/scripts/powermenu.sh"
+  },
+  "mpd": {
+    "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) <U+F001>",
+    "format-disconnected": "Disconnected <U+F001>",
+    "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped <U+F001>",
+    "interval": 2,
+    "consume-icons": {
+      "on": "<U+F0C4> " 
+    },
+    "random-icons": {
+      "off": "<span color=\"#f53c3c\"><U+F074></span> ", 
+      "on": "<U+F074> "
+    },
+    "repeat-icons": {
+      "on": "<U+F01E> "
+    },
+    "single-icons": {
+      "on": "<U+F01E>1 "
+    },
+    "state-icons": {
+      "paused": "<U+F04C>",
+      "playing": "<U+F04B>"
+    },
+    "tooltip-format": "MPD (connected)",
+    "tooltip-format-disconnected": "MPD (disconnected)"
   }
 }
