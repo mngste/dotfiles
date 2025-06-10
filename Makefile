@@ -3,6 +3,9 @@ stow = cd config && stow -v -t ~
 install:
 	xargs -d '\n' -a packages/package.list dnf install -y
 
+flatpak:
+	xargs -d '\n' -a packages/flatpak.list flatpak install flathub
+
 dotfiles:
 	xrdb ~/.Xresources
 	$(stow) fish
