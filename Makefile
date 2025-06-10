@@ -6,6 +6,9 @@ install:
 flatpak:
 	xargs -d '\n' -a packages/flatpak.list flatpak install flathub
 
+fisher:
+	xargs -d '\n' -a packages/fisher.list fisher install
+
 dotfiles:
 	$(stow) fish
 	$(stow) wofi
