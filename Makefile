@@ -10,7 +10,7 @@ dotfiles:
 	xrdb ~/.Xresources
 	$(stow) fish
 	$(stow) wofi
-	$(stow) vim
+	$(stow) nvim
 	$(stow) gitnow
 	$(stow) bin
 	$(stow) git
