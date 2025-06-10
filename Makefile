@@ -6,11 +6,8 @@ install:
 	xargs -d '\n' -a packages/package.list dnf install -y
 
 dotfiles:
-	$(stow) urxvt
 	xrdb ~/.Xresources
 	$(stow) fish
-	$(stow) keyboard
-	$(stow) easystroke
 	$(stow) wofi
 	$(stow) vim
 	$(stow) gitnow
