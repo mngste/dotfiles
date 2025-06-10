@@ -7,7 +7,6 @@ flatpak:
 	xargs -d '\n' -a packages/flatpak.list flatpak install flathub
 
 dotfiles:
-	xrdb ~/.Xresources
 	$(stow) fish
 	$(stow) wofi
 	$(stow) nvim
