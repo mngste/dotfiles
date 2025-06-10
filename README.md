@@ -1,6 +1,9 @@
 # Installation
 
 ## wifi
+```bash
+nmcli device wifi -list
+```
 
 ```bash
 nmcli device wifi connect <SSID> --ask
