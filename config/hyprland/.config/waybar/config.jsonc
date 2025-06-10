@@ -1,0 +1,152 @@
+[
+  // -*- mode: jsonc -*-
+  // Center
+  {
+    "output": "DP-1",
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center": [],
+    "modules-right": ["mpd", "custom/shutdown", "tray"],
+    "mpd": {
+      "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
+      "format-disconnected": "Disconnected ",
+      "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+      "unknown-tag": "N/A",
+      "interval": 5,
+      "consume-icons": {
+        "on": " ",
+      },
+      "random-icons": {
+        "off": "<span color=\"#f53c3c\"></span> ",
+        "on": " ",
+      },
+      "repeat-icons": {
+        "on": " ",
+      },
+      "single-icons": {
+        "on": "1 ",
+      },
+      "state-icons": {
+        "paused": "",
+        "playing": "",
+      },
+      "tooltip-format": "MPD (connected)",
+      "tooltip-format-disconnected": "MPD (disconnected)",
+    },
+    "tray": {
+      // "icon-size": 21,
+      "spacing": 10,
+    },
+    "hyprland/workspaces": {
+      "format": "{icon} ",
+      "format-icons": {
+        "1": "\uF121",
+        "2": "\uF120",
+        "3": "\ueb01",
+        "4": "\uea83",
+        "5": "\udb83\udede",
+        "6": "\ueb01",
+        "7": "\ueb01",
+        "8": "\uF1BC",
+      },
+    },
+    "custom/shutdown": {
+      "format": "",
+      "interval": "once",
+      "on-click": "wlogout -b 2",
+    },
+  },
+  // Left
+  {
+    "output": "HDMI-A-1",
+    "modules-left": [],
+    "modules-center": ["clock"],
+    "modules-right": ["hyprland/workspaces"],
+    "clock": {
+      "timezone": "Europe/Paris",
+      "locale": "fr_FR.utf8",
+      "format": "{:L%d %B, %H:%M}",
+    },
+    "cpu": {
+      "format": "{usage}% <big>\uDB80\uDF5B</big>",
+      "tooltip": false,
+    },
+    "custom/gpu": {
+      "exec": "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits",
+      "interval": 5,
+      "format": "{}% <big>\uE60D</big>",
+    },
+    "memory": {
+      "format": "{}% ",
+    },
+    "hyprland/workspaces": {
+      "format": "{icon} ",
+      "format-icons": {
+        "1": "\uF121",
+        "2": "\uF120",
+        "3": "\ueb01",
+        "4": "\uea83",
+        "5": "\udb83\udede",
+        "6": "\ueb01",
+        "7": "\ueb01",
+        "8": "\uF1BC",
+      },
+    },
+  },
+  // Right
+  {
+    "output": "DP-2",
+    "modules-left": ["hyprland/workspaces", "custom/media"],
+    "modules-center": ["clock"],
+    "modules-right": ["pulseaudio"],
+    "pulseaudio": {
+      // "scroll-step": 1, // %, can be a float
+      "format": "{volume}% {icon} {format_source}",
+      "format-bluetooth": "{volume}% {icon} {format_source}",
+      "format-bluetooth-muted": " {icon} {format_source}",
+      "format-muted": " {format_source}",
+      "format-source": "{volume}% ",
+      "format-source-muted": "",
+      "format-icons": {
+        "headphone": "",
+        "hands-free": "",
+        "headset": "",
+        "phone": "",
+        "portable": "",
+        "car": "",
+        "default": ["", "", ""],
+      },
+      "on-click": "pavucontrol",
+    },
+    "clock": {
+      "timezone": "Europe/Paris",
+      "locale": "fr_FR.utf8",
+      "format": "{:L%d %B, %H:%M}",
+    },
+    "hyprland/workspaces": {
+      "format": "{icon} ",
+      "format-icons": {
+        "1": "\uF121",
+        "2": "\uF120",
+        "3": "\ueb01",
+        "4": "\uea83",
+        "5": "\udb83\udede",
+        "6": "\ueb01",
+        "7": "\ueb01",
+        "8": "\uF1BC",
+      },
+    },
+    "custom/media": {
+      "format": "{0} {1}",
+      "justify": "center",
+      "max-length": 40,
+      "format-icons": {
+        "spotify": "\uF001",
+        "default": "\uF001",
+      },
+      "escape": true,
+      "exec": "$HOME/.config/waybar/music.sh --title",
+      "interval": 10,
+      "on-click": "hyprctl dispatch workspace 8",
+    },
+  },
+]
