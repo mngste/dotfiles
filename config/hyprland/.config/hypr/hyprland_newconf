@@ -1,17 +1,17 @@
 #################
 ### AUTOSTART ###
 #################
-# exec-once = nm-applet &
+exec-once = nm-applet &
 exec-once = waybar
 # Auth
 # exec-once = gnome-keyring-daemon --start --components=pkcs11,secrets,ssh
 # exec-once = /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 # exec-once = systemctl --user start hyprpolkitagent
 # Screen sharing : https://gist.github.com/brunoanc/2dea6ddf6974ba4e5d26c3139ffb7580#install-pipewire-and-friends
-# exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 
 # Prepare everything
-exec-once = ~/.config/hypr/startup.sh
+# exec-once = ~/.config/hypr/startup.sh
 
 #############################
 ### ENVIRONMENT VARIABLES ###
@@ -19,12 +19,12 @@ exec-once = ~/.config/hypr/startup.sh
 
 # See https://wiki.hyprland.org/Configuring/Environment-variables/
 
-# env = XCURSOR_SIZE,24
-# env = HYPRCURSOR_THEME,McMojave
-# env = HYPRCURSOR_SIZE,24
+env = XCURSOR_SIZE,24
+env = HYPRCURSOR_THEME,McMojave
+env = HYPRCURSOR_SIZE,24
 # env = LIBVA_DRIVER_NAME,nvidia
-# env = XDG_SESSION_TYPE,wayland
-#env = GBM_BACKEND,nvidia-drm
+env = XDG_SESSION_TYPE,wayland
+# env = GBM_BACKEND,nvidia-drm
 # env = __GLX_VENDOR_LIBRARY_NAME,nvidia
 
 cursor {
