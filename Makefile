@@ -1,5 +1,3 @@
-.PHONY: xfce install installdev installi3
-
 stow = cd config && stow -v -t ~
 
 install:
