@@ -30,3 +30,16 @@ Again, substitute the path to fish for /usr/local/bin/fish - see command -s�
 ## eza on fedora 42
 
 To keep using Eza, I downloaded the latest release from the project’s [Github page](https://github.com/eza-community/eza/releases/), and installed the binary directly to the /usr/local/bin
+
+## brave browser > fedora 42
+```bash
+sudo dnf install dnf-plugins-core
+
+sudo dnf config-manager addrepo --from-repofile=https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
+
+sudo dnf install brave-browser
+```
+## zed browser
+```bash
+curl -f https://zed.dev/install.sh | sh
+```
