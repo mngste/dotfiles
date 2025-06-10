@@ -1,0 +1,160 @@
+{
+  "workbench.startupEditor": "none", // On ne veut pas une page d'accueil chargée
+  "editor.minimap.enabled": false,
+  // -- Sidebar
+  "workbench.tree.indent": 15, // Indente plus pour plus de clarté dans la sidebar
+  "workbench.tree.renderIndentGuides": "always",
+  // -- Topbar
+  "window.commandCenter": false,
+  "workbench.layoutControl.enabled": false,
+  "window.titleBarStyle": "custom",
+  // -- Code
+  "editor.occurrencesHighlight": "off",
+  "editor.renderWhitespace": "trailing", // On ne veut pas laisser d'espace en fin de ligne
+  // Thème
+  "editor.fontFamily": "'JetBrains Mono', 'Fira Code', 'Operator Mono Lig', monospace",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 16,
+  "editor.lineHeight": 28,
+  "workbench.colorCustomizations": {
+    "[Tokyo Night]": {
+      "editor.selectionBackground": "#3D59A1",
+      "editor.selectionHighlightBackground": "#3D59A1"
+    }
+  },
+  // Ergonomie
+  "editor.hover.delay": 700, // Ajoute du délai pour éviter que les popups s'affiche tout le temps
+  "editor.hover.hidingDelay": 100,
+  "editor.stickyScroll.enabled": true,
+  "editor.parameterHints.enabled": false,
+  "explorer.confirmDelete": false,
+  "editor.wordWrap": "on",
+  "editor.suggest.insertMode": "replace", // L'autocomplétion remplace le mot en cours
+  "editor.acceptSuggestionOnCommitCharacter": false, // Evite que l'autocomplétion soit accepté lors d'un . par exemple
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.linkedEditing": true, // Quand on change un élément HTML, change la balise fermante
+  "explorer.autoReveal": false,
+  "explorer.confirmDragAndDrop": false,
+  "workbench.editor.enablePreview": false, // Un clic sur un fichier l'ouvre
+  "editor.unicodeHighlight.nonBasicASCII": false,
+  "editor.accessibilitySupport": "off",
+  "extensions.ignoreRecommendations": true,
+  "update.showReleaseNotes": false,
+  // Versioning
+  "diffEditor.ignoreTrimWhitespace": false,
+  // Fichiers
+  "files.autoSave": "onFocusChange",
+  "files.defaultLanguage": "markdown",
+  "files.exclude": {
+    "**/.idea": true
+  },
+  // Languages
+  "javascript.preferences.importModuleSpecifierEnding": "js",
+  "typescript.preferences.importModuleSpecifierEnding": "js",
+  "typescript.tsserver.experimental.useVsCodeWatcher": false,
+  // Formatters
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[php]": {
+    "editor.defaultFormatter": "ms-vsliveshare.vsliveshare",
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "Vue.volar",
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true
+  },
+  "[dart]": {
+    "editor.defaultFormatter": "Dart-Code.dart-code",
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true
+  },
+  "[go]": {
+    "editor.defaultFormatter": "golang.go",
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true
+  },
+  "[markdown]": {
+     "editor.fontLigatures": true,
+     "editor.fontSize": 16,
+     "editor.lineHeight": 26,
+     "editor.wordWrap": "wordWrapColumn",
+     "editor.wordWrapColumn": 72,
+     "editor.lineNumbers": "off",
+     "editor.quickSuggestions": {
+      "comments": "off",
+      "strings": "off",
+      "other": "off"
+    },
+    },
+  /**
+   * Extensions
+   **/
+  "microsoft-authentication.implementation": "classic",
+  "emmet.includeLanguages": {
+    "templ": "html",
+    "blade.php": "html",
+    "twig": "html"
+  },
+  "emmet.triggerExpansionOnTab": true,
+  "workbench.colorTheme": "Tokyo Night",
+  "explorer.fileNesting.patterns": {
+    "*.ts": "${capture}.js",
+    "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
+    "*.jsx": "${capture}.js",
+    "*.tsx": "${capture}.ts",
+    "tsconfig.json": "tsconfig.*.json",
+    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb",
+    "*.templ": "${capture}_templ.go,${capture}_templ.txt",
+    "composer.json": "composer.lock",
+    "psalm.xml": "psalm-baseline.xml",
+    ".php-cs-fixer.php": ".php-cs-fixer.cache",
+    "phpunit.xml": ".phpunit.result.cache",
+    "*.php": "${basename}Test.php",
+    "*.sqlite": "${capture}.${extname}-*",
+    "*.db": "${capture}.${extname}-*",
+    "*.sqlite3": "${capture}.${extname}-*",
+    "*.db3": "${capture}.${extname}-*",
+    "*.sdb": "${capture}.${extname}-*",
+    "*.s3db": "${capture}.${extname}-*"
+  },
+  "files.associations": {
+    ".php_cs.dist": "php",
+    ".php_cs": "php",
+    ".pre": "php",
+    "artisan": "php"
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/*.code-search": true,
+    "_ide_helper.php": true,
+    "_ide_helper_models.php": true,
+    ".php_cs.cache": true,
+    ".phpstorm.meta.php": true,
+    ".phpunit.result.cache": true
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "svelte.enable-ts-plugin": true,
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.activityBar.location": "hidden"
+}
