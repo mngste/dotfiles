@@ -9,5 +9,5 @@ hyprctl dispatch exec [workspace 2 silent] kitty ~
 #hyprctl dispatch workspace 1
 #hyprctl dispatch exec [workspace 1] phpstorm
 sleep 1
-hyprctl dispatch workspace 5
-hyprctl dispatch exec [workspace 5] flatpak run com.discordapp.Discord
+# hyprctl dispatch workspace 5
+# hyprctl dispatch exec [workspace 5] flatpak run com.discordapp.Discord
