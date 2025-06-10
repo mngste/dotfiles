@@ -1,5 +1,5 @@
 #!/bin/sh
-hyprctl dispatch exec [workspace 2 silent] kitty ~
+# hyprctl dispatch exec [workspace 2 silent] kitty ~
 # hyprctl dispatch workspace 3
 # hyprctl dispatch exec [workspace 3] "flatpak run com.brave.Browser --profile-directory=\"Default\""
 # sleep 1
@@ -8,6 +8,6 @@ hyprctl dispatch exec [workspace 2 silent] kitty ~
 #sleep 1
 #hyprctl dispatch workspace 1
 #hyprctl dispatch exec [workspace 1] phpstorm
-sleep 1
+# sleep 1
 # hyprctl dispatch workspace 5
 # hyprctl dispatch exec [workspace 5] flatpak run com.discordapp.Discord
