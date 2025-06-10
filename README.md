@@ -46,16 +46,3 @@ dnf search fonts
 ```
 sudo dnf install jetbrains...
 ```
-
-## brave browser > fedora 42
-```bash
-sudo dnf install dnf-plugins-core
-
-sudo dnf config-manager addrepo --from-repofile=https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
-
-sudo dnf install brave-browser
-```
-## zed browser
-```bash
-curl -f https://zed.dev/install.sh | sh
-```
