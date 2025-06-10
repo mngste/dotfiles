@@ -25,7 +25,10 @@ Change your default shell with:
 chsh -s /usr/local/bin/fish
 ```
 
-Again, substitute the path to fish for /usr/local/bin/fish - see command -s fish inside fish. To change it back to another shell, just substitute /usr/local/bin/fish with /bin/bash, /bin/tcsh or /bin/zsh as appropriate in the steps above.
+## fisher
+```
+curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+```
 
 ## eza on fedora 42
 
