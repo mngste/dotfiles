@@ -11,12 +11,10 @@ fisher:
 
 dotfiles:
 	$(stow) fish
-	$(stow) wofi
 	$(stow) nvim
 	$(stow) gitnow
 	$(stow) bin
 	$(stow) git
-	$(stow) brave
 	$(stow) zed
 	mv ~/gitignore ~/.gitignore
 
@@ -24,4 +22,4 @@ dd:
 	$(stow) code
 
 hyprland:
-	$(stow) hyprland
+	$(stow) hyprland --adopt
