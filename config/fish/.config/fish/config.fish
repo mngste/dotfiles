@@ -1,36 +1,31 @@
 # Alias
-alias cr "composer require "
-alias sy "php bin/console "
-alias mdata "sudo mkdir -p /run/media/mngt/Data && sudo ntfs-3g /dev/sda2 /run/media/mgt/Data"
-alias remove "pacaur -Rns"
-alias ls 'eza --icons=auto' # ls replacement
+
+# fzf
+alias preview "fzf --preview='bat --color=always --style=numbers --theme OneHalfDark {}' --preview-window=down"
+alias fnvim 'nvim $(fzf -m --preview="bat --color=always --style=numbers --theme OneHalfDark {}" --preview-window=down)'
+alias fvim 'vim $(fzf -m --preview="bat --color=always --style=numbers --theme OneHalfDark {}" --preview-window=down)'
+alias fcd "cd \$(find . -type d | fzf)"  # Fuzzy search directories and cd into them
+
+#System
+alias upgrade 'dnf update && dnf upgrade -y && flatpak update' # Upgrade the system
+alias q 'exit'
+alias c 'clear'
+alias mkdir 'mkdir -p'
+
+#System Information
+alias ls "eza --icons"
+alias la "eza --icons -lgha --group-directories-first"
 alias ll 'eza -lha --icons=auto --sort=name --group-directories-first' # long list all
-alias upgrade 'yay -Syu --noconfirm && flatpak update' # Upgrade the system
-alias fserve 'caddy file-server --listen :8000 --browse' # Serve the current directory
-alias webcam 'mpv av://v4l2:/dev/video0 --profile=low-latency --untimed' # Show the webcam
+alias lt "eza --icons --tree"
+alias lta "eza --icons --tree -lgha"
+alias bat "bat --theme OneHalfDark"
+alias cat "bat --theme OneHalfDark -p $@"
 
 # Docker
 alias dk "docker kill (docker ps -q)"
-alias de "docker-compose exec"
+alias dc "docker compose up -d"
 alias dprune "docker system prune --filter \"until=720h\" && docker volume prune"
-
-# Sail
-alias sail "bash vendor/bin/sail"
-
-# SSH agent
-set -gx SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/ssh-agent.socket"
-
-# PHP
-set -x PATH $PATH $HOME/.config/composer/vendor/bin
 
 # Local bin
 set -gx PATH "$HOME/.local/bin" $PATH
 set -x PATH $PATH $HOME/.bin
-
-# Golang
-set -gx GOPATH "$HOME/go"
-set -gx PATH "$GOPATH/bin" $PATH
-
-# Bun
-set -Ux BUN_INSTALL "/home/mngt/.bun"
-set -px --path PATH "/home/mngt/.bun/bin"
