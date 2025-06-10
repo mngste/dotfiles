@@ -46,3 +46,6 @@ dnf search fonts
 ```
 sudo dnf install jetbrains...
 ```
+```
+kitty +list-fonts | fzf 
+```
