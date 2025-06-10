@@ -1,7 +1,5 @@
 layan-gtk-theme-git
-discord
 fish
-brave-browser
 pavucontrol
 pulseaudio
 rsync
@@ -9,6 +7,5 @@ stow
 vim
 neovim
 python3-neovim
-code
 thunar
 fzf
