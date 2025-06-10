@@ -1,5 +1,11 @@
 # Installation
 
+## wifi
+
+```bash
+nmcli device wifi connect <SSID> --ask
+```
+
 ## fish
 
 To change your login shell to fish:
