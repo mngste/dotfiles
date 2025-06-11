@@ -113,6 +113,6 @@
     "custom/powermenu": {
 	    "format": "⏻ ",
     	"tooltip": false,
-    	"on-click": "~/.config/wofi/powermenu/type-2/powermenu.sh &"
+    	"on-click": "~/.config/wofi/powermenu/powermenu.sh &"
     },
 }
