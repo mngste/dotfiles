@@ -107,8 +107,7 @@
     "custom/launcher": {
     	"format": "  ",
     	"tooltip": false,
-    	"on-click": "/home/mngt/.config/wofi/launchers/type-2/launcher.sh",
-      "on-click-right": "/home/mngt/.config/waybar/scripts/swww.sh /home/tdm/Pictures/Wallpapers/ &"
+    	"on-click": "/home/mngt/.config/wofi/launchers/launcher.sh",
     },
     "custom/powermenu": {
 	    "format": "⏻ ",
