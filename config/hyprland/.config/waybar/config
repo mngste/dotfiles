@@ -1,0 +1,118 @@
+{
+  "layer": "top",
+  "position": "top",
+  "margin-top": 2,
+  "margin-left": 10,
+  "margin-right": 10,
+  "height": 20,
+  "spacing": 0,
+  "modules-left": ["custom/launcher","hyprland/workspaces","cpu","memory"],
+  "modules-center": [],
+  "modules-right": ["tray","custom/ibus","network","pulseaudio","clock","custom/powermenu"],
+
+  "hyprland/window": {
+      "format": "👉 {}",
+      "rewrite": {
+          "(.*) - Mozilla Firefox": "🌎 $1",
+          "(.*) - fish": "> [$1]"
+      },
+      "separate-outputs": true
+  },
+
+  "hyprland/workspaces": {
+  	"active-only": false,
+  	"all-outputs": true,
+  	"format": "{icon}",
+  	"show-special": true,
+  	"persistent-workspaces": {
+  		"1": [],
+  		"2": [],
+  		"3": [],
+  		"4": [],
+    },
+	  "format-icons": {
+    		"1": "",
+    		"2": "",
+    		"3": "",
+    		"4": "",
+        "5": "",
+        "6": "",
+		"default": "",
+		"active": "󱓻󱓻󱓻󱓻󱓻󱓻",
+		"urgent": "󱓻",
+    },
+  },
+    "memory": {
+      "interval": 3,
+      "format": "   {}% ",
+      "max-length": 10
+    },
+    "cpu": {
+      "interval": 1,
+      "format": "   {}% ",
+      "max-length": 10
+    },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    },
+    "clock": {
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "format-alt": "  {:%a, %d %b %Y} ",
+	      "format": " ⠀ {:%H:%M} ",
+        "calendar": {
+                    "weeks-pos"     : "none",
+                    "on-scroll"     : 1,
+                    "format": {
+                              "months":     "<span color='#8fbcbb'><b>{}</b></span>",
+                              "days":       "<span color='#8a909e'>{}</span>",
+                              "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                              "weekdays":   "<span color='#81a1c1'><b>{}</b></span>",
+                              "today":      "<span color='#88c0d0'><b>{}</b></span>"
+                              }
+                    },
+    },
+    "network": {
+        "format-ethernet": "󰈀 ",
+        "format-wifi": "{icon}",
+        "format-disconnected": "󰤭 ",
+        "format-icons": ["󰤯 ","󰤟 ","󰤢 ","󰤥 ","󰤨 "],
+      	"tooltip-format-wifi": "{essid}",
+      	"tooltip-format-ethernet": "IP: {ipaddr}",
+        "tooltip-format-disconnected": "No Internet Connection",
+        "nospacing": 1,
+    },
+    "bluetooth": {
+	    "format": "󰂯 {status}",
+	    "format-connected": "",
+	    "format-connected-battery": "",
+	      // "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
+  	  "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+  	  "tooltip-format-connected": "{num_connections} connected\n\n{device_enumerate}",
+  	  "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+  	  "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_battery_percentage}%"
+    },
+    "pulseaudio": {
+      "format": "{icon}",
+    	"nospacing": 1,
+    	"tooltip-format": "Volume : {volume}%",
+      "format-muted": "󰝟 ",
+      "format-icons": {
+        "default": ["󰕿 ", "󰖀 ", "󰕾 "]
+      },
+      "on-click": "pamixer -t",
+    	"on-click-right": "pavucontrol",
+    	"scroll-step": 5,
+    },
+    "custom/launcher": {
+    	"format": "  ",
+    	"tooltip": false,
+    	"on-click": "/home/mngt/.config/wofi/launchers/type-2/launcher.sh",
+      "on-click-right": "/home/mngt/.config/waybar/scripts/swww.sh /home/tdm/Pictures/Wallpapers/ &"
+    },
+    "custom/powermenu": {
+	    "format": "⏻ ",
+    	"tooltip": false,
+    	"on-click": "~/.config/wofi/powermenu/type-2/powermenu.sh &"
+    },
+}
