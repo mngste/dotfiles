@@ -19,7 +19,7 @@ alias ll 'eza -lha --icons=auto --sort=name --group-directories-first' # long li
 alias lt "eza --icons --tree"
 alias lta "eza --icons --tree -lgha"
 alias bat "bat --theme OneHalfDark"
-alias cat "bat --theme OneHalfDark -p $@"
+alias cat "bat --theme OneHalfDark -p $argv"
 
 # Docker
 alias dk "docker kill (docker ps -q)"
