@@ -57,12 +57,12 @@ echo /usr/local/bin/fish | sudo tee -a /etc/shells
 Change your default shell with:
 
 ```bash
-chsh -s /usr/local/bin/fish
+chsh -s /usr/bin/fish
 ```
 
 ## fisher
 ```
-curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
 ```
 
 ## eza on fedora 42
