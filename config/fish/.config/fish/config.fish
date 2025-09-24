@@ -13,18 +13,21 @@ alias c 'clear'
 alias mkdir 'mkdir -p'
 
 #System Information
-#alias ls "eza --icons"
-#alias la "eza --icons -lgha --group-directories-first"
-#alias ll 'eza -lha --icons=auto --sort=name --group-directories-first' # long list all
-#alias lt "eza --icons --tree"
-#alias lta "eza --icons --tree -lgha"
+alias ls "eza --icons"
+alias la "eza --icons -lgha --group-directories-first"
+alias ll 'eza -lha --icons=auto --sort=name --group-directories-first' # long list all
+alias lt "eza --icons --tree"
+alias lta "eza --icons --tree -lgha"
 alias bat "bat --theme OneHalfDark"
 alias cat "bat --theme OneHalfDark -p $argv"
 
 # Docker
-#alias dk "docker kill (docker ps -q)"
-#alias dc "docker compose up -d"
-#alias dprune "docker system prune --filter \"until=720h\" && docker volume prune"
+alias dk "docker kill (docker ps -q)"
+alias dc "docker compose up -d"
+alias dprune "docker system prune --filter \"until=720h\" && docker volume prune"
+
+# Podman
+alias ps "podman ps"
 
 # Local bin
 set -gx PATH "$HOME/.local/bin" $PATH
