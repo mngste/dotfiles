@@ -13,11 +13,11 @@ alias c 'clear'
 alias mkdir 'mkdir -p'
 
 #System Information
-alias ls "eza --icons"
-alias la "eza --icons -lgha --group-directories-first"
-alias ll 'eza -lha --icons=auto --sort=name --group-directories-first' # long list all
-alias lt "eza --icons --tree"
-alias lta "eza --icons --tree -lgha"
+#alias ls "eza --icons"
+#alias la "eza --icons -lgha --group-directories-first"
+#alias ll 'eza -lha --icons=auto --sort=name --group-directories-first' # long list all
+#alias lt "eza --icons --tree"
+#alias lta "eza --icons --tree -lgha"
 alias bat "bat --theme OneHalfDark"
 alias cat "bat --theme OneHalfDark -p $argv"
 
