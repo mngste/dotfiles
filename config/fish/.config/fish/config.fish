@@ -7,7 +7,7 @@ alias fvim 'vim $(fzf -m --preview="bat --color=always --style=numbers --theme O
 alias fcd "cd \$(find . -type d | fzf)"  # Fuzzy search directories and cd into them
 
 #System
-alias upgrade 'apt update && apt upgrade -y && flatpak update' # Upgrade the system
+alias upgrade 'apt update && apt upgrade -y' # Upgrade the system
 alias q 'exit'
 alias c 'clear'
 alias mkdir 'mkdir -p'
