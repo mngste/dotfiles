@@ -1,0 +1,22 @@
+# $HOME/.config/alacritty/alacritty.toml
+# by mngt 2025-01-05
+
+[general]
+import = [
+    "~/.config/alacritty/catppuccin-mocha.toml"
+]
+
+[window]
+
+opacity = 0.9
+
+padding.x = 10
+padding.y = 10
+
+decorations = "Full"
+decorations_theme_variant = "Dark" # "Dark"
+
+[font]
+normal = {family= "JetBrains Mono"}
+
+size = 12.0
