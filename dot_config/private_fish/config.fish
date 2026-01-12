@@ -1,3 +1,7 @@
+if type -q keychain
+    SHELL=(which fish) keychain --quiet --eval mngt | source
+end
+
 # Alias
 
 # fzf
