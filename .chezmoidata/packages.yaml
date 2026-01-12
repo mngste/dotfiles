@@ -11,3 +11,5 @@ packages:
     - 'tmux'
     - 'timeshift'
     - 'keychain'
+    - 'podman'
+    - 'ripgrep'
