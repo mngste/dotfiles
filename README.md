@@ -8,4 +8,7 @@ ssh-add ~/.ssh/key
 ```
 
 ## Install alacritty
-[intall alacritty](https://github.com/alacritty/alacritty/blob/master/INSTALL.md)
+[Install alacritty](https://github.com/alacritty/alacritty/blob/master/INSTALL.md)
+
+## install jetbrains mono
+[jetbrains mono](https://www.jetbrains.com/lp/mono/#how-to-install)
