@@ -1,5 +1,3 @@
-fish_ssh_agent
-
 # Alias
 
 # fzf
