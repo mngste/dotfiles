@@ -13,3 +13,16 @@ packages:
     - 'keychain'
     - 'podman'
     - 'ripgrep'
+  mint:
+    pkgs:
+    - 'git'
+    - 'fzf'
+    - 'fish'
+    - 'htop'
+    - 'btop'
+    - 'bat'
+    - 'neovim'
+    - 'tmux'
+    - 'timeshift'
+    - 'keychain'
+    - 'ripgrep'
