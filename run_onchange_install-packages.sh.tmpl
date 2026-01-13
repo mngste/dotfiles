@@ -5,6 +5,10 @@ sudo dnf install {{ . | quote }} -y
 {{ end -}}
 {{ else if (and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "fedora")) -}}
 #!/bin/sh
+echo "add vivaldi repo"
+sudo dnf config-manager addrepo --from-repofile=https://repo.vivaldi.com/stable/vivaldi-fedora.repo
+
+echo "install packages"
 {{ range .packages.fedora.pkgs -}}
 sudo dnf install {{ . | quote }} -y
 {{ end -}}
