@@ -1,6 +1,7 @@
 packages:
   fedora:
     pkgs:
+    - 'alacritty'
     - 'git'
     - 'fzf'
     - 'fish'
@@ -15,6 +16,7 @@ packages:
     - 'ripgrep'
   mint:
     pkgs:
+    - 'alacritty'
     - 'git'
     - 'fzf'
     - 'fish'
