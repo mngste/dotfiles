@@ -1,5 +1,8 @@
+{{- $name := "mngste" -}}
+{{- $email := "mangouste@mosaurus.com" -}}
+
 sourceDir: {{ .chezmoi.sourceDir | quote }}
 
 data:
-  name: {{ "mangouste@mosaurus.com" }}
-  email: {{ "mngste" }}
+  name: {{ $name }}
+  email: {{ $email }}
