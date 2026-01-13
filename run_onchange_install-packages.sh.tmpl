@@ -6,36 +6,16 @@ sudo dnf install {{ . | quote }} -y
 
 
 # fish
-# sudo dnf install fish -y
 sudo chsh -s /usr/bin/fish $(whoami)
-
-# htop btop
-#sudo dnf install htop -y
-#sudo dnf install btop -y
-
-# fzf
-#sudo dnf install fzf -y
-
-# bat
-#sudo dnf install bat -y
 
 # make bat by default
 mkdir -p ~/.local/bin
 ln -s /usr/bin/batcat ~/.local/bin/bat
 
-# neovim
-#sudo dnf install neovim -y
-
-# tmux
-#sudo dnf install tmux -y
-
 # tmux plugin manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-# install timeshift
-#sudo dnf install timeshift -y
-
-# install keychain
-#sudo dnf install keychain -y
+# install devpod
+curl -L -o devpod "https://github.com/loft-sh/devpod/releases/latest/download/devpod-linux-amd64" && sudo install -c -m 0755 devpod /usr/local/bin && rm -f devpod
 
 echo "reboot !"
