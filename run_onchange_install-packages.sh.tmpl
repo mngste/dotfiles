@@ -1,9 +1,14 @@
-#!/bin/bash
-
+{{ if (and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "linuxmint")) -}}
+#!/bin/sh
+{{ range .packages.mint.pkgs -}}
+sudo dnf install {{ . | quote }} -y
+{{ end -}}
+{{ else if (and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "fedora")) -}}
+#!/bin/sh
 {{ range .packages.fedora.pkgs -}}
 sudo dnf install {{ . | quote }} -y
 {{ end -}}
-
+{{ end -}}
 
 # fish
 sudo chsh -s /usr/bin/fish $(whoami)
