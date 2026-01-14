@@ -2,5 +2,5 @@
 
 set -ex
 
-chezmoi init https://github.com/mngste/dotfiles
+chezmoi init https://github.com/mngste/dotfiles.git
 chezmoi apply
