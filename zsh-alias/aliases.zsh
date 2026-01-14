@@ -7,8 +7,8 @@ alias nconf='cd $HOME/.config/nvim/'
 
 #alias system info
 alias al='ls -al'
-alias la=ls -la'
-alias ll='ls -lha' # long list all
+alias la='ls -la'
+alias ll='ls -lha'
 alias lta='ls -lgha'
 
 #repos
