@@ -39,3 +39,5 @@ packages:
     - 'fzf'
     - 'neovim'
     - 'fastfetch'
+    - 'git'
+    - 'bat'
