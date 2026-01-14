@@ -1,3 +1,13 @@
+{{ if (eq .chezmoi.os "android") -}}
+#!/bin/sh
+
+echo "install packages"
+{{ range .packages.termux.pkgs -}}
+pkg install {{ . | quote }} -y
+{{ end -}}
+
+{{ end -}}
+
 {{ if (or (eq .chezmoi.osRelease.id "linuxmint") (eq .chezmoi.osRelease.id "ubuntu") (eq .chezmoi.osRelease.id "debian")) -}}
 #!/bin/sh
 
@@ -20,16 +30,6 @@ echo "install packages"
 sudo dnf install {{ . | quote }} -y
 {{ end -}}
 
-{{ else if (eq .chezmoi.os "android") -}}
-#!/bin/sh
-
-echo "install packages"
-{{ range .packages.termux.pkgs -}}
-pkg install {{ . | quote }} -y
-{{ end -}}
-
-{{ end -}}
-
 # fish
 # sudo chsh -s /usr/bin/fish $(whoami)
 
@@ -38,6 +38,8 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # install devpod
 curl -L -o devpod "https://github.com/loft-sh/devpod/releases/latest/download/devpod-linux-amd64" && sudo install -c -m 0755 devpod /usr/local/bin && rm -f devpod
+
+{{ end -}}
 
 # make bat by default
 mkdir -p ~/.local/bin
