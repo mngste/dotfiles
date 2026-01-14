@@ -16,6 +16,7 @@ packages:
     - 'podman'
     - 'ripgrep'
     - 'vivaldi-stable'
+    - 'fastfetch'
   mint:
     pkgs:
     - 'direnv'
@@ -31,8 +32,10 @@ packages:
     - 'timeshift'
     - 'keychain'
     - 'ripgrep'
+    - 'fastfetch'
   termux:
     pkgs:
     - 'zsh'
     - 'fzf'
     - 'neovim'
+    - 'fastfetch'
