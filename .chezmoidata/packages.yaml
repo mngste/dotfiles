@@ -31,5 +31,6 @@ packages:
     - 'ripgrep'
   termux:
     pkgs:
+    - 'zsh'
     - 'fzf'
     - 'neovim'
