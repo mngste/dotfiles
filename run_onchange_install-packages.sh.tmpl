@@ -1,18 +1,11 @@
-{{ if (or (eq .chezmoi.osRelease.id "linuxmint") (eq .chezmoi.osRelease.id "ubuntu")) -}}
+{{ if (or (eq .chezmoi.osRelease.id "linuxmint") (eq .chezmoi.osRelease.id "ubuntu") (eq .chezmoi.osRelease.id "debian")) -}}
 #!/bin/sh
 
 {{ range .packages.mint.pkgs -}}
-sudo dnf install {{ . | quote }} -y
+sudo apt install {{ . | quote }} -y
 {{ end -}}
 
-# tmux plugin manager
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
-# install devpod
-curl -L -o devpod "https://github.com/loft-sh/devpod/releases/latest/download/devpod-linux-amd64" && sudo install -c -m 0755 devpod /usr/local/bin && rm -f devpod
-
-
-{{ else if (and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "fedora")) -}}
+{{ else if (eq .chezmoi.osRelease.id "fedora") -}}
 #!/bin/sh
 echo "add vivaldi repo"
 sudo dnf config-manager addrepo --from-repofile=https://repo.vivaldi.com/stable/vivaldi-fedora.repo
@@ -21,12 +14,6 @@ echo "install packages"
 {{ range .packages.fedora.pkgs -}}
 sudo dnf install {{ . | quote }} -y
 {{ end -}}
-
-# tmux plugin manager
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
-# install devpod
-curl -L -o devpod "https://github.com/loft-sh/devpod/releases/latest/download/devpod-linux-amd64" && sudo install -c -m 0755 devpod /usr/local/bin && rm -f devpod
 
 {{ else if (eq .chezmoi.os "android") -}}
 #!/bin/sh
@@ -39,7 +26,13 @@ pkg install {{ . | quote }} -y
 {{ end -}}
 
 # fish
-sudo chsh -s /usr/bin/fish $(whoami)
+# sudo chsh -s /usr/bin/fish $(whoami)
+
+# tmux plugin manager
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# install devpod
+curl -L -o devpod "https://github.com/loft-sh/devpod/releases/latest/download/devpod-linux-amd64" && sudo install -c -m 0755 devpod /usr/local/bin && rm -f devpod
 
 # make bat by default
 mkdir -p ~/.local/bin
