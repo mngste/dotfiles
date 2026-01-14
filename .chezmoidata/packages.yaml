@@ -29,3 +29,6 @@ packages:
     - 'timeshift'
     - 'keychain'
     - 'ripgrep'
+  termux:
+    - 'fzf'
+    - 'neovim'
