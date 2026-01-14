@@ -1,12 +1,17 @@
 {{ if (or (eq .chezmoi.osRelease.id "linuxmint") (eq .chezmoi.osRelease.id "ubuntu") (eq .chezmoi.osRelease.id "debian")) -}}
 #!/bin/sh
 
+sudo apt-get update -y
+
 {{ range .packages.mint.pkgs -}}
 sudo apt-get install {{ . | quote }} -y
 {{ end -}}
 
 {{ else if (eq .chezmoi.osRelease.id "fedora") -}}
 #!/bin/sh
+
+sudo dnf update -y
+
 echo "add vivaldi repo"
 sudo dnf config-manager addrepo --from-repofile=https://repo.vivaldi.com/stable/vivaldi-fedora.repo
 
