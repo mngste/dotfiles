@@ -2,7 +2,7 @@
 #!/bin/sh
 
 {{ range .packages.mint.pkgs -}}
-sudo apt install {{ . | quote }} -y
+sudo apt-get install {{ . | quote }} -y
 {{ end -}}
 
 {{ else if (eq .chezmoi.osRelease.id "fedora") -}}
