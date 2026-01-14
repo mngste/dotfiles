@@ -5,6 +5,12 @@ alias md="mkdir"
 alias script='cd $SCRIPTS'
 alias nconf='cd $HOME/.config/nvim/'
 
+#alias system info
+alias al='ls -al'
+alias la=ls -la'
+alias ll='ls -lha' # long list all
+alias lta='ls -lgha'
+
 #repos
 alias dot='cd $DOTFILES'
 
