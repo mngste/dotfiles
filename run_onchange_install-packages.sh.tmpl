@@ -32,7 +32,7 @@ curl -L -o devpod "https://github.com/loft-sh/devpod/releases/latest/download/de
 #!/bin/sh
 
 echo "install packages"
-{{ range .packages.android.pkgs -}}
+{{ range .packages.termux.pkgs -}}
 pkg install {{ . | quote }} -y
 {{ end -}}
 
