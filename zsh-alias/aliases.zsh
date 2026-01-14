@@ -4,7 +4,6 @@ alias md="mkdir"
 #alias cd
 alias script='cd $SCRIPTS'
 alias nconf='cd $HOME/.config/nvim/'
-alias star='cd /home/moviemaker/.config/starship'
 
 #repos
 alias dot='cd $DOTFILES'
