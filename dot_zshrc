@@ -1,6 +1,3 @@
-setopt prompt_subst
-source <(kubectl completion zsh)
-
 ## ZSH PLUGINS ##
 # Source usefulsh plugins
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
