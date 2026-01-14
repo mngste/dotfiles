@@ -1,6 +1,7 @@
 packages:
   fedora:
     pkgs:
+    - 'zsh'
     - 'alacritty'
     - 'git'
     - 'fzf'
@@ -16,6 +17,7 @@ packages:
     - 'vivaldi-stable'
   mint:
     pkgs:
+    - 'zsh'
     - 'alacritty'
     - 'git'
     - 'fzf'
