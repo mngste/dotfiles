@@ -8,7 +8,7 @@ pkg install {{ . | quote }} -y
 
 {{ end -}}
 
-{{ if (or (eq .chezmoi.osRelease.id "linuxmint") (eq .chezmoi.osRelease.id "ubuntu") (eq .chezmoi.osRelease.id "debian")) -}}
+{{ else if (or (eq .chezmoi.osRelease.id "linuxmint") (eq .chezmoi.osRelease.id "ubuntu") (eq .chezmoi.osRelease.id "debian")) -}}
 #!/bin/sh
 
 sudo apt-get update -y
