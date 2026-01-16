@@ -14,6 +14,7 @@ alias ls="lsd -F"
 alias la="lsd -AF"
 alias ll="lsd -lAF"
 alias lg="lsd -F --group-dirs=first"
+tree="lsd -AF --tree"
 
 # repos
 alias dot='cd $DOTFILES'
