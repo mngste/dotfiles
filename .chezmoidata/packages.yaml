@@ -17,6 +17,7 @@ packages:
     - 'ripgrep'
     - 'vivaldi-stable'
     - 'fastfetch'
+    - 'lsd'
   mint:
     pkgs:
     - 'direnv'
@@ -33,6 +34,7 @@ packages:
     - 'keychain'
     - 'ripgrep'
     - 'fastfetch'
+    - 'lsd'
   termux:
     pkgs:
     - 'zsh'
@@ -41,3 +43,4 @@ packages:
     - 'fastfetch'
     - 'git'
     - 'bat'
+    - 'lsd'
