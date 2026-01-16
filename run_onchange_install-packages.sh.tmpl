@@ -6,8 +6,6 @@ echo "install packages"
 pkg install {{ . | quote }} -y
 {{ end -}}
 
-{{ end -}}
-
 {{ else if (or (eq .chezmoi.osRelease.id "linuxmint") (eq .chezmoi.osRelease.id "ubuntu") (eq .chezmoi.osRelease.id "debian")) -}}
 #!/bin/sh
 
@@ -16,6 +14,12 @@ sudo apt-get update -y
 {{ range .packages.mint.pkgs -}}
 sudo apt-get install {{ . | quote }} -y
 {{ end -}}
+
+# tmux plugin manager
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# install devpod
+curl -L -o devpod "https://github.com/loft-sh/devpod/releases/latest/download/devpod-linux-amd64" && sudo install -c -m 0755 devpod /usr/local/bin && rm -f devpod
 
 {{ else if (eq .chezmoi.osRelease.id "fedora") -}}
 #!/bin/sh
@@ -39,6 +43,7 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # install devpod
 curl -L -o devpod "https://github.com/loft-sh/devpod/releases/latest/download/devpod-linux-amd64" && sudo install -c -m 0755 devpod /usr/local/bin && rm -f devpod
 
+{{ end -}}
 {{ end -}}
 
 # make bat by default
