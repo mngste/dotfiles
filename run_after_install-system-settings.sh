@@ -9,5 +9,6 @@ echo "> Using zsh shell"
 if [ "$SHELL" != "/bin/zsh" ]; then
     command -v zsh | sudo tee -a /etc/shells
     sudo chsh -s $(which zsh) $USER
+    chsh -s $(which zsh)
     source .zshrc
 fi
