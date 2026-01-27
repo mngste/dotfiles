@@ -31,9 +31,6 @@ export XDG_CONFIG_HOME=$HOME/.config
 
 ## ALIASES DIRECTORIES ##
 source_if_exists "$HOME/zsh-alias/aliases.zsh"
-source_if_exists "$HOME/zsh-alias/git.zsh"
-source_if_exists "$HOME/.aliases.local"
-source_if_exists "$HOME/.fzf.zsh"
 
 ## PATH ##
 export PATH=$HOME/bin:$SCRIPTS:$PATH
@@ -42,25 +39,7 @@ export GOPATH=$HOME/go
 export LOCAL_BIN=$HOME/.local
 export PATH=$GOPATH/bin:$GOROOT/bin:$LOCAL_BIN/bin:$PATH
 
-## TMUX and TMUXINATOR ##
-#if [ -z "$TMUX" ]; then
-#    tmux attach -t default || tmux new -s default
-#fi
-# tmuxinator start dotfile
-# tmuxinator start blog
-# tmuxinator start vault
-# tmuxinator start golang
-
-# --------------------- Direnv hook -------------------
-eval "$(direnv hook zsh)"
-
-# Example to install completion:
-# talosctl completion zsh > ~/.zfunc/_talosctl
 fastfetch
-
-export NVM_DIR="$HOME/.config/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 ## ZSH PLUGINS ##
 # Source usefulsh plugins
