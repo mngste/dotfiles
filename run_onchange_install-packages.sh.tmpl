@@ -3,11 +3,6 @@
 
 sudo apt-get update -y
 
-# add vivaldi repo
-wget -qO- https://repo.vivaldi.com/archive/linux_signing_key.pub | gpg --dearmor | dd of=/usr/share/keyrings/vivaldi-browser.gpg
-echo "deb [signed-by=/usr/share/keyrings/vivaldi-browser.gpg arch=amd64] https://repo.vivaldi.com/archive/deb/ stable main" > /etc/apt/sources.list.d/vivaldi-archive.list
-sudo apt-get update -y
-
 {{ range .packages.mint.pkgs -}}
 sudo apt-get install {{ . | quote }} -y
 {{ end -}}
