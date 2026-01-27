@@ -49,9 +49,9 @@ export LOCAL_BIN=$HOME/.local
 export PATH=$GOPATH/bin:$GOROOT/bin:$LOCAL_BIN/bin:$PATH
 
 ## TMUX and TMUXINATOR ##
-# if [ -z "$TMUX" ]; then
-#     tmux attach -t default || tmux new -s default
-# fi
+if [ -z "$TMUX" ]; then
+    tmux attach -t default || tmux new -s default
+fi
 # tmuxinator start dotfile
 # tmuxinator start blog
 # tmuxinator start vault
