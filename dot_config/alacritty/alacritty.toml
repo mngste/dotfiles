@@ -1,7 +1,6 @@
 # $HOME/.config/alacritty/alacritty.toml
 # by mngt 2025-01-05
 
-[general]
 import = ["~/.config/alacritty/catppuccin-mocha.toml"]
 
 [shell]
