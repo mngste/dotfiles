@@ -39,9 +39,6 @@ export GOPATH=$HOME/go
 export LOCAL_BIN=$HOME/.local
 export PATH=$GOPATH/bin:$GOROOT/bin:$LOCAL_BIN/bin:$PATH
 
-#fastfetch
-neofetch
-
 ## ZSH PLUGINS ##
 # Source usefulsh plugins
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
