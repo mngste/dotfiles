@@ -51,16 +51,6 @@ fi
 # tmuxinator start vault
 # tmuxinator start golang
 
-# ~~~~~~~~~~~~~~~ Completion ~~~~~~~~~~~~~~~~~~~~~~~~
-
-fpath+=~/.zsh/zsh-completitions/src
-fpath+=~/.zfunc
-
-autoload -Uz compinit
-compinit -u
-
-zstyle ':completion:*' menu select
-
 # --------------------- Direnv hook -------------------
 eval "$(direnv hook zsh)"
 
@@ -76,3 +66,13 @@ export NVM_DIR="$HOME/.config/nvm"
 # Source usefulsh plugins
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# ~~~~~~~~~~~~~~~ Completion ~~~~~~~~~~~~~~~~~~~~~~~~
+
+fpath+=~/.zsh/zsh-completitions/src
+fpath+=~/.zfunc
+
+autoload -Uz compinit
+compinit -u
+
+zstyle ':completion:*' menu select
