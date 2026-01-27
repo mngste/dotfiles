@@ -2,21 +2,16 @@
 # by mngt 2025-01-05
 
 [general]
-import = [
-    "~/.config/alacritty/catppuccin-mocha.toml"
-]
+import = ["~/.config/alacritty/catppuccin-mocha.toml"]
 
 [shell]
 program = "/usr/bin/zsh"
 args = ["-l"]
 
 [window]
-
 opacity = 0.95
-
 padding.x = 10
 padding.y = 10
-
 decorations = "Full"
 decorations_theme_variant = "Dark" # "Dark"
 
