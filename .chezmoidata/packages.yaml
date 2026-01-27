@@ -2,7 +2,6 @@ packages:
   fedora:
     pkgs:
     - 'zsh'
-    - 'direnv'
     - 'alacritty'
     - 'git'
     - 'fzf'
@@ -20,7 +19,6 @@ packages:
     - 'lsd'
   mint:
     pkgs:
-    - 'direnv'
     - 'zsh'
     - 'alacritty'
     - 'git'
@@ -33,6 +31,5 @@ packages:
     - 'timeshift'
     - 'keychain'
     - 'ripgrep'
-    - 'fastfetch'
     - 'lsd'
     - 'vivaldi-stable'
