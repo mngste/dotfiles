@@ -1,25 +1,16 @@
-{{ if (eq .chezmoi.os "android") -}}
+{{ if (or (eq .chezmoi.osRelease.id "linuxmint") (eq .chezmoi.osRelease.id "ubuntu") (eq .chezmoi.osRelease.id "debian")) -}}
 #!/bin/sh
 
-echo "install packages"
-{{ range .packages.termux.pkgs -}}
-pkg install {{ . | quote }} -y
-{{ end -}}
+sudo apt-get update -y
 
-{{ else if (or (eq .chezmoi.osRelease.id "linuxmint") (eq .chezmoi.osRelease.id "ubuntu") (eq .chezmoi.osRelease.id "debian")) -}}
-#!/bin/sh
-
+# add vivaldi repo
+wget -qO- https://repo.vivaldi.com/archive/linux_signing_key.pub | gpg --dearmor | dd of=/usr/share/keyrings/vivaldi-browser.gpg
+echo "deb [signed-by=/usr/share/keyrings/vivaldi-browser.gpg arch=amd64] https://repo.vivaldi.com/archive/deb/ stable main" > /etc/apt/sources.list.d/vivaldi-archive.list
 sudo apt-get update -y
 
 {{ range .packages.mint.pkgs -}}
 sudo apt-get install {{ . | quote }} -y
 {{ end -}}
-
-# tmux plugin manager
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
-# install devpod
-curl -L -o devpod "https://github.com/loft-sh/devpod/releases/latest/download/devpod-linux-amd64" && sudo install -c -m 0755 devpod /usr/local/bin && rm -f devpod
 
 {{ else if (eq .chezmoi.osRelease.id "fedora") -}}
 #!/bin/sh
@@ -33,17 +24,13 @@ echo "install packages"
 {{ range .packages.fedora.pkgs -}}
 sudo dnf install {{ . | quote }} -y
 {{ end -}}
-
-# fish
-# sudo chsh -s /usr/bin/fish $(whoami)
+{{ end -}}
 
 # tmux plugin manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # install devpod
 curl -L -o devpod "https://github.com/loft-sh/devpod/releases/latest/download/devpod-linux-amd64" && sudo install -c -m 0755 devpod /usr/local/bin && rm -f devpod
-
-{{ end -}}
 
 # make bat by default
 mkdir -p ~/.local/bin
