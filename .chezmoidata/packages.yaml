@@ -35,12 +35,4 @@ packages:
     - 'ripgrep'
     - 'fastfetch'
     - 'lsd'
-  termux:
-    pkgs:
-    - 'zsh'
-    - 'fzf'
-    - 'neovim'
-    - 'fastfetch'
-    - 'git'
-    - 'bat'
-    - 'lsd'
+    - 'vivaldi-stable'
