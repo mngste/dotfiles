@@ -6,6 +6,10 @@ import = [
     "~/.config/alacritty/catppuccin-mocha.toml"
 ]
 
+[shell]
+program = "/usr/bin/zsh"
+args = ["-l"]
+
 [window]
 
 opacity = 0.95
