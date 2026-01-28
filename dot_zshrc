@@ -6,6 +6,9 @@ source_if_exists () {
     fi
 }
 
+# prompt
+PS1="%F{#008000}%B%n@%m%b %1~%f"
+
 export EDITOR='nvim'
 export GITUSER="mngste"
 export WORKSPACE=$HOME/workspace
