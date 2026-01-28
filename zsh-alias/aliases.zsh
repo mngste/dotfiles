@@ -1,5 +1,6 @@
 alias today='date +%Y-%m-%d'
 alias md="mkdir"
+alias update='sudo apt update && sudo apt upgrade'
 
 #alias cd
 alias script='cd $SCRIPTS'
