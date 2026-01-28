@@ -7,7 +7,7 @@ source_if_exists () {
 }
 
 # prompt
-PS1="%F{#008000}%n@%m %F{#3a3a3a}%1~ %f"
+PS1="%F{#EBCB15}%n@%m %F{#F5F3ED}%1~ %f"
 
 export EDITOR='nvim'
 export GITUSER="mngste"
