@@ -16,28 +16,29 @@
   {{- $idLike := index .chezmoi.osRelease "idLike" | default "" -}}
   
   {{ if or (eq $osId "linuxmint") (eq $osId "debian") (eq $idLike "ubuntu debian") }}
-    {{- $isDebian := true -}}
+    {{- $isDebian = true -}}
   {{ end   }}
   
   {{ if or (eq $osId "arch") (eq $idLike "arch") }}
-    {{- $isArchLike := true -}}
+    {{- $isArchLike = true -}}
   {{ end   }}
   
 {{- else if eq .chezmoi.os "darwin" -}}
   {{- /* MacOS */ -}}
-  {{- $isDarwin := true -}}
+  {{- $isDarwin = true -}}
 {{- else if eq .chezmoi.os "windows" -}}
   {{- /* Windows */ -}}
-  {{- $isWindows := true -}}
+  {{- $isWindows = true -}}
 {{- end -}}
 
-sourceDir: {{ .chezmoi.sourceDir | quote }}
+[sourceDir]
+{{ .chezmoi.sourceDir | quote }}
 
-data:
-  is_linux: {{ $isLinux }}
-  is_debian: {{ $isDebian }}
-  is_arch_like: {{ $isArchLike }}
-  is_darwin: {{ $isDarwin }}
-  is_windows: {{ $isWindows }}
-  name: {{ $name }}
-  email: {{ $email }}
+[data]
+is_linux = {{ $isLinux }}
+is_debian  {{ $isDebian }}
+is_arch_like = {{ $isArchLike }}
+is_darwin = {{ $isDarwin }}
+is_windows = {{ $isWindows }}
+name = {{ $name }}
+email = {{ $email }}
