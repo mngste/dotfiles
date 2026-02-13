@@ -1,0 +1,11 @@
+{{- if or .is_linux .is_darwin -}}
+#!/usr/bin/env bash
+
+ZSH_SHELL_PATH=$(command -v zsh)
+
+if ! grep -qx "$ZSH_SHELL_PATH" /etc/shells 2>/dev/null; then
+  echo "$ZSH_SHELL_PATH" | sudo tee -a /etc/shells
+fi
+
+chsh -s "$ZSH_SHELL_PATH"
+{{- end -}}
