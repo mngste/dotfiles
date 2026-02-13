@@ -1,8 +1,43 @@
+{{- /* Initialize variables to false */ -}}
+{{- $isDarwin := false -}}
+{{- $isWindows := false -}}
+{{- $isLinux := false -}}
+{{- $isDebian := false -}}
+{{- $isArchLike := false -}}
 {{- $name := "mngste" -}}
 {{- $email := "mangouste@mosaurus.com" -}}
+
+{{- /* Detect OS and set flags */ -}}
+{{- if eq .chezmoi.os "linux" -}}
+  {{- $isLinux = true -}}
+
+  {{- /* Linux: Check for Debian/Ubuntu derivatives */ -}}
+  {{- $osId := index .chezmoi.osRelease "id" | default "" -}}
+  {{- $idLike := index .chezmoi.osRelease "idLike" | default "" -}}
+  
+  {{ if or (eq $osId "linuxmint") (eq $osId "debian") (eq $idLike "ubuntu debian") }}
+    {{- $isDebian = true -}}
+  {{ end   }}
+  
+  {{ if or (eq $osId "arch") (eq $idLike "arch") }}
+    {{- $isArchLike = true -}}
+  {{ end   }}
+  
+{{- else if eq .chezmoi.os "darwin" -}}
+  {{- /* MacOS */ -}}
+  {{- $isDarwin = true -}}
+{{- else if eq .chezmoi.os "windows" -}}
+  {{- /* Windows */ -}}
+  {{- $isWindows = true -}}
+{{- end -}}
 
 sourceDir: {{ .chezmoi.sourceDir | quote }}
 
 data:
+  is_linux = {{ $isLinux }}
+  is_debian = {{ $isDebian }}
+  is_arch_like = {{ $isArchLike }}
+  is_darwin = {{ $isDarwin }}
+  is_windows = {{ $isWindows }}
   name: {{ $name }}
   email: {{ $email }}
