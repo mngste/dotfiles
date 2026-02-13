@@ -1,0 +1,19 @@
+{{- if .is_debian -}}
+#!/usr/bin/env bash
+
+echo "Update system..."
+sudo apt-get update -y
+
+echo "Installing applications from apt..."
+
+{{ range .packages.debian.pkgs -}}
+sudo apt-get install {{ . | quote }} -y
+{{ end -}}
+
+{{- else if .is_arch_like -}}
+#!/usr/bin/env bash
+
+echo "Installing applications from Pacman..."
+sudo pacman -S --noconfirm curl htop tmux
+
+{{- end -}}
