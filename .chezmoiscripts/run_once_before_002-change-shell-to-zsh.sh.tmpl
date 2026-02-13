@@ -8,4 +8,6 @@ if ! grep -qx "$ZSH_SHELL_PATH" /etc/shells 2>/dev/null; then
 fi
 
 chsh -s "$ZSH_SHELL_PATH"
+
+source ~/.zshrc
 {{- end -}}
