@@ -14,7 +14,6 @@ packages:
     - 'keychain'
     - 'podman'
     - 'ripgrep'
-    - 'vivaldi-stable'
     - 'fastfetch'
     - 'lsd'
   debian:
@@ -32,4 +31,3 @@ packages:
     - 'keychain'
     - 'ripgrep'
     - 'lsd'
-    - 'vivaldi-stable'
