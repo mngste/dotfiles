@@ -1,10 +1,7 @@
 {{- if .is_debian -}}
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
 echo "Installing other applications..."
-
-# tmux plugin manager
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # install devpod
 curl -L -o devpod "https://github.com/loft-sh/devpod/releases/latest/download/devpod-linux-amd64" && sudo install -c -m 0755 devpod /usr/local/bin && rm -f devpod
