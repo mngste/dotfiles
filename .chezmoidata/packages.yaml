@@ -17,7 +17,7 @@ packages:
     - 'vivaldi-stable'
     - 'fastfetch'
     - 'lsd'
-  mint:
+  debian:
     pkgs:
     - 'zsh'
     - 'alacritty'
