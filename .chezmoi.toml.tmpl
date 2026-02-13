@@ -17,11 +17,11 @@
   
   {{ if or (eq $osId "linuxmint") (eq $osId "debian") (eq $idLike "ubuntu debian") }}
     {{- $isDebian = true -}}
-  {{ end   }}
+  {{ end }}
   
   {{ if or (eq $osId "arch") (eq $idLike "arch") }}
     {{- $isArchLike = true -}}
-  {{ end   }}
+  {{ end }}
   
 {{- else if eq .chezmoi.os "darwin" -}}
   {{- /* MacOS */ -}}
