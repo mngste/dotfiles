@@ -31,14 +31,13 @@
   {{- $isWindows = true -}}
 {{- end -}}
 
-[sourceDir]
-    {{ .chezmoi.sourceDir | quote }}
+sourceDir = {{ .chezmoi.sourceDir | quote }}
 
 [data]
-    is_linux = {{ $isLinux }}
-    is_debian  {{ $isDebian }}
-    is_arch_like = {{ $isArchLike }}
-    is_darwin = {{ $isDarwin }}
-    is_windows = {{ $isWindows }}
-    name = {{ $name }}
-    email = {{ $email }}
+is_linux = {{ $isLinux }}
+is_debian  {{ $isDebian }}
+is_arch_like = {{ $isArchLike }}
+is_darwin = {{ $isDarwin }}
+is_windows = {{ $isWindows }}
+name = {{ $name }}
+email = {{ $email }}
