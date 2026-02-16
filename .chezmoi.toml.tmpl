@@ -31,8 +31,6 @@
   {{- $isWindows = true -}}
 {{- end -}}
 
-sourceDir = {{ .chezmoi.sourceDir | quote }}
-
 [data]
     is_linux = {{ $isLinux }}
     is_debian = {{ $isDebian }}
@@ -41,6 +39,7 @@ sourceDir = {{ .chezmoi.sourceDir | quote }}
     is_windows = {{ $isWindows }}
     name = "mngste"
     email = "mangouste@mosaurus.com"
+    sourceDir = {{ .chezmoi.sourceDir | quote }}
 
 [git]
     autoCommit = true
