@@ -31,3 +31,15 @@ packages:
     - 'keychain'
     - 'ripgrep'
     - 'lsd'
+  devpod:
+    pkgs:
+    - 'zsh'
+    - 'git'
+    - 'fzf'
+    - 'htop'
+    - 'btop'
+    - 'bat'
+    - 'neovim'
+    - 'tmux'
+    - 'ripgrep'
+    - 'lsd'
