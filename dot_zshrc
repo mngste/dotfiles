@@ -8,14 +8,10 @@ source_if_exists () {
 
 # ## ZSH PROMPT ##
 autoload -Uz vcs_info
-precmd_vcs_info() { vcs_info }
-precmd_functions+=( precmd_vcs_info )
+precmd() { vcs_info }
 setopt prompt_subst
-# RPROMPT='${vcs_info_msg_0_}'
-# PROMPT='${vcs_info_msg_0_}%# '
-zstyle ':vcs_info:git:*' formats '%b'
 
-PS1="%F{#EBCB15}%n@%m %F{#F5F3ED}%1 ${vcs_info_msg_0_}~ %f"
+PS1="%F{#EBCB15}%n@%m %F{#F5F3ED}%1~ %F{red}$vcs_info_msg_0_ %F{cyan}➜ %f"
 
 export EDITOR='nvim'
 export GITUSER="mngste"
