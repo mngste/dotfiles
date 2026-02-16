@@ -1,4 +1,8 @@
-{{- if .is_linux -}}
+{{- if eq .chezmoi.homeDir "/home/vscode" -}}
+#!/bin/bash
+
+{{- else -}}
+
 #!/bin/bash
 
 set -ex
