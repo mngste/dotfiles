@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# make bat by default
+folder_bat=~/.local/bin/bat
+
+if [ ! -e $folder_bat ]; then
+  echo "making bat bu default"
+  mkdir -p ~/.local/bin
+  ln -s /usr/bin/batcat $folder_bat
+fi
