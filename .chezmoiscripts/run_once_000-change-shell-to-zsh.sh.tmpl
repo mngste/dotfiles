@@ -1,4 +1,4 @@
-{{- if eq .chezmoi.homeDir "/home/vscode" -}}
+{{- if is_devpod -}}
 #!/bin/bash
 
 {{- else -}}
