@@ -4,6 +4,7 @@
 {{- $isLinux := false -}}
 {{- $isDebian := false -}}
 {{- $isArchLike := false -}}
+{{- $isDevpod := false -}}
 {{- $name := "mngste" -}}
 {{- $email := "mangouste@mosaurus.com" -}}
 
@@ -31,6 +32,11 @@
   {{- $isWindows = true -}}
 {{- end -}}
 
+{{- /* Detect devpod */ -}}
+{{- if eq .chezmoi.homeDir "/home/vscode" -}}
+  {{- $isDevpod = true -}}
+{{- end -}}
+
 sourceDir = {{ .chezmoi.sourceDir | quote }}
 
 [data]
@@ -39,6 +45,7 @@ sourceDir = {{ .chezmoi.sourceDir | quote }}
     is_arch_like = {{ $isArchLike }}
     is_darwin = {{ $isDarwin }}
     is_windows = {{ $isWindows }}
+    is_devpod = {{ $isDevpod }}
     name = "mngste"
     email = "mangouste@mosaurus.com"
 
