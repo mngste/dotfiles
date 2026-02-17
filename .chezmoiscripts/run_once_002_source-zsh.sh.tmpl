@@ -1,0 +1,11 @@
+{{- if .is_devpod -}}
+#!/bin/bash
+
+{{- else -}}
+
+#!/bin/zsh
+
+set -ex
+source .zshrc
+
+{{- end -}}
