@@ -1,4 +1,16 @@
-{{- if .is_debian -}}
+{{- if and (.is_devpod) (.is_debian) -}}
+#!/usr/bin/env bash
+
+echo "Update system..."
+sudo apt-get update -y
+
+echo "Installing applications from apt..."
+
+{{ range .packages.devpod.pkgs -}}
+sudo apt-get install {{ . | quote }} -y
+{{ end -}}
+
+{{- else if and (not (.is_devpod)) (.is_debian) -}}
 #!/usr/bin/env bash
 
 echo "Update system..."
