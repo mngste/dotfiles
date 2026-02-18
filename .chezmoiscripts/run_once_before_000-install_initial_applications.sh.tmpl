@@ -22,10 +22,10 @@ echo "Installing applications from apt..."
 sudo apt-get install {{ . | quote }} -y
 {{ end -}}
 
-{{- else if .is_arch_like -}}
+{{- else if .is_debian -}}
 #!/usr/bin/env bash
 
-echo "Installing applications from Pacman..."
-sudo pacman -S --noconfirm curl htop tmux
+echo "Installing pass-cli..."
+curl -fsSL https://proton.me/download/pass-cli/install.sh | bash
 
 {{- end -}}
