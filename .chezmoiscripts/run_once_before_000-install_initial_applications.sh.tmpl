@@ -10,6 +10,9 @@ echo "Installing applications from apt..."
 sudo apt-get install {{ . | quote }} -y
 {{ end -}}
 
+echo "Installing pass-cli..."
+curl -fsSL https://proton.me/download/pass-cli/install.sh | bash
+
 {{- else if and (not (.is_devpod)) (.is_debian) -}}
 #!/usr/bin/env bash
 
@@ -21,11 +24,5 @@ echo "Installing applications from apt..."
 {{ range .packages.debian.pkgs -}}
 sudo apt-get install {{ . | quote }} -y
 {{ end -}}
-
-{{- else if .is_debian -}}
-#!/usr/bin/env bash
-
-echo "Installing pass-cli..."
-curl -fsSL https://proton.me/download/pass-cli/install.sh | bash
 
 {{- end -}}
