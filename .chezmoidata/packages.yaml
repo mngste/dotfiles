@@ -31,6 +31,7 @@ packages:
     - 'keychain'
     - 'ripgrep'
     - 'lsd'
+    - 'jq'
   devpod:
     pkgs:
     - 'zsh'
@@ -43,3 +44,4 @@ packages:
     - 'tmux'
     - 'ripgrep'
     - 'lsd'
+    - 'jq'
