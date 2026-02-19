@@ -1,4 +1,4 @@
-{{- if and (.is_debian) (not (.is_devpod)) -}}
+{{- if and (.is_debian) (not (.is_devpod)) (not (.is_server)) -}}
 #!/usr/bin/env bash
 
 echo "Installing other applications..."
