@@ -5,6 +5,7 @@
 {{- $isDebian := false -}}
 {{- $isArchLike := false -}}
 {{- $isDevpod := false -}}
+{{- $isServer := false -}}
 {{- $name := "mngste" -}}
 {{- $email := "mangouste@mosaurus.com" -}}
 
@@ -22,6 +23,11 @@
   
   {{ if or (eq $osId "arch") (eq $idLike "arch") }}
     {{- $isArchLike = true -}}
+  {{ end }}
+
+  {{ if contains "srv" .chezmoi.hostname }}
+    {{- /* Server */ -}}
+    {{- $isServer = true -}}
   {{ end }}
   
 {{- else if eq .chezmoi.os "darwin" -}}
@@ -46,6 +52,7 @@ sourceDir = {{ .chezmoi.sourceDir | quote }}
     is_darwin = {{ $isDarwin }}
     is_windows = {{ $isWindows }}
     is_devpod = {{ $isDevpod }}
+    is_server = {{ $isServer }}
     name = "mngste"
     email = "mangouste@mosaurus.com"
 
