@@ -7,11 +7,7 @@ source_if_exists () {
 }
 
 # ## ZSH PROMPT ##
-autoload -Uz vcs_info
-precmd() { vcs_info }
-setopt prompt_subst
-
-PS1="%F{#EBCB15}%n@%m %F{#F5F3ED}%1~ %F{red}$vcs_info_msg_0_ %F{blue}➜ %f"
+PS1="%F{#EBCB15}%n@%m %F{#F5F3ED}%1~ %f"
 
 export EDITOR='nvim'
 export GITUSER="mngste"
@@ -64,4 +60,3 @@ zstyle ':completion:*' menu select
 #if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
 #  tmux attach-session -t default || tmux new-session -s default
 #fi
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=60'
