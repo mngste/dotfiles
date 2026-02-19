@@ -1,6 +1,9 @@
 {{- if .is_devpod -}}
 #!/bin/bash
 
+{{- else if .is_server -}}
+#!/bin/bash
+
 {{- else -}}
 
 #!/bin/zsh
