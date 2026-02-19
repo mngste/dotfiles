@@ -1,4 +1,4 @@
-{{- if .is_devpod -}}
+{{- if or (.is_devpod) (.is_server) -}}
 #!/usr/bin/env bash
 
 echo "Update system..."
@@ -10,7 +10,7 @@ echo "Installing applications from apt..."
 sudo apt-get install {{ . | quote }} -y
 {{ end -}}
 
-{{- else if and (not (.is_devpod)) (.is_debian) -}}
+{{- else if and (not (.is_devpod)) (not (.is_server)) (.is_debian) -}}
 #!/usr/bin/env bash
 
 echo "Update system..."
