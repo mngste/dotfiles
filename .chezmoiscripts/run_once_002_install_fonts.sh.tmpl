@@ -1,4 +1,4 @@
-{{- if .is_debian -}}
+{{- if and (.is_debian) (not (.is_devpod)) -}}
 #!/usr/bin/env bash
 
 echo "Installing Jetbrain nerd font"
