@@ -1,9 +1,7 @@
 # $HOME/.config/alacritty/alacritty.toml
 # by mngt 2025-01-05
 
-import = ["~/.config/alacritty/catppuccin-mocha.toml"]
-
-[shell]
+[terminal.shell]
 program = "/usr/bin/zsh"
 args = ["-l"]
 
@@ -18,3 +16,6 @@ decorations_theme_variant = "Dark" # "Dark"
 normal = {family= "JetbrainsMono Nerd Font"}
 
 size = 12.0
+
+[general]
+import = ["~/.config/alacritty/catppuccin-mocha.toml"]
