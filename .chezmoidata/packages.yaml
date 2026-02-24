@@ -32,6 +32,8 @@ packages:
     - 'ripgrep'
     - 'lsd'
     - 'jq'
+    - 'gpg' 
+    - 'ca-certificates'
   devpod:
     pkgs:
     - 'zsh'
