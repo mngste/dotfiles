@@ -2,6 +2,9 @@
 #!/usr/bin/env bash
 
 echo "Installing server pkgs"
+{{ range .packages.vm.pkgs -}}
+sudo apt-get install {{ . | quote }} -y
+{{ end -}}
 
 echo "configure xrdp"
 sudo adduser xrdp ssl-cert
