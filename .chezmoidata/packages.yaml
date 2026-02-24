@@ -34,29 +34,14 @@ packages:
     - 'jq'
     - 'gpg' 
     - 'ca-certificates'
-  server:
+  vm:
     pkgs:
     - 'xfce4'
     - 'xfce4-goodies'
     - 'xorg'
     - 'dbus-x11'
     - 'x11-xserver-utils'
-    - 'zsh'
-    - 'alacritty'
-    - 'git'
-    - 'fzf'
-    - 'htop'
-    - 'btop'
-    - 'bat'
-    - 'neovim'
-    - 'tmux'
-    - 'timeshift'
-    - 'keychain'
-    - 'ripgrep'
-    - 'lsd'
-    - 'jq'
-    - 'gpg' 
-    - 'ca-certificates'
+    - 'xrdp'
   devpod:
     pkgs:
     - 'zsh'
