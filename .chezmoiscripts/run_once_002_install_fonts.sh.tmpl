@@ -2,10 +2,10 @@
 #!/usr/bin/env bash
 
 echo "Installing Jetbrain nerd font"
+
 mkdir jetbrain
 cd jetbrain
-curl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.tar.xz
-
+curl -L https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.tar.xz
 unxz JetbrainsMono.tar.xz
 tar xvf JetbrainsMono.tar -C ~/.local/share/fonts
 cd ..
