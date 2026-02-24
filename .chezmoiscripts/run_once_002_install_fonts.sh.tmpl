@@ -3,9 +3,9 @@
 
 echo "Installing Jetbrain nerd font"
 curl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.tar.xz
-unxz JetbrainsMono.tar.xz
-tar xvf JetbrainsMono.tar -C ~/.local/share/fonts
-rm JetbrainsMono.tar
+unxz JetBrainsMono.tar.xz
+tar xvf JetBrainsMono.tar -C ~/.local/share/fonts
+rm JetBrainsMono.tar
 
 
 {{- else if .is_arch_like -}}
