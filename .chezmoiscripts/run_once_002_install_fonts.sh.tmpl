@@ -1,4 +1,21 @@
+{{- if .is_debian) -}}
+#!/usr/bin/env bash
 
-
-
+echo "Installing Jetbrain nerd font"
 curl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.tar.xz
+
+unxz JetbrainsMono.tar.xz
+tar xvf JetbrainsMono.tar -C ~/.local/share/fonts
+rm JetbrainsMono.tar
+
+
+{{- else if .is_arch_like -}}
+#!/usr/bin/env bash
+
+echo "Installing applications from Pacman..."
+
+sudo pacman -S --noconfirm curl htop tmux
+{{- end -}}
+
+
+
