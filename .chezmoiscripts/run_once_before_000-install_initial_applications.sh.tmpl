@@ -37,8 +37,8 @@ Architectures: amd64 arm64 armhf
 Signed-By: /usr/share/keyrings/vivaldi.gpg
 EOF
 echo "refresh"
-sudo apt-get update
+sudo apt-get update -y
 echo "install vivaldi"
-sudo apt-get install vivaldi-stable
+sudo apt-get install vivaldi-stable -y
 
 {{- end -}}
