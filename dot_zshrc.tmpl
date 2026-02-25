@@ -58,6 +58,9 @@ source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fpath+=~/.zsh/zsh-completitions/src
 fpath+=~/.zfunc
 
+autoload -z compinit
+compinit -u
+
 zstyle ':completion:*' menu select
 
 {{- if (not (.is_server)) -}}
