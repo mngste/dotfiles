@@ -1,68 +1,76 @@
-{{- /* Initialize variables to false */ -}}
-{{- $isDarwin := false -}}
-{{- $isWindows := false -}}
-{{- $isLinux := false -}}
-{{- $isDebian := false -}}
-{{- $isArchLike := false -}}
-{{- $isDevpod := false -}}
-{{- $isServer := false -}}
-{{- $isVM := false -}}
+{{/* boolean feature tags */}}
+{{- $ephemeral := false -}}{{/* true if this machine is ephemeral, e.g. a cloud or VM instance */}}
+{{- $work := false -}}{{/* true if this machine is a work machine */}}
+{{- $headless := false -}}{{/* true if this machine does not have a screen and keyboard */}}
+{{- $personal := false -}}{{/* true if this machine should have personal secrets */}}
+{{- "" -}}
+
+{{- $osID := .chezmoi.os -}}
+{{- if (and (eq .chezmoi.os "linux") (hasKey .chezmoi.osRelease "id")) -}}
+{{-   $osID = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
+{{- end -}}
+
+{{/* detect GitHub codespaces, VSCode remote containers, Docker containers, Multipass VMs, and Vagrant boxes */}}
+{{- if or (env "CODESPACES") (env "REMOTE_CONTAINERS_IPC") (eq .chezmoi.username "root" "ubuntu" "vagrant" "vscode") -}}
+{{-   $ephemeral = true -}}
+{{-   $headless = true -}}
+{{- end -}}
+
+{{/* work around unreliable hostname on darwin */}}
+{{- $hostname := .chezmoi.hostname -}}
+{{- if eq .chezmoi.os "darwin" -}}
+{{-   $hostname := output "scutil" "--get" "LocalHostName" | trim -}}
+{{- end -}}
+
+{{- if eq .chezmoi.os "windows" -}}
+{{-   $ephemeral = true -}}
+{{- end -}}
+
+{{- if not $ephemeral -}}
+{{-   if eq $hostname "thinkpad" -}}
+{{-     $personal = true -}}
+{{-   else if eq $hostname "thinkcenter" -}}
+{{-     $personal = true -}}
+{{-   else if eq $hostname "ubuntu" -}}
+{{-     $headless = true -}}
+{{-     $personal = true -}}
+{{-   else if eq $hostname "PO25-0033" -}}
+{{-     $work = true -}}
+{{-   else if stdinIsATTY -}}
+{{-     $headless = promptBoolOnce . "headless" "headless" -}}
+{{-     $ephemeral = promptBoolOnce . "ephemeral" "ephemeral" -}}
+{{-   else -}}
+{{-     $ephemeral = true -}}
+{{-     $headless = true -}}
+{{-   end -}}
+{{- end -}}
+
 {{- $name := "mngste" -}}
 {{- $email := "mangouste@mosaurus.com" -}}
-
-{{- /* Detect OS and set flags */ -}}
-{{- if eq .chezmoi.os "linux" -}}
-  {{- $isLinux = true -}}
-
-  {{- /* Linux: Check for Debian/Ubuntu derivatives */ -}}
-  {{- $osId := index .chezmoi.osRelease "id" | default "" -}}
-  {{- $idLike := index .chezmoi.osRelease "idLike" | default "" -}}
-  
-  {{ if or (eq $osId "linuxmint") (eq $osId "debian") (eq $idLike "ubuntu debian") }}
-    {{- $isDebian = true -}}
-  {{ end }}
-  
-  {{ if or (eq $osId "arch") (eq $idLike "arch") }}
-    {{- $isArchLike = true -}}
-  {{ end }}
-
-  {{ if contains "srv" .chezmoi.hostname }}
-    {{- /* Server */ -}}
-    {{- $isServer = true -}}
-  {{ end }}
-
-  {{ if contains "vm" .chezmoi.hostname }}
-    {{- /* VM */ -}}
-    {{- $isVM = true -}}
-  {{ end }}
-  
-{{- else if eq .chezmoi.os "darwin" -}}
-  {{- /* MacOS */ -}}
-  {{- $isDarwin = true -}}
-{{- else if eq .chezmoi.os "windows" -}}
-  {{- /* Windows */ -}}
-  {{- $isWindows = true -}}
+{{- if $work -}}
+{{-   $email = "mangouste@mosaurus.com" -}}
 {{- end -}}
 
-{{- /* Detect devpod */ -}}
-{{- if eq .chezmoi.homeDir "/home/vscode" -}}
-  {{- $isDevpod = true -}}
-{{- end -}}
 
 sourceDir = {{ .chezmoi.sourceDir | quote }}
 
 [data]
-    is_linux = {{ $isLinux }}
-    is_debian = {{ $isDebian }}
-    is_arch_like = {{ $isArchLike }}
-    is_darwin = {{ $isDarwin }}
-    is_windows = {{ $isWindows }}
-    is_devpod = {{ $isDevpod }}
-    is_server = {{ $isServer }}
-    is_vm = {{ $isVM }}
-    name = "mngste"
-    email = "mangouste@mosaurus.com"
+    ephemeral = {{ $ephemeral }}
+    email = {{ $email | quote }}
+    work = {{ $work }}
+    headless = {{ $headless }}
+    hostname = {{ $hostname | quote }}
+    personal = {{ $personal }}
+    osid = {{ $osID | quote }}
+
+{{- if lookPath "podman" }}
+
+[docker]
+    command = "podman"
+{{- end }}
+
+[github]
+    refreshPeriod = "12h"
 
 [git]
     autoCommit = true
-    autoPush = true
