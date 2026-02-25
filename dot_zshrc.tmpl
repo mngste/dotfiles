@@ -60,8 +60,7 @@ fpath+=~/.zfunc
 
 zstyle ':completion:*' menu select
 
-{{- if not (.is_server) -}}
-  if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
-    tmux attach-session -t default || tmux new-session -s default
-  fi
-{{- end -}}
+
+if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+  tmux attach-session -t default || tmux new-session -s default
+fi
