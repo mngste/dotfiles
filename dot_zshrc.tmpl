@@ -60,8 +60,9 @@ fpath+=~/.zfunc
 
 zstyle ':completion:*' menu select
 
-
-#if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
-#  tmux attach-session -t default || tmux new-session -s default
-#fi
+{{- if not ephemeral -}}
+if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+  tmux attach-session -t default || tmux new-session -s default
+fi
+{{- end -}}
 
