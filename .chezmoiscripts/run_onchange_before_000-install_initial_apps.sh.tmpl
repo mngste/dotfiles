@@ -35,14 +35,6 @@
 {{   $packages = mustAppend $packages "alacritty" "tmux" "timeshift" -}}
 {{ end -}}
 
-#{{ if and (eq .osid "linux-debian") (not .ephemeral) -}}
-# {{   $packages = concat $packages (list "gdal-bin" "libgeos-dev" "libproj-dev" "postgis" "postgresql") -}}
-# {{ end -}}
-
-# {{ if and (eq .osid "linux-debian") (not .headless) (not .ephemeral) -}}
-# {{   $packages = concat $packages (list "qgis") -}}
-# {{ end -}}
-
 {{ $sudo := "sudo " -}}
 {{ if eq .chezmoi.username "root" -}}
 {{   $sudo = "" -}}
