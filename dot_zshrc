@@ -58,9 +58,6 @@ source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fpath+=~/.zsh/zsh-completitions/src
 fpath+=~/.zfunc
 
-autoload -Uz compinit
-compinit -u
-
 zstyle ':completion:*' menu select
 
 if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
