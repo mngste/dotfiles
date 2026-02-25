@@ -58,12 +58,9 @@ source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fpath+=~/.zsh/zsh-completitions/src
 fpath+=~/.zfunc
 
-autoload -z compinit
-compinit -u
-
 zstyle ':completion:*' menu select
 
-{{- if (not (.is_server)) -}}
+{{- if not (.is_server) -}}
   if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
     tmux attach-session -t default || tmux new-session -s default
   fi
