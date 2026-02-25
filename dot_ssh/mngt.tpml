@@ -1,3 +1,0 @@
-{{ if .personal -}}
-{{ protonPass "pass://homelab/mngt/private_key" }}
-{{ end -}}
