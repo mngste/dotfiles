@@ -46,7 +46,9 @@ export LOCAL_BIN=$HOME/.local
 export PATH=$GOPATH/bin:$GOROOT/bin:$LOCAL_BIN/bin:$PATH
 
 ## kubectl auto completion ##
+{{- if .personal -}}
 source <(kubectl completion zsh)
+{{- end -}}
 
 ## ZSH PLUGINS ##
 # Source usefulsh plugins
