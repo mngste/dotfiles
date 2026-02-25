@@ -1,10 +1,6 @@
 {{ if and (eq .osid "linux-debian") .personal -}}
 #!/bin/sh
 
-sudo apt-get update && sudo apt-get upgrade -y
-
-sudo apt-get install -y curl
-
 echo "Installing pass-cli..."
 curl -fsSL https://proton.me/download/pass-cli/install.sh | bash
 
