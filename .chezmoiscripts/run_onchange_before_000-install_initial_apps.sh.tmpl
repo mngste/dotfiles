@@ -28,11 +28,10 @@
 
 {{ if not .headless -}}
 {{   $packages = mustAppend $packages "xclip" -}}
-{{   $classicSnaps = mustAppend $classicSnaps "code" -}}
 {{ end -}}
 
 {{ if .personal -}}
-{{   $packages = mustAppend $packages "alacritty" "tmux" "timeshift" -}}
+{{   $packages = mustAppend concat $packages (list "alacritty" "tmux" "timeshift") -}}
 {{ end -}}
 
 {{ $sudo := "sudo " -}}
