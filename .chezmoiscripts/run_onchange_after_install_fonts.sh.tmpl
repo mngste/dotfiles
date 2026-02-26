@@ -7,6 +7,7 @@ curl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBra
 unxz JetBrainsMono.tar.xz
 tar xvf JetBrainsMono.tar -C ~/.local/share/fonts
 rm JetBrainsMono.tar
+fc-cache -f -v
 
 {{- end -}}
 
