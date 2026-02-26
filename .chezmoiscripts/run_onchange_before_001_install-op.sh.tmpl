@@ -4,6 +4,8 @@
 echo "Installing pass-cli..."
 curl -fsSL https://proton.me/download/pass-cli/install.sh | bash
 
+pass-cli logout --force
+export PROTON_PASS_KEY_PROVIDER=fs
 pass-cli login
 
 pass-cli ssh-agent load
