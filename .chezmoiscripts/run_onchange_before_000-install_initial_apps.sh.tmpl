@@ -23,11 +23,11 @@
 {{ $classicSnaps := list -}}
 
 {{ if eq .osid "linux-debian" -}}
-{{   $packages = mustAppend $packages "btop" -}}
+{{   $packages = concat $packages (list "btop") -}}
 {{ end -}}
 
 {{ if not .headless -}}
-{{   $packages = mustAppend $packages "xclip" -}}
+{{   $packages = concat $packages (list "xclip") -}}
 {{ end -}}
 
 {{ if .personal -}}
