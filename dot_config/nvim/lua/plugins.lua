@@ -1,17 +1,4 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-    vim.fn.system({
-        "git",
-        "clone",
-        "--filter=blob:none",
-        "https://github.com/folke/lazy.nvim.git",
-        "--branch=stable", -- latest stable release
-        lazypath,
-    })
-end
-vim.opt.rtp:prepend(lazypath)
-
-return require("lazy").setup({
+return {
     -- {{{ Libraries
     {
         "https://github.com/nvim-lua/plenary.nvim",
@@ -159,36 +146,28 @@ return require("lazy").setup({
         end,
     },
 
-    -- TODO refactor when Tree-sitter is stable and merged to nvim core
-    -- https://github.com/nvim-treesitter/nvim-treesitter/issues/4767
+    -- add more treesitter parsers
     {
-        "https://github.com/nvim-treesitter/nvim-treesitter",
+        "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
-        event = "VeryLazy",
-        config = function()
-            require("nvim-treesitter.configs").setup({
-                ensure_installed = {
-                    "cue",
-                    "go",
-                    "hcl",
-                    "kdl",
-                    "nix",
-                    "puppet",
-                    "python",
-                    "rust",
-                    "terraform",
-                    "tsx",
-                    "typescript",
-                    "vimdoc",
-                },
-                highlight = {
-                    enable = true,
-                },
-                indent = {
-                    enable = true,
-                },
-            })
-        end,
+        opts = {
+            ensure_installed = {
+                "bash",
+                "html",
+                "javascript",
+                "json",
+                "lua",
+                "markdown",
+                "markdown_inline",
+                "python",
+                "query",
+                "regex",
+                "tsx",
+                "typescript",
+                "vim",
+                "yaml",
+            },
+        },
     },
 
     {
@@ -204,14 +183,6 @@ return require("lazy").setup({
     {
         "https://github.com/tpope/vim-fugitive",
         cmd = "Git",
-    },
-
-    {
-        "https://github.com/echasnovski/mini.diff",
-        event = "VeryLazy",
-        config = function()
-            require("mini.diff").setup({})
-        end,
     },
     -- }}}
 
@@ -235,14 +206,6 @@ return require("lazy").setup({
                     },
                 },
             })
-        end,
-    },
-
-    {
-        "https://github.com/echasnovski/mini.surround",
-        event = "VeryLazy",
-        config = function()
-            require("mini.surround").setup({})
         end,
     },
     -- }}}
@@ -273,18 +236,26 @@ return require("lazy").setup({
             require("Comment").setup()
         end,
     },
-
-    {
-        "https://github.com/echasnovski/mini.bufremove",
-        lazy = true,
-    },
     -- }}}
 
     -- {{{ Keymaps
     {
-        "https://github.com/folke/which-key.nvim",
+        "folke/which-key.nvim",
         event = "VeryLazy",
-        keys = require("keymaps"),
-    },
+        opts = {
+            -- your configuration comes here
+            -- or leave it empty to use the default settings
+            -- refer to the configuration section below
+        },
+        keys = {
+            {
+                "<leader>?",
+                function()
+                require("which-key").show({ global = false })
+                end,
+                desc = "Buffer Local Keymaps (which-key)",
+            },
+        },
+    }
     -- }}}
-})
+}
