@@ -1,4 +1,4 @@
-{{- if eq .osid "linux-debian" "linux-ubuntu" -}}
+{{- if (not .ephemeral) -}}
 #!/bin/bash
 
 set -eufo pipefail
