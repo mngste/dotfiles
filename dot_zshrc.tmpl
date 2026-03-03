@@ -47,9 +47,11 @@ export LOCAL_BIN=$HOME/.local
 export PATH=$GOPATH/bin:$GOROOT/bin:$LOCAL_BIN/bin:$PATH
 
 ## kubectl auto completion ##
-{{- if .personal -}}
+{{- if eq .osid "linux-debian" -}}
 source <(kubectl completion zsh)
 {{- end -}}
+
+eval "$(mise activate zsh)"
 
 ## ZSH PLUGINS ##
 # Source usefulsh plugins
