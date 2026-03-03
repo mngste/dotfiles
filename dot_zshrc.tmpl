@@ -9,9 +9,6 @@ source_if_exists () {
     fi
 }
 
-# ## ZSH PROMPT ##
-PS1="%F{#EBCB15}%n@%m %F{#F5F3ED}%1~ %f"
-
 export EDITOR='nvim'
 export GITUSER="mngste"
 export WORKSPACE=$HOME/workspace
@@ -46,12 +43,6 @@ export GOPATH=$HOME/go
 export LOCAL_BIN=$HOME/.local
 export PATH=$GOPATH/bin:$GOROOT/bin:$LOCAL_BIN/bin:$PATH
 
-eval "$(mise activate zsh)"
-
-{{- if eq .osid "linux-debian" -}}
-# source <(kubectl completion zsh)
-{{- end -}}
-
 ## ZSH PLUGINS ##
 # Source usefulsh plugins
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -64,3 +55,4 @@ fpath+=~/.zfunc
 
 zstyle ':completion:*' menu select
 
+eval "$(mise activate zsh)"
