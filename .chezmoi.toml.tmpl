@@ -29,9 +29,7 @@
 {{- if not $ephemeral -}}
 {{-   if eq $hostname "thinkpad" -}}
 {{-     $personal = true -}}
-{{-   else if eq $hostname "thinkcenter" -}}
-{{-     $personal = true -}}
-{{-   else if eq $hostname "ubuntu" -}}
+{{-   else if eq $hostname "srv-kuber" -}}
 {{-     $headless = true -}}
 {{-     $personal = true -}}
 {{-   else if eq $hostname "PO25-0033" -}}
