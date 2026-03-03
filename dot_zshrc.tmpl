@@ -49,7 +49,7 @@ export PATH=$GOPATH/bin:$GOROOT/bin:$LOCAL_BIN/bin:$PATH
 eval "$(mise activate zsh)"
 
 {{- if eq .osid "linux-debian" -}}
-source <(kubectl completion zsh)
+# source <(kubectl completion zsh)
 {{- end -}}
 
 ## ZSH PLUGINS ##
