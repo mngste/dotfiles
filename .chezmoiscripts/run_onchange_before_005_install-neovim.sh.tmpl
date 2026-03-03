@@ -1,4 +1,4 @@
-{{ if and (eq .osid "linux-debian") .personal -}}
+{{ if eq .osid "linux-debian" -}}
 #!/bin/sh
 
 echo "Installing neovim latest..."
