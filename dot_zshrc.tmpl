@@ -9,8 +9,6 @@ source_if_exists () {
     fi
 }
 
-eval "$(mise activate zsh)"
-
 # ## ZSH PROMPT ##
 PS1="%F{#EBCB15}%n@%m %F{#F5F3ED}%1~ %f"
 
@@ -47,6 +45,8 @@ export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
 export LOCAL_BIN=$HOME/.local
 export PATH=$GOPATH/bin:$GOROOT/bin:$LOCAL_BIN/bin:$PATH
+
+eval "$(mise activate zsh)"
 
 {{- if eq .osid "linux-debian" -}}
 source <(kubectl completion zsh)
