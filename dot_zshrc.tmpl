@@ -56,4 +56,7 @@ fpath+=($HOME/.zsh/pure)
 
 zstyle ':completion:*' menu select
 
+autoload -U promptinit; promptinit
+prompt pure
+
 eval "$(mise activate zsh)"
