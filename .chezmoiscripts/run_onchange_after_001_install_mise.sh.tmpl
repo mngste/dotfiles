@@ -1,6 +1,6 @@
-{{- if (not .headless) -}}
+{{- if (not .personal) -}}
 #!/bin/bash
 
-curl https://mise.run | sh
+curl https://mise.run/zsh | sh
 
 {{ end -}}
