@@ -121,3 +121,8 @@ export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
+#switch to zsh
+if [ -t 1 ] && [ -x /usr/bin/zsh ]; then
+    exec /usr/bin/zsh
+fi
+
