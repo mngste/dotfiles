@@ -34,6 +34,14 @@ alias fzfb='fzf --preview "bat --color always --style numbers,changes {}"'
 #cat alias
 alias cat='bat --paging never --theme DarkNeon --style plain,changes'
 
+#docker alias
+alias d='docker'
+alias dipru='docker image prune -a'
+alias dps='docker ps'
+alias dvls='docker volume ls'
+alias dcu='docker compose up -d'
+alias dcd='docker compose down'
+
 #kubectl aliases
 alias k='kubectl'
 alias kl='kubectl logs'
