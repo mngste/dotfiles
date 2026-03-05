@@ -1,0 +1,6 @@
+{{ if and (.ephemeral) (.headless) -}}
+#!/bin/sh
+
+curl -sL https://talos.dev/install | sh
+
+{{ end -}}
