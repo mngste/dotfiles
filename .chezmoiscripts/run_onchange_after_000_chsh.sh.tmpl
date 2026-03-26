@@ -1,6 +1,6 @@
 #!/bin/bash
-# {{- if (not .ephemeral) -}}
+{{- if not .ephemeral -}}
 set -eufo pipefail
 
 chsh -s /usr/bin/zsh
-# {{ end -}}
+{{ end -}}
