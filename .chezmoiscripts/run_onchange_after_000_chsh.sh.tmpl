@@ -1,6 +1,4 @@
 #!/bin/bash
-{{- if not .ephemeral -}}
-set -eufo pipefail
 
+set -eufo pipefail
 chsh -s /usr/bin/zsh
-{{ end -}}
