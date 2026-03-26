@@ -59,6 +59,6 @@ zstyle ':completion:*' menu select
 autoload -U promptinit; promptinit
 prompt pure
 
-eval "$(mise activate zsh)"
-
+{{ if not .personal }}
 source <(kubectl completion zsh)
+{{ end }}
