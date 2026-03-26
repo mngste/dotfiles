@@ -1,8 +1,0 @@
-{{ if .personal -}}
-#!/bin/bash
-
-# set -eufo pipefail
-
-chezmoi cd
-git remote set-url origin git@github.com:mngste/dotfiles.git
-{{ end -}}
