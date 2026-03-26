@@ -1,0 +1,25 @@
+{{ if and (eq .osid "linux-debian") .personal -}}
+#!/bin/sh
+
+echo "Installing pass-cli..."
+curl -fsSL https://proton.me/download/pass-cli/install.sh | bash
+
+result="$(pass-cli info 2>/dev/null)"
+ret=$?
+
+echo "$result" | grep -q "garnier.hugo"
+if [ $? -eq 0 ]; then
+    echo "OK"
+else
+    pass-cli logout --force
+    export PROTON_PASS_KEY_PROVIDER=fs
+    pass-cli login
+fi
+
+pass-cli ssh-agent load
+
+pass-cli item attachment download --share-id B2Dx4dKOVq-tApaPTjBLTM4HHqNzA8lhApQ4HM6UW3tNf3i4jvA9DbXvnQl0A8sA1_QXFJUUJlIvTlU3LaxW3Q== --item-id yeTatTLgzeb-rxtlFuyYvw6uZs0btx8y23KnT0ba3HWgY7aWlrhd5RVvUzEUT74IrqMzs0-qGkXdZryNmJwb9Q== --attachment-id nN71ZHBb4Ov25ow-fju3QOVbkrvbL9KPdQN0TDKrnGBuy90xZYfHOwIbblzz46nsnT2cZTnltCjPfG8CBcXxWw== --output ~/.ssh/config
+
+exit $ret
+
+{{ end -}}

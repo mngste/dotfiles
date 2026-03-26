@@ -1,0 +1,23 @@
+[terminal.shell]
+program = "/usr/bin/zsh"
+args = ["-l"]
+
+[window]
+opacity = 0.95
+padding.x = 10
+padding.y = 10
+decorations = "Full"
+decorations_theme_variant = "Dark" # "Dark"
+
+[font]
+normal = {family= "JetbrainsMono Nerd Font"}
+
+size = 12.0
+
+[general]
+# $HOME/.config/alacritty/alacritty.toml
+# by mngt 2025-01-05
+
+import = ["~/.config/alacritty/catppuccin-mocha.toml"]
+
+[terminal]
