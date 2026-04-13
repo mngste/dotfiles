@@ -27,10 +27,8 @@
 {{- end -}}
 
 {{- if not $ephemeral -}}
-{{-   if eq $hostname "thinkpad" -}}
+{{-   if eq $hostname "thinkpad" "thinkcentre" -}}
 {{-     $personal = true -}}
-{{-   else if eq $hostname "srv-kuber" -}}
-{{-     $headless = true -}}
 {{-   else if eq $hostname "PO25-0033" -}}
 {{-     $work = true -}}
 {{-   else if stdinIsATTY -}}

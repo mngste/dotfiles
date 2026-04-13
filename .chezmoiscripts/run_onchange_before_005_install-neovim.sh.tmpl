@@ -7,4 +7,6 @@ sudo rm -rf /opt/nvim-linux-x86_64
 sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
 rm nvim-linux-x86_64.tar.gz
 
+{{ else if eq .osid "linux-fedora" -}}
+sudo dnf install nvim -y
 {{ end -}}

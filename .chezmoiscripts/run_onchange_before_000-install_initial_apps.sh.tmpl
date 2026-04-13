@@ -21,7 +21,7 @@
 {{ $snaps := list -}}
 {{ $classicSnaps := list -}}
 
-{{ if eq .osid "linux-debian" -}}
+{{ if eq .osid "linux-debian" "linux-fedora" -}}
 {{   $packages = concat $packages (list "btop") -}}
 {{ end -}}
 
@@ -42,8 +42,15 @@
 
 set -eufo pipefail
 
+{{ if eq .osid "linux-debian" "linux-ubuntu" -}}
 {{ $sudo }}apt-get update
 {{ $sudo }}apt-get install -y {{ $packages | join " " }}
+{{- else if eq .osid "linux-fedora" -}}
+{{ $sudo }}dnf update
+{{ $sudo }}dnf install -y {{ $packages | join " " }}
+{{ end -}}
+
+
 
 {{ if lookPath "snap" }}
 {{   range $snaps }}
