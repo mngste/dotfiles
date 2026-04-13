@@ -1,5 +1,7 @@
 {{- if .personal -}}
-#!/usr/bin/env bash
+#!/bin/sh
+
+sudo dnf install jetbrains-mono-fonts -y
 
 mkdir ~/.local/share/fonts
 echo "Installing Jetbrain nerd font"

@@ -1,0 +1,10 @@
+color=1a1a1a
+indicator
+indicator-radius=100
+indicator-thickness=8
+ring-color=aaaaaa
+inside-color=383838
+line-color=00000000
+key-hl-color=ffffff
+text-color=eeeeee
+separator-color=00000000

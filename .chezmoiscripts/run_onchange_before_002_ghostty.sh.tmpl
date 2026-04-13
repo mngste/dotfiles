@@ -1,0 +1,16 @@
+{{ if eq .osid "linux-fedora" -}}
+#!/bin/sh
+
+sudo dnf copr enable scottames/ghostty
+sudo dnf install ghostty -y
+
+{{ else if eq .osid "linux-arch" -}}
+#!/bin/sh
+
+# Install ghostty terminal emulator
+yay -S --noconfirm --needed ghostty
+
+# make ghostty the default terminal
+xdg-settings set default-terminal ghostty
+
+{{ end -}}

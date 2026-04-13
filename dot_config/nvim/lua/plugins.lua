@@ -108,7 +108,8 @@ return {
         config = function()
             require("blink.cmp").setup({
                 keymap = {
-                    preset = "enter",
+                    preset = "default",
+                    ["<C-e>"] = { "hide", "fallback" },
                 },
                 cmdline = {
                     keymap = {

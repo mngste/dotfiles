@@ -29,8 +29,6 @@
 {{- if not $ephemeral -}}
 {{-   if eq $hostname "thinkpad" -}}
 {{-     $personal = true -}}
-{{-   else if eq $hostname "srv-kuber" -}}
-{{-     $headless = true -}}
 {{-   else if eq $hostname "PO25-0033" -}}
 {{-     $work = true -}}
 {{-   else if stdinIsATTY -}}
@@ -43,9 +41,9 @@
 {{- end -}}
 
 {{- $name := "mngste" -}}
-{{- $email := "mangouste@mosaurus.com" -}}
+{{- $email := "admin@kubezi.com" -}}
 {{- if $work -}}
-{{-   $email = "mangouste@mosaurus.com" -}}
+{{-   $email = "admin@kubezi.com" -}}
 {{- end -}}
 
 
@@ -61,6 +59,10 @@ sourceDir = {{ .chezmoi.sourceDir | quote }}
     osid = {{ $osID | quote }}
 
 {{- if lookPath "podman" }}
+
+[cd]
+    command = "zsh"
+    args = ["-l"]
 
 [docker]
     command = "podman"

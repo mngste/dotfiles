@@ -1,28 +1,35 @@
-{{ if eq .osid "linux-debian" "linux-raspbian" "linux-ubuntu" -}}
+{{ if eq .osid "linux-debian" "linux-raspbian" "linux-ubuntu" "linux-fedora" "linux-arch" -}}
 
 {{ $packages := list
      "bat"
-     "build-essential"
      "curl"
      "fd-find"
      "fzf"
      "git"
      "git-lfs"
      "jq"
-     "libfuse2"
      "openssh-server"
      "ripgrep"
      "shellcheck"
      "units"
      "zsh"
      "lsd"
+     "btop"
      "gpg" -}}
 
 {{ $snaps := list -}}
 {{ $classicSnaps := list -}}
 
-{{ if eq .osid "linux-debian" -}}
-{{   $packages = concat $packages (list "btop") -}}
+{{ if eq .osid "linux-debian" "linux-ubuntu" -}}
+{{   $packages = concat $packages (list "") -}}
+{{ end -}}
+
+{{ if eq .osid "linux-fedora" -}}
+{{   $packages = concat $packages (list "chezmoi" "rofi" "fastfetch") -}}
+{{ end -}}
+
+{{ if eq .osid "linux-arch" -}}
+{{   $packages = concat $packages (list "") -}}
 {{ end -}}
 
 {{ if not .headless -}}
@@ -30,7 +37,7 @@
 {{ end -}}
 
 {{ if .personal -}}
-{{   $packages = concat $packages (list "alacritty" "tmux" "timeshift") -}}
+{{   $packages = concat $packages (list "tmux" "timeshift") -}}
 {{ end -}}
 
 {{ $sudo := "sudo " -}}
@@ -42,8 +49,23 @@
 
 set -eufo pipefail
 
+# debian base
+{{ if eq .osid "linux-debian" "linux-ubuntu" -}}
 {{ $sudo }}apt-get update
 {{ $sudo }}apt-get install -y {{ $packages | join " " }}
+
+# fedora
+{{- else if eq .osid "linux-fedora" -}}
+{{ $sudo }}dnf update
+{{ $sudo }}dnf install -y {{ $packages | join " " }}
+
+# arch
+{{- else if eq .osid "linux-arch" -}}
+{{ $sudo }}pacman -Syu
+{{ $sudo }}pacman -Sy {{ $packages | join " " }}
+{{ end -}}
+
+
 
 {{ if lookPath "snap" }}
 {{   range $snaps }}

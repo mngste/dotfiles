@@ -10,16 +10,17 @@
     exact = true
     stripComponents = 1
     refreshPeriod = "168h"
+[".zsh/zsh-history-substring-search"]
+    type = "archive"
+    url = "https://github.com/zsh-users/zsh-history-substring-search/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
 [".zsh/zsh-completions"]
     type = "archive"
     url = "https://github.com/zsh-users/zsh-completions/archive/master.tar.gz"
     exact = true
     stripComponents = 1
-    refreshPeriod = "168h"
-[".zsh/pure"]
-    type = "git-repo"
-    url = "https://github.com/sindresorhus/pure.git"
-    exact = true
     refreshPeriod = "168h"
 [".tmux/plugins/tpm"]
     type = "git-repo"
