@@ -47,7 +47,7 @@ alias k='kubectl'
 alias kl='kubectl logs'
 alias kg='kubectl get $1'
 alias kgy='kubectl get $1 $2 -oyaml'
-balias kn='kubens'
+alias kn='kubens'
 alias kc='kubectx'
 
 #git aliases
