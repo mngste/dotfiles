@@ -8,5 +8,6 @@ sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
 rm nvim-linux-x86_64.tar.gz
 
 {{ else if eq .osid "linux-fedora" -}}
+#!/bin/sh
 sudo dnf install -y neovim python3-neovim
 {{ end -}}
