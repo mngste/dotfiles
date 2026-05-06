@@ -11,6 +11,7 @@ theme = Catppuccin Macchiato
 #theme = Challenger Deep
 
 # utils
+#focus-follows-mouse = true
 copy-on-select = clipboard
 #macos-non-native-fullscreen = true
 window-save-state = always
