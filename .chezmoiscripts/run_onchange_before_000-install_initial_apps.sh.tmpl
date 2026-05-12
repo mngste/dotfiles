@@ -14,13 +14,29 @@
      "units"
      "zsh"
      "lsd"
+     "btop"
      "gpg" -}}
+
+{{ $hypr-packages := list
+     "dunst"
+     "pipewire"
+     "wireplumber"
+     "pipewire"
+     "" -}}
 
 {{ $snaps := list -}}
 {{ $classicSnaps := list -}}
 
-{{ if eq .osid "linux-debian" "linux-fedora" -}}
-{{   $packages = concat $packages (list "btop") -}}
+{{ if eq .osid "linux-debian" "linux-ubuntu" -}}
+{{   $packages = concat $packages (list "") -}}
+{{ end -}}
+
+{{ if eq .osid "linux-fedora" -}}
+{{   $packages = concat $packages (list "") -}}
+{{ end -}}
+
+{{ if eq .osid "linux-arch" -}}
+{{   $packages = concat $packages (list "xdg-desktop-portal-hyprland") -}}
 {{ end -}}
 
 {{ if not .headless -}}
@@ -28,7 +44,7 @@
 {{ end -}}
 
 {{ if .personal -}}
-{{   $packages = concat $packages (list "alacritty" "tmux" "timeshift") -}}
+{{   $packages = concat $packages (list "tmux" "timeshift") -}}
 {{ end -}}
 
 {{ $sudo := "sudo " -}}
@@ -45,7 +61,10 @@ set -eufo pipefail
 {{ $sudo }}apt-get install -y {{ $packages | join " " }}
 {{- else if eq .osid "linux-fedora" -}}
 {{ $sudo }}dnf update
-{{ $sudo }}dnf install -y {{ $packages | join " " }}
+{{ $sudo }}dnf install -y {{ $packages & $hypr-packages | join " " }}
+{{- else if eq .osid "linux-arch" -}}
+{{ $sudo }}pacman -Syu
+{{ $sudo }}pacman -Sy {{ $packages & $hypr-packages | join " " }}
 {{ end -}}
 
 
