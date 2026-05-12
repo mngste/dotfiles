@@ -60,10 +60,12 @@ set -eufo pipefail
 {{ $sudo }}apt-get install -y {{ $packages | join " " }}
 {{- else if eq .osid "linux-fedora" -}}
 {{ $sudo }}dnf update
-{{ $sudo }}dnf install -y {{ $packages & $hypr-packages | join " " }}
+{{ $sudo }}dnf install -y {{ $packages | join " " }}
+{{ $sudo }}dnf install -y {{ $hyprpackages | join " " }}
 {{- else if eq .osid "linux-arch" -}}
 {{ $sudo }}pacman -Syu
 {{ $sudo }}pacman -Sy {{ $packages & $hyprpackages | join " " }}
+{{ $sudo }}pacman -Sy {{ $hyprpackages | join " " }}
 {{ end -}}
 
 
