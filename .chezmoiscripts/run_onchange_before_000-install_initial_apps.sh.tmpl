@@ -64,7 +64,7 @@ set -eufo pipefail
 {{ $sudo }}dnf install -y {{ $hyprpackages | join " " }}
 {{- else if eq .osid "linux-arch" -}}
 {{ $sudo }}pacman -Syu
-{{ $sudo }}pacman -Sy {{ $packages & $hyprpackages | join " " }}
+{{ $sudo }}pacman -Sy {{ $packages | join " " }}
 {{ $sudo }}pacman -Sy {{ $hyprpackages | join " " }}
 {{ end -}}
 
