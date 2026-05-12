@@ -21,7 +21,51 @@
      "dunst"
      "pipewire"
      "wireplumber"
-     "pipewire" -}}
+     "hyprpaper"
+     "wireplumber"
+     "aquamarine"
+     "cliphist"
+     "glaze"
+     "gpu-screen-recorder"
+     "hyprcursor"
+     "hyprgraphics"
+     "hypridle"
+     "hyprland"
+     "hyprland-contrib"
+     "hyprland-git"
+     "hyprland-guiutils"
+     "hyprland-plugins"
+     "hyprland-plugins-git"
+     "hyprland-protocols"
+     "hyprland-qt-support"
+     "hyprlang"
+     "hyprlauncher"
+     "hyprlock"
+     "hyprpicker"
+     "hyprpolkitagent"
+     "hyprpaper"
+     "hyprpwcenter"
+     "hyprqt6engine"
+     "hyprshot"
+     "hyprshutdown"
+     "hyprsunset"
+     "hyprsysteminfo"
+     "hyprtoolkit"
+     "hyprutils"
+     "hyprwayland-scanner"
+     "hyprwire"
+     "kitty"
+     "lua"
+     "matugen"
+     "nwg-look"
+     "python-imageio-ffmpeg"
+     "python-screeninfo"
+     "qt6ct"
+     "quickshell"
+     "waypaper"
+     "xcur2png"
+     "xdg-desktop-portal-hyprland"
+     "waybar" -}}
 
 {{ $snaps := list -}}
 {{ $classicSnaps := list -}}
@@ -35,7 +79,7 @@
 {{ end -}}
 
 {{ if eq .osid "linux-arch" -}}
-{{   $packages = concat $packages (list "xdg-desktop-portal-hyprland") -}}
+{{   $packages = concat $packages (list "") -}}
 {{ end -}}
 
 {{ if not .headless -}}
@@ -61,7 +105,6 @@ set -eufo pipefail
 {{- else if eq .osid "linux-fedora" -}}
 {{ $sudo }}dnf update
 {{ $sudo }}dnf install -y {{ $packages | join " " }}
-{{ $sudo }}dnf install -y {{ $hyprpackages | join " " }}
 {{- else if eq .osid "linux-arch" -}}
 {{ $sudo }}pacman -Syu
 {{ $sudo }}pacman -Sy {{ $packages | join " " }}
