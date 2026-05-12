@@ -17,7 +17,7 @@
      "btop"
      "gpg" -}}
 
-{{ $hypr-packages := list
+{{ $hyprpackages := list
      "dunst"
      "pipewire"
      "wireplumber"
@@ -63,7 +63,7 @@ set -eufo pipefail
 {{ $sudo }}dnf install -y {{ $packages & $hypr-packages | join " " }}
 {{- else if eq .osid "linux-arch" -}}
 {{ $sudo }}pacman -Syu
-{{ $sudo }}pacman -Sy {{ $packages & $hypr-packages | join " " }}
+{{ $sudo }}pacman -Sy {{ $packages & $hyprpackages | join " " }}
 {{ end -}}
 
 
