@@ -43,6 +43,9 @@ keybind = ctrl+alt+j=goto_split:down
 keybind = ctrl+alt+h=goto_split:left
 keybind = ctrl+alt+l=goto_split:right
 
+# delete split
+keybind = ctrl+shift+w=close_surface
+
 # Map Ctrl + Shift + R to reload the config
 keybind = ctrl+shift+r=reload_config
 
