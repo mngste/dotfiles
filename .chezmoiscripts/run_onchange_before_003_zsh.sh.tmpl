@@ -1,0 +1,15 @@
+{{ if eq .osid "linux-fedora" -}}
+#!/bin/sh
+
+# Install Zsh
+sudo dnf install zsh -y
+
+{{ else if eq .osid "linux-arch" -}}
+#!/bin/bash
+
+# Install Zsh
+if ! command -v zsh &>/dev/null; then
+    yay -S --noconfirm --needed zsh
+fi
+
+{{ end -}}
