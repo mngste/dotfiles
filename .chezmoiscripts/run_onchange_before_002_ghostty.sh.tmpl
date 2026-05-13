@@ -2,7 +2,7 @@
 #!/bin/sh
 
 dnf copr enable scottames/ghostty
-dnf install ghostty
+dnf install ghostty -y
 
 {{ else if eq .osid "linux-arch" -}}
 #!/bin/sh
