@@ -1,0 +1,16 @@
+{{ if eq .osid "linux-fedora" -}}
+#!/bin/sh
+
+dnf copr enable atim/starship
+dnf install starship -y
+
+{{ else if eq .osid "linux-arch" -}}
+#!/bin/sh
+
+# Install ghostty terminal emulator
+yay -S --noconfirm --needed starship
+
+# make ghostty the default terminal
+xdg-settings set default-terminal starship
+
+{{ end -}}
