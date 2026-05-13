@@ -1,8 +1,8 @@
 {{ if eq .osid "linux-fedora" -}}
 #!/bin/sh
 
-dnf copr enable scottames/ghostty
-dnf install ghostty -y
+sudo dnf copr enable scottames/ghostty
+sudo dnf install ghostty -y
 
 {{ else if eq .osid "linux-arch" -}}
 #!/bin/sh
