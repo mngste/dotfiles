@@ -25,7 +25,7 @@
 {{ end -}}
 
 {{ if eq .osid "linux-fedora" -}}
-{{   $packages = concat $packages (list "") -}}
+{{   $packages = concat $packages (list "chezmoi") -}}
 {{ end -}}
 
 {{ if eq .osid "linux-arch" -}}
