@@ -1,8 +1,8 @@
 {{ if eq .osid "linux-fedora" -}}
 #!/bin/sh
 
-dnf copr enable atim/starship
-dnf install starship -y
+sudo dnf copr enable atim/starship
+sudo dnf install starship -y
 
 {{ else if eq .osid "linux-arch" -}}
 #!/bin/sh
