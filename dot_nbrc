@@ -14,4 +14,4 @@
 ###############################################################################
 
 export NB_COLOR_THEME="${NB_COLOR_THEME:-forest}" # Set by `nb` • Thu Apr 30 04:04:00 PM CEST 2026
-export NB_DIR="/home/mngt/Documents"
+export NB_DIR="~/Documents"
