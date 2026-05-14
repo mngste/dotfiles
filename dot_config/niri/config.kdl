@@ -75,7 +75,7 @@ input {
 // Find more information on the wiki:
 // https://niri-wm.github.io/niri/Configuration:-Outputs
 // Remember to uncomment the node by removing "/-"!
-/-output "eDP-1" {
+output "eDP-1" {
     // Uncomment this line to disable this output.
     // off
 
@@ -85,10 +85,10 @@ input {
     // for the resolution.
     // If the mode is omitted altogether or is invalid, niri will pick one automatically.
     // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
-    mode "1920x1080@120.030"
+    mode "1920x1080@60.008"
 
     // You can use integer or fractional scale, for example use 1.5 for 150% scale.
-    scale 2
+    scale 1
 
     // Transform allows to rotate the output counter-clockwise, valid values are:
     // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
@@ -103,7 +103,7 @@ input {
     // so to put another output directly adjacent to it on the right, set its x to 1920.
     // If the position is unset or results in an overlap, the output is instead placed
     // automatically.
-    position x=1280 y=0
+    position x=0 y=0
 }
 
 // Settings that influence how windows are positioned and sized.
@@ -389,7 +389,7 @@ binds {
     Mod+return hotkey-overlay-title="Open a Terminal: ghostty" { spawn "ghostty"; }
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
-
+    Mod+B hotkey-overlay-title="Run an Application: firefox" { spawn "firefox"; }
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
     // For example, this is a standard bind to toggle the screen reader (orca).
@@ -616,7 +616,7 @@ binds {
     Mod+Shift+Equal { set-window-height "+10%"; }
 
     // Move the focused window between the floating and the tiling layout.
-    Mod+V       { toggle-window-floating; }
+    Mod+Ctrl+V       { toggle-window-floating; }
     Mod+Shift+V { switch-focus-between-floating-and-tiling; }
 
     // Toggle tabbed column display mode.
@@ -655,9 +655,9 @@ binds {
     Mod+Shift+P { power-off-monitors; }
 
     // Core Noctalia binds
-    Mod+Space { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
-    Mod+S { spawn-sh "qs -c noctalia-shell ipc call controlCenter toggle"; }
-    Mod+Comma { spawn-sh "qs -c noctalia-shell ipc call settings toggle"; }
+    Mod+Space hotkey-overlay-title="Run launcher" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
+    Mod+S hotkey-overlay-title="Run controls" { spawn-sh "qs -c noctalia-shell ipc call controlCenter toggle"; }
+    Mod+Comma  hotkey-overlay-title="Run settings" { spawn-sh "qs -c noctalia-shell ipc call settings toggle"; }
 
     // Audio & Brightness
     XF86AudioRaiseVolume { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "increase"; }
@@ -665,6 +665,9 @@ binds {
     XF86AudioMute { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "muteOutput"; }
     XF86MonBrightnessUp { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "brightness" "increase"; }
     XF86MonBrightnessDown { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "brightness" "decrease"; }
+
+    // noctalia plugins
+    Mod+V hotkey-overlay-title="Run plugin: clipper" { spawn-sh "qs -c noctalia-shell ipc call plugin:clipper toggle"; }
 }
 
 spawn-at-startup "qs" "-c" "noctalia-shell"
