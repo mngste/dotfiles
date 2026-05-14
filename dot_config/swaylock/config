@@ -1,0 +1,14 @@
+color=000000
+indicator
+line-color=00000000
+inside-color=00000000
+ring-color=ffffffaa
+key-hl-color=ffffff
+separator-color=00000000
+text-color=ffffff
+inside-ver-color=00000000
+ring-ver-color=ffffffaa
+text-ver-color=ffffff
+inside-wrong-color=00000000
+ring-wrong-color=ff5555aa
+text-wrong-color=ff5555
