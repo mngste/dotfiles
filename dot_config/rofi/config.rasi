@@ -1,5 +1,6 @@
 configuration {
     combi-modes: [window,run,ssh,drun];
+    modi: "combi";
     sorting-method: "normal";
     show-icons: true;
     matching: "regex";
