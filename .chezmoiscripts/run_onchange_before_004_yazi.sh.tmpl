@@ -1,0 +1,13 @@
+{{ if eq .osid "linux-fedora" -}}
+#!/bin/sh
+
+dnf copr enable lihaohong/yazi
+dnf install yazi -y
+dnf install zoxide -y
+
+{{ else if eq .osid "linux-arch" -}}
+#!/bin/sh
+
+sudo pacman -Sy yazi ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg imagemagick
+
+{{ end -}}
