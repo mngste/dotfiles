@@ -43,6 +43,15 @@ export GOPATH=$HOME/go
 export LOCAL_BIN=$HOME/.local
 export PATH=$GOPATH/bin:$GOROOT/bin:$LOCAL_BIN/bin:$PATH
 
+## script to use yazi and exit to current file's folder ##
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	command yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+	command rm -f -- "$tmp"
+}
+
 ## ZSH PLUGINS ##
 # Source usefulsh plugins
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
