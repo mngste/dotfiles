@@ -1,9 +1,9 @@
 {{ if eq .osid "linux-fedora" -}}
 #!/bin/sh
 
-dnf copr enable lihaohong/yazi
-dnf install yazi -y
-dnf install zoxide -y
+sudo dnf copr enable lihaohong/yazi
+sudo dnf install yazi -y
+sudo dnf install zoxide -y
 
 {{ else if eq .osid "linux-arch" -}}
 #!/bin/sh
