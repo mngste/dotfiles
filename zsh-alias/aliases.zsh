@@ -11,11 +11,21 @@ alias nconf='cd $HOME/.config/nvim/'
 #alias la='ls -la'
 #alias ll='ls -lha'
 #alias lta='ls -lgha'
-alias ls="lsd -F"
-alias la="lsd -AF"
-alias ll="lsd -lAF"
-alias lg="lsd -F --group-dirs=first"
-tree="lsd -AF --tree"
+#alias ls="lsd -F"
+#alias la="lsd -AF"
+#alias ll="lsd -lAF"
+#alias lg="lsd -F --group-dirs=first"
+#tree="lsd -AF --tree"
+# Better ls
+alias ls='eza --icons'
+# Detailed listing
+alias ll='eza -lh --icons --git'
+# Detailed listing including hidden files
+alias la='eza -lah --icons --git'
+# Tree view
+alias tree='eza --tree --icons'
+# Reuse ls completions for eza (avoids defining a separate completion function)
+compdef eza=ls
 
 # repos
 alias dot='cd $DOTFILES'
