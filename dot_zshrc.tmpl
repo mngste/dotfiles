@@ -1,13 +1,9 @@
 autoload -Uz compinit
 compinit
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-source_if_exists () {
-    if test -r "$1"; then
-        source "$1"
-    fi
-}
+# =========================================================
+# env
+# =========================================================
 
 export EDITOR='nvim'
 export GITUSER="mngste"
@@ -17,15 +13,20 @@ export SCRIPTS="$WORKSPACE/scripts"
 export TERM=screen-256color
 export XDG_CONFIG_HOME=$HOME/.config
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+export PATH=$HOME/bin:$SCRIPTS:$PATH
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/go
+export LOCAL_BIN=$HOME/.local
+export PATH=$GOPATH/bin:$GOROOT/bin:$LOCAL_BIN/bin:$PATH
+export ZDOTDIR=$HOME/.config/zsh
 
 
 # Uses:
 #   Plugins:      fast-syntax-highlighting, zsh-autosuggestions,
-#                 zsh-history-substring-search, zsh-vi-mode
+#                 zsh-history-substring-search
 #   Prompt:       starship
 #   Navigation:   zoxide, fzf, fd
 #   CLI tools:    eza, bat, nvim, ripgrep
-#   Node:         nvm
 
 # =========================================================
 # History
@@ -42,16 +43,18 @@ setopt HIST_IGNORE_SPACE
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_FIND_NO_DUPS
 
-## ALIASES DIRECTORIES ##
-# source_if_exists "$HOME/zsh-alias/aliases.zsh"
+# =========================================================
+# Shell behaviour
+# =========================================================
 
-## PATH ##
-export PATH=$HOME/bin:$SCRIPTS:$PATH
-export GOROOT=/usr/local/go
-export GOPATH=$HOME/go
-export LOCAL_BIN=$HOME/.local
-export PATH=$GOPATH/bin:$GOROOT/bin:$LOCAL_BIN/bin:$PATH
-export ZDOTDIR=$HOME/.config/zsh
+setopt AUTOCD
+setopt NOBEEP
+setopt NUMERIC_GLOB_SORT  # sort file10 after file9, not after file1
+
+
+# =========================================================
+# yazi
+# =========================================================
 
 ## script to use yazi and exit to current file's folder ##
 function y() {
@@ -62,23 +65,40 @@ function y() {
 	command rm -f -- "$tmp"
 }
 
+# =========================================================
+# Smart directory navigation
+# =========================================================
+
+# Initialize zoxide - starship - ssh-agent
+eval "$(zoxide init zsh)"
+eval "$(starship init zsh)"
+eval "$(ssh-agent -s)"
+
+# =========================================================
+# Completion
+# =========================================================
+
+# Enable interactive completion menu selection
+zstyle ':completion:*' menu select
+
+# Make completion case-insensitive
+# Example: "doc" can complete to "Documents"
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'  # lowercase input matches upper and lower
+
+
 ## ZSH PLUGINS ##
 # Source usefulsh plugins
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# ~~~~~~~~~~~~~~~ Completion ~~~~~~~~~~~~~~~~~~~~~~~~
+# =========================================================
+# Fuzzy finder
+# =========================================================
 
-fpath+=~/.zsh/zsh-completitions/src
-fpath+=~/.zfunc
-
-zstyle ':completion:*' menu select
-
-# fzf search 
 if [[ -f /usr/share/fzf/key-bindings.zsh ]]; then
   source /usr/share/fzf/key-bindings.zsh
   source /usr/share/fzf/completion.zsh
-fi 
+fi
 
 # =========================================================
 # Modular Config Files
@@ -89,7 +109,3 @@ source "$ZDOTDIR/fzf.zsh"
 
 # Aliases
 source "$ZDOTDIR/aliases.zsh"
-
-eval "$(zoxide init zsh)"
-eval "$(starship init zsh)"
-eval "$(ssh-agent -s)"
