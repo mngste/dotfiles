@@ -43,7 +43,7 @@ setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_FIND_NO_DUPS
 
 ## ALIASES DIRECTORIES ##
-source_if_exists "$HOME/zsh-alias/aliases.zsh"
+# source_if_exists "$HOME/zsh-alias/aliases.zsh"
 
 ## PATH ##
 export PATH=$HOME/bin:$SCRIPTS:$PATH
@@ -51,6 +51,7 @@ export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
 export LOCAL_BIN=$HOME/.local
 export PATH=$GOPATH/bin:$GOROOT/bin:$LOCAL_BIN/bin:$PATH
+export ZDOTDIR=$HOME/.config/zsh
 
 ## script to use yazi and exit to current file's folder ##
 function y() {
@@ -84,10 +85,10 @@ fi
 # =========================================================
 
 # fzf configuration
-#source "$ZDOTDIR/fzf.zsh"
+source "$ZDOTDIR/fzf.zsh"
 
 # Aliases
-# source "$ZDOTDIR/aliases.zsh"
+source "$ZDOTDIR/aliases.zsh"
 
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
