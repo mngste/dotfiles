@@ -1,21 +1,11 @@
 alias today='date +%Y-%m-%d'
 alias md="mkdir"
-alias update='sudo apt update && sudo apt upgrade'
+alias update='sudo dnf update && sudo dnf upgrade'
 
 #alias cd
-alias script='cd $SCRIPTS'
 alias nconf='cd $HOME/.config/nvim/'
 
 #alias system info
-#alias al='ls -al'
-#alias la='ls -la'
-#alias ll='ls -lha'
-#alias lta='ls -lgha'
-#alias ls="lsd -F"
-#alias la="lsd -AF"
-#alias ll="lsd -lAF"
-#alias lg="lsd -F --group-dirs=first"
-#tree="lsd -AF --tree"
 # Better ls
 alias ls='eza --icons'
 # Detailed listing
@@ -35,13 +25,13 @@ alias count='find . -type f | wc -l'
 alias v='nvim'
 alias fv='nvim $(fzfb)'
 
-#tmux alias
+# tmux alias
 alias tns='tmux new -s $(echo $(pwd) | xargs basename)'
 
-#fzf azlias
+# fzf azlias
 alias fzfb='fzf --preview "bat --color always --style numbers,changes {}"'
 
-#cat alias
+# cat alias
 alias cat='bat --paging never --theme DarkNeon --style plain,changes'
 
 #docker alias
