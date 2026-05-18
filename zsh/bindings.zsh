@@ -6,6 +6,10 @@
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
+# k/j -> history search by substring (k and j for vim)
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+
 # Ctrl+F -> fzf file picker (no hidden files)
 bindkey '^F' _fzf_file_no_hidden
 
