@@ -8,6 +8,7 @@
 // https://niri-wm.github.io/niri/Configuration:-Input
 prefer-no-csd
 input {
+    warp-mouse-to-focus
     keyboard {
         xkb {
             // You can set rules, model, layout, variant and options.
