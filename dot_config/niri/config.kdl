@@ -650,7 +650,7 @@ binds {
     Mod+Shift+P { power-off-monitors; }
 
     // Core Noctalia binds
-    Mod+Space hotkey-overlay-title="Run launcher" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
+    Mod+Shift+Space hotkey-overlay-title="Run launcher" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
     Mod+S hotkey-overlay-title="Run controls" { spawn-sh "qs -c noctalia-shell ipc call controlCenter toggle"; }
     Mod+Comma  hotkey-overlay-title="Run settings" { spawn-sh "qs -c noctalia-shell ipc call settings toggle"; }
 
