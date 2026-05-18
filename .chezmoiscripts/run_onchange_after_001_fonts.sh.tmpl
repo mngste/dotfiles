@@ -1,6 +1,8 @@
 {{- if .personal -}}
 #!/bin/sh
 
+sudo dnf install jetbrains-mono-fonts -y
+
 mkdir ~/.local/share/fonts
 echo "Installing Jetbrain nerd font"
 curl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.tar.xz
