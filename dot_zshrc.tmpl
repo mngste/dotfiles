@@ -1,3 +1,10 @@
+# Uses:
+#   Plugins:      fast-syntax-highlighting, zsh-autosuggestions,
+#                 zsh-history-substring-search
+#   Prompt:       starship
+#   Navigation:   zoxide, fzf, fd
+#   CLI tools:    eza, bat, nvim, ripgrep
+
 autoload -Uz compinit
 compinit
 
@@ -7,26 +14,10 @@ compinit
 
 export EDITOR='nvim'
 export GITUSER="mngste"
-export WORKSPACE=$HOME/workspace
-export DOTFILES=$HOME/.local/share/chezmoi
-export SCRIPTS="$WORKSPACE/scripts"
 export TERM=screen-256color
 export XDG_CONFIG_HOME=$HOME/.config
-export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
-export PATH=$HOME/bin:$SCRIPTS:$PATH
-export GOROOT=/usr/local/go
-export GOPATH=$HOME/go
-export LOCAL_BIN=$HOME/.local
-export PATH=$GOPATH/bin:$GOROOT/bin:$LOCAL_BIN/bin:$PATH
-export ZDOTDIR=$HOME/zsh
-
-
-# Uses:
-#   Plugins:      fast-syntax-highlighting, zsh-autosuggestions,
-#                 zsh-history-substring-search
-#   Prompt:       starship
-#   Navigation:   zoxide, fzf, fd
-#   CLI tools:    eza, bat, nvim, ripgrep
+export ZDOTDIR=$XDG_CONFIG_HOME/zsh
+export PATH="$HOME/.local/bin:$PATH"
 
 # =========================================================
 # History
@@ -72,7 +63,6 @@ function y() {
 # Initialize zoxide - starship - ssh-agent
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
-eval "$(ssh-agent -s)"
 
 # =========================================================
 # Completion
