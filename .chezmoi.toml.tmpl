@@ -27,7 +27,7 @@
 {{- end -}}
 
 {{- if not $ephemeral -}}
-{{-   if eq $hostname "thinkpad" "thinkcentre" -}}
+{{-   if eq $hostname "thinkpad" -}}
 {{-     $personal = true -}}
 {{-   else if eq $hostname "PO25-0033" -}}
 {{-     $work = true -}}
@@ -41,9 +41,9 @@
 {{- end -}}
 
 {{- $name := "mngste" -}}
-{{- $email := "mangouste@mosaurus.com" -}}
+{{- $email := "admin@kubezi.com" -}}
 {{- if $work -}}
-{{-   $email = "mangouste@mosaurus.com" -}}
+{{-   $email = "admin@kubezi.com" -}}
 {{- end -}}
 
 
