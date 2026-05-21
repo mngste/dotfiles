@@ -19,6 +19,6 @@ hotkey-overlay {
 }
 
 cursor {
-  xcursor-theme "Bibata-Modern-Ice"
+  xcursor-theme "Bibata-Modern-Classic"
   xcursor-size 24
 }
