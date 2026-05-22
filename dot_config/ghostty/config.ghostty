@@ -19,25 +19,26 @@ window-padding-x = 0
 
 # utils
 #focus-follows-mouse = true
-copy-on-select = clipboard
+copy-on-select = clipboard #or false
 #macos-non-native-fullscreen = true
 window-save-state = always
 window-new-tab-position = end
-shell-integration-features = no-title
+shell-integration-features = no-title #or no-cursor
 clipboard-paste-protection = false
+selection-invert-fg-bg = true
 
-# keybinds
+### keybinds ###
 keybind = super+shift+t=prompt_surface_title
 keybind = super+arrow_left=previous_tab
 keybind = super+arrow_right=next_tab
 
-# Use Vim key bindings for new splits
+# use Vim key bindings for new splits
 keybind = ctrl+shift+k=new_split:up
 keybind = ctrl+shift+j=new_split:down
 keybind = ctrl+shift+h=new_split:left
 keybind = ctrl+shift+l=new_split:right
 
-# Use Vim key bindings for moving between splits
+# use Vim key bindings for moving between splits
 keybind = ctrl+alt+k=goto_split:up
 keybind = ctrl+alt+j=goto_split:down
 keybind = ctrl+alt+h=goto_split:left
@@ -46,6 +47,30 @@ keybind = ctrl+alt+l=goto_split:right
 # delete split
 keybind = ctrl+shift+w=close_surface
 
-# Map Ctrl + Shift + R to reload the config
+# map Ctrl + Shift + R to reload the config
 keybind = ctrl+shift+r=reload_config
+
+# enter / exit mode "copy"
+keybind = ctrl+space=toggle_keymap:copymode
+
+# mode copy like neovim
+keymap.copymode = {
+  "q" = "toggle_keymap:default",
+
+  "h" = "scroll_left",
+  "j" = "scroll_down",
+  "k" = "scroll_up",
+  "l" = "scroll_right",
+
+  "g" = "scroll_to_top",
+  "G" = "scroll_to_bottom",
+  "ctrl+u" = "page_up",
+  "ctrl+d" = "page_down",
+
+  "v" = "start_selection:char",
+  "V" = "start_selection:line",
+
+  "y" = "copy_to_clipboard",
+  "esc" = "clear_selection",
+}
 
