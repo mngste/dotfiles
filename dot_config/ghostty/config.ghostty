@@ -65,7 +65,7 @@ keymap.copymode = {
   "g" = "scroll_to_top",
   "G" = "scroll_to_bottom",
   "ctrl+u" = "page_up",
-  "ctrl+d" = "page_down",
+  "ctrl+i" = "page_down",
 
   "v" = "start_selection:char",
   "V" = "start_selection:line",
