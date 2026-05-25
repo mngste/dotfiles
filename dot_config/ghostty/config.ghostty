@@ -50,27 +50,3 @@ keybind = ctrl+shift+w=close_surface
 # map Ctrl + Shift + R to reload the config
 keybind = ctrl+shift+r=reload_config
 
-# enter / exit mode "copy"
-keybind = ctrl+space=toggle_keymap:copymode
-
-# mode copy like neovim
-keymap.copymode = {
-  "q" = "toggle_keymap:default",
-
-  "h" = "scroll_left",
-  "j" = "scroll_down",
-  "k" = "scroll_up",
-  "l" = "scroll_right",
-
-  "g" = "scroll_to_top",
-  "G" = "scroll_to_bottom",
-  "ctrl+u" = "page_up",
-  "ctrl+i" = "page_down",
-
-  "v" = "start_selection:char",
-  "V" = "start_selection:line",
-
-  "y" = "copy_to_clipboard",
-  "esc" = "clear_selection",
-}
-
