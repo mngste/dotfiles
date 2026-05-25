@@ -19,11 +19,11 @@ window-padding-x = 0
 
 # utils
 #focus-follows-mouse = true
-copy-on-select = clipboard #or false
+copy-on-select = clipboard
 #macos-non-native-fullscreen = true
 window-save-state = always
 window-new-tab-position = end
-shell-integration-features = no-title #or no-cursor
+shell-integration-features = no-title
 clipboard-paste-protection = false
 selection-invert-fg-bg = true
 
