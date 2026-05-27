@@ -19,7 +19,7 @@
 {{ $classicSnaps := list -}}
 
 {{ if eq .osid "linux-debian" "linux-ubuntu" -}}
-{{   $packages = concat $packages (list "lsd") -}}
+{{   $packages = concat $packages (list "") -}}
 {{ end -}}
 
 {{ if eq .osid "linux-fedora" -}}
