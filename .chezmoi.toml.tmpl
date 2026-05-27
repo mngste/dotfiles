@@ -60,10 +60,6 @@ sourceDir = {{ .chezmoi.sourceDir | quote }}
 
 {{- if lookPath "podman" }}
 
-[cd]
-    command = "zsh"
-    args = ["-l"]
-
 [docker]
     command = "podman"
 {{- end }}
