@@ -12,8 +12,6 @@
      "ripgrep"
      "shellcheck"
      "units"
-     "zsh"
-     "lsd"
      "btop"
      "gpg" -}}
 
@@ -21,15 +19,15 @@
 {{ $classicSnaps := list -}}
 
 {{ if eq .osid "linux-debian" "linux-ubuntu" -}}
-{{   $packages = concat $packages (list "") -}}
+{{   $packages = concat $packages (list "lsd") -}}
 {{ end -}}
 
 {{ if eq .osid "linux-fedora" -}}
-{{   $packages = concat $packages (list "chezmoi" "rofi" "fastfetch") -}}
+{{   $packages = concat $packages (list "chezmoi" "rofi" "fastfetch" "zsh") -}}
 {{ end -}}
 
 {{ if eq .osid "linux-arch" -}}
-{{   $packages = concat $packages (list "") -}}
+{{   $packages = concat $packages (list "zsh") -}}
 {{ end -}}
 
 {{ if not .headless -}}
