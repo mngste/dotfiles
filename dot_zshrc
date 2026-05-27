@@ -99,6 +99,8 @@ alias today='date +%Y-%m-%d'
 alias md="mkdir"
 alias update='sudo dnf update && sudo dnf upgrade'
 alias ssh-eval='eval "$(ssh-agent -s)"'
+alias spc='ssh-eval && pass-cli login'
+alias spcl='pass-cli ssh-agent load'
 
 #alias cd
 alias nconf='cd $HOME/.config/nvim/'
