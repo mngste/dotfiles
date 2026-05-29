@@ -1,212 +1,242 @@
+// -*- mode: jsonc -*-
 {
-  "layer": "top",
-  "position": "right",
-  "spacing": 16,
-  // "margin-top": 5,
-  // "margin-bottom": 5,
-  "reload_style_on_change": true,
-  "modules-left": [
-    "custom/notification",
-    "clock",
-    "battery",
-    "backlight",
-    "wireplumber",
-    "temperature",
-    "cpu",
-    "memory",
-    "privacy",
-  ],
-  "modules-center": [
-    "niri/workspaces",
-  ],
-  "modules-right": [
-    "mpris",
-    "tray",
-    "wlr/taskbar",
-  ],
-  "cpu": {
-    "interval": 10,
-    "format": "{icon}",
-    "tooltip-format": "󰍛 {usage}% {avg_frequency}",
-    "format-icons": [
-      "󰫃",
-      "󰫄",
-      "󰫅",
-      "󰫆",
-      "󰫇",
-      "󰫈"
-    ]
-  },
-  "backlight": {
-    "device": "intel_backlight",
-    "format": "{icon}",
-    "tooltip-format": "{icon} {percent}%",
-    "format-icons": [
-      "󰃞",
-      "󰃝",
-      "󰃟",
-      "󰃠"
+    "layer": "top",
+    "position": "left",
+    //"height"
+    "margin-top": 4,
+    "margin-bottom": 4,
+    "margin-left": 4,
+    "width": 40,
+
+    "modules-left": [
+        "group/power",
+        "custom/playpause",
+        "custom/wallpaper",
+        "niri/workspaces"
     ],
-  },
-  "memory": {
-    "interval": 10,
-    "format": "{icon}",
-    "tooltip-format": " {percentage}% - {swapPercentage}%\n{used:0.1f}G/{total:0.1f}G\n{swapUsed:0.1f}G/{swapTotal:0.1f}G",
-    "tooltip": true,
-    "format-icons": [
-      "󰝦",
-      "󰪞",
-      "󰪟",
-      "󰪠",
-      "󰪡",
-      "󰪢",
-      "󰪣",
-      "󰪤",
-      "󰪥"
+
+    "modules-center": [
+        "niri/window"
     ],
-  },
-  "temperature": {
-    "critical-threshold": 80,
-    "format": "{icon}",
-    "tooltip": true,
-    "tooltip-format": "{temperatureC}°C",
-    "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      ""
+
+    "modules-right": [
+        "network",
+        "group/apps",
+        "group/stats",
+        "clock"
     ],
-  },
-  "privacy": {
-    "icon-spacing": 4,
-    "icon-size": 14,
-    "transition-duration": 250,
-    "modules": [
-      {
-        "type": "screenshare",
-        "tooltip": true,
-        "tooltip-icon-size": 10,
-      },
-      {
-        "type": "audio-out",
-        "tooltip": true,
-        "tooltip-icon-size": 10,
-      },
-      {
-        "type": "audio-in",
-        "tooltip": true,
-        "tooltip-icon-size": 10,
-      },
-    ],
-  },
-  "clock": {
-    "format": "{:%I\n%M\n%p}",
-    "tooltip-format": "{:%A, %B %d, %Y (%I:%M %p)}",
-  },
-  "battery": {
-    //"bat": "BAT2",
-    "interval": 60,
-    "states": {
-      "good": 95,
-      "warning": 30,
-      "critical": 20,
+
+    "clock": {
+        // "timezone": "America/New_York",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%d\n%m\n%y}",
+        "format": "{:%H\n%M}",
+        "interval": 60
     },
-    "format": "{icon}",
-    "format-charging": "",
-    "tooltip-format": "Battery: {capacity}%\n{timeTo}\nHealth: {health}\nCycles: {cycles}",
-    "format-full": "⚡",
-    "format-icons": [
-      "󰂎",
-      "󰁺",
-      "󰁻",
-      "󰁼",
-      "󰁽",
-      "󰁾",
-      "󰁿",
-      "󰂀",
-      "󰂁",
-      "󰂂",
-      "󰁹"
-    ],
-  },
-  "wireplumber": {
-    "format": "{icon}",
-    "tooltip": true,
-    "tooltip-format": "{icon} {volume}%\n{node_name} {format_source}",
-    "format-muted": "",
-    "format-icons": [
-      "",
-      "",
-      ""
-    ],
-    "scroll-step": 0.2,
-    "max-volume": 100,
-    "on-click": "pavucontrol",
-    "on-click-right": "qpwgraph",
-  },
-  "niri/workspaces": {
-    "format": "{icon}",
-    "format-icons": {
-      // Named workspaces
-      "dev": "󰚗",
-      "web": "",
-      "entertainment": "",
-      // Icons by state
-      // "active": ""
-      "default": ""
+
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{volume}\n{icon}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": "MUT\n󰝟",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pactl set-sink-mute 0 toggle",
+        "tooltip": false,
+        "justify": "center",
+        "reverse-scrolling": true
     },
-  },
-  "wlr/taskbar": {
-    "format": "{icon}",
-    "icon-size": 12,
-    "icon-theme": "JetBrainsNerdMono",
-    "tooltip-format": "{title}",
-    "on-click": "activate",
-    "on-click-middle": "close",
-  },
-  "mpris": {
-    "format": "{player_icon} {dynamic}",
-    "format-paused": "{status_icon} <i>{dynamic}</i>",
-    "max-length": 30,
-    "rotate": 90,
-    "player-icons": {
-      "default": "󰎆 ",
-      "cmus": "",
-      "mpv": "🎵",
-      "vlc": "🎬",
-      "spotify": " ",
+
+    "pulseaudio/slider": {
+        "min": 0,
+        "max": 100,
+        "orientation": "vertical"
     },
-    "status-icons": {
-      "paused": "⏸",
+
+    "group/audio": {
+        "modules" : [
+            "pulseaudio",
+            "pulseaudio/slider"
+        ],
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 500,
+            "transition-left-to-right": true
+        }
     },
-    "on-click": "playerctl play-pause",
-    "on-click-right": "playerctl next",
-    "smooth-scrolling-threshold": 10,
-    "on-scroll-down": "playerctl previous",
-  },
-  "tray": {
-    "icon-size": 14,
-    "spacing": 10,
-  },
-  "custom/notification": {
-    "tooltip": false,
-    "format": "{}\n{icon}",
-    "format-icons": {
-      "notification": "<span foreground='red'><sup></sup></span>",
-      "none": "",
-      "dnd-notification": "<span foreground='red'><sup></sup></span>",
-      "dnd-none": "",
-      "inhibited-notification": "<span foreground='red'><sup></sup></span>",
-      "inhibited-none": "",
-      "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
-      "dnd-inhibited-none": "",
+
+    "backlight": {
+        "format": "{percent}\n{icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""],
+        "tooltip": false,
+        "justify": "center",
+        "reverse-scrolling": true
     },
-    "return-type": "json",
-    "exec-if": "which swaync-client",
-    "exec": "swaync-client -swb",
-    "on-click": "swaync-client -t -sw",
-    "on-click-right": "swaync-client -d -sw",
-    "escape": true,
-  },
+
+    "backlight/slider": {
+        "min": 3,
+        "max": 100,
+        "orientation": "vertical",
+    },
+
+    "group/brightness": {
+        "modules" : [
+            "backlight",
+            "backlight/slider"
+        ],
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 500,
+            "transition-left-to-right": true
+        }
+    },
+
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}\n{icon}",
+        "format-full": "{capacity}\n{icon}",
+        "format-charging": "{capacity}\n",
+        "format-plugged": "{capacity}\n",
+        //"format-alt": "{time} {icon}",
+        "tooltip-format": "{power} W, {timeTo}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""],
+        "justify": "center"
+    },
+
+    "group/stats": {
+        "modules": [
+            "battery",
+            "group/audio",
+            "group/brightness",
+        ],
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 750,
+            "transition-left-to-right": false
+        }
+    },
+    
+    "niri/window": {
+        "tooltip": false,
+        "format": "{}",
+        "rotate": 270,
+        "rewrite": {
+            "^null$": "Desktop"
+        }
+    },
+
+    "custom/appmenu": {
+        "format": "󰀻",
+        "on-click": "niri msg action toggle-overview",
+        "tooltip": false
+    },
+
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "on-click": "activate",
+        "on-click-right": "close"
+    },
+
+    "group/apps": {
+        "modules" : [
+            "custom/appmenu",
+            "wlr/taskbar"
+        ],
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 500,
+            "transition-left-to-right": false
+        }
+    },
+
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": " ",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        //"tooltip-format": "{ifname} via {gwaddr} ",
+        "tooltip-format": "{essid}: {ipaddr}",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}: {essid}",
+        "rotate": 270
+    },
+
+    "group/power": {
+        "modules": [
+            "custom/powerbutton",
+            "custom/reboot",
+            "custom/suspend",
+            "custom/lock",
+            "custom/idlekiller",
+            "user",
+        ],
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 500
+        }
+    },
+
+    "custom/powerbutton": {
+        "format": "⏻",
+        "on-click": "poweroff",
+        "tooltip-format": "Power Off"
+    },
+
+    "custom/reboot": {
+        "format": "󰜉",
+        "on-click": "reboot",
+        "tooltip-format": "Reboot"
+    },
+
+    "custom/suspend": {
+        "format": "",
+        "on-click": "systemctl suspend",
+        "tooltip-format": "Suspend"
+    },
+
+    "custom/lock": {
+        "format": "󰍁",
+        "on-click": "hyprlock",
+        "tooltip-format": "Lock"
+    },
+
+    "custom/idlekiller": {
+        "format": "",
+        "on-click": "pkill hypridle || hypridle",
+        "tooltip-format": "Inhibit Idle"
+    },
+
+    "user": {
+        "format": "{work_H}:{work_M}:{work_S} ↑",
+        "interval": 60,
+        "rotate": 270,
+    },
+
+    "custom/playpause": {
+        "format": "󰐎",
+        "on-click": "playerctl play-pause",
+        "tooltip": false
+    },
+
+    "custom/wallpaper": {
+        "format": "󰸉",
+        "on-click": "qs ipc call panelWindow toggleWallpaperSwitcher",
+        "tooltip": false
+    }
 }
