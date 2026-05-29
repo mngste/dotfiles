@@ -16,7 +16,9 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "gruvbox",
+      -- colorscheme = "gruvbox",
+      -- tokyonight_night
+      style = "night",
     },
   },
 
@@ -193,5 +195,13 @@ return {
         "flake8",
       },
     },
+  },
+
+  {
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    config = true
+    -- use opts = {} for passing setup options
+    -- this is equivalent to setup({}) function
   },
 }
