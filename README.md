@@ -8,16 +8,13 @@ chezmoi init --apply mngste
 sudo pacman -Sy niri
 ```
 
-## install noctalia
+## install noctalia v5
 ```
-sudo yay -S noctalia-shell
-```
-```
-sudo yay -S noctalia-shell-git
+sudo yay -S noctalia-git
 ```
 
 ### compositor
-[niri](https://docs.noctalia.dev/v4/getting-started/compositor-settings/niri/)
+[niri v5](https://docs.noctalia.dev/v5/getting-started/compositor-settings/niri/)
 
 ## pywalfox
 
