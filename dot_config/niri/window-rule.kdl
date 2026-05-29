@@ -65,7 +65,7 @@ window-rule {
 }
 
 window-rule {
-    match app-id=r#"org.kde.dolphin"#
+    match app-id=r#"org.gnome.nautilus"#
     opacity 0.92
     background-effect {
         blur true
