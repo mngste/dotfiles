@@ -16,7 +16,6 @@ export EDITOR='nvim'
 export GITUSER="mngste"
 export TERM=screen-256color
 export XDG_CONFIG_HOME=$HOME/.config
-export ZDOTDIR=$XDG_CONFIG_HOME/conf-zsh
 export PATH="$HOME/.local/bin:$PATH"
 
 # =========================================================
