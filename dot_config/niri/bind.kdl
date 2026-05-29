@@ -10,7 +10,7 @@ binds {
     // Mod+D hotkey-overlay-title="Run an Application: rofi" { spawn-sh "rofi -show combi"; }
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     // Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
-    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "$HOME/.config/swaylock/lock.sh" }
+    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "$HOME/.config/swaylock/lock.sh"; }
     Mod+B hotkey-overlay-title="Run an Application: firefox" { spawn "firefox"; }
     Mod+Alt+B hotkey-overlay-title="Run helium with tabs" { spawn-sh "helium -new-tab -url https://myhordes.de/ -new-tab -url https://gesthordes.fr/ -new-tab -url https://discord.com/ -new-tab -url https://docs.google.com/spreadsheets/d/12CWiOyVorvrKWWtb7bUvknxlSnsXaKMYXK94cypjUuE/edit?gid=237772576#gid=237772576"; }
     Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
