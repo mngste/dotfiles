@@ -27,7 +27,7 @@
 {{ end -}}
 
 {{ if eq .osid "linux-arch" -}}
-{{   $packages = concat $packages (list "zsh" "chezmoi" "mako" "fuzzel" "waybar" "xdg-desktop-portal-gtk" "xdg-desktop-portal-gnome" "swaybg" "swayidle" "swaylock" "xwayland-satellite" "udiskie" ) -}}
+{{   $packages = concat $packages (list "zsh" "chezmoi" "mako" "fuzzel" "waybar" "xdg-desktop-portal-gtk" "xdg-desktop-portal-gnome" "swaybg" "swayidle" "swaylock" "xwayland-satellite" "udiskie" "obs-studio" ) -}}
 {{ end -}}
 
 {{ if not .headless -}}
