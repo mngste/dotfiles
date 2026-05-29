@@ -1,7 +1,7 @@
 {
   "layer": "top",
-  "position": "right",
-  "margin-bottom": 0,
+  "position": "top",
+  "margin-bottom": -10,
   "spacing" : 0,
   "modules-left": [
   "niri/workspaces",
