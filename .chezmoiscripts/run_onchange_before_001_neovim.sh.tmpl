@@ -10,4 +10,9 @@ rm nvim-linux-x86_64.tar.gz
 {{ else if eq .osid "linux-fedora" -}}
 #!/bin/sh
 sudo dnf install -y neovim python3-neovim
+
+{{ else if eq .osid "linux-arch" -}}
+#!/bin/sh
+sudo pacman-Sy neovim
+
 {{ end -}}
