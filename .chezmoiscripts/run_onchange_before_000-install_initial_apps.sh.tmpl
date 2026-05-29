@@ -28,22 +28,22 @@
 {{ end -}}
 
 {{ if eq .osid "linux-arch" -}}
-{{   $archPackages := list 
-      "zsh" 
-      "chezmoi" 
-      "eza" 
-      "mako" 
-      "fuzzel" 
-      "base-devel" 
-      "waybar" 
-      "xdg-desktop-portal-gtk" 
-      "xdg-desktop-portal-gnome" 
-      "swaybg" 
-      "swayidle" 
-      "xwayland-satellite" 
-      "udiskie" 
-      "obs-studio" 
-      "nautilus"
+{{ $archPackages := list 
+     "zsh" 
+     "chezmoi" 
+     "eza" 
+     "mako" 
+     "fuzzel" 
+     "base-devel" 
+     "waybar" 
+     "xdg-desktop-portal-gtk" 
+     "xdg-desktop-portal-gnome" 
+     "swaybg" 
+     "swayidle" 
+     "xwayland-satellite" 
+     "udiskie" 
+     "obs-studio" 
+     "nautilus"
    -}}
 {{   $packages = concat $packages $archPackages -}}
 {{ end -}}
