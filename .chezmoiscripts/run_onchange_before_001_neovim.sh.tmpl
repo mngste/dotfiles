@@ -13,6 +13,6 @@ sudo dnf install -y neovim python3-neovim
 
 {{ else if eq .osid "linux-arch" -}}
 #!/bin/sh
-sudo pacman-Sy neovim
+sudo pacman -Sy neovim
 
 {{ end -}}
