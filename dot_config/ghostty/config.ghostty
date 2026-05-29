@@ -4,11 +4,7 @@ background-opacity = 0.5
 #background-blur = true
 
 # themes
-#theme = Catppuccin Macchiato
-#theme = Banana Blueberry
-#theme = Ayu
-#theme = Catppuccin Mocha
-#theme = Challenger Deep
+#theme = "tokyonight_night"
 
 # Turn off window decorations
 window-decoration = none
