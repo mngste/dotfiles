@@ -1,6 +1,4 @@
-{{- if .personal -}}
-
-{{- if eq .osid "linux-fedora" -}}
+{{- if and (.personal) (eq .osid "linux-fedora") -}}
 #!/bin/sh
 
 sudo dnf install jetbrains-mono-fonts -y
@@ -13,13 +11,10 @@ tar xvf JetBrainsMono.tar -C ~/.local/share/fonts
 rm JetBrainsMono.tar
 fc-cache -f -v
 
-
-{{- else if eq .osid "linux-arch" -}}
+{{- else if and (.personal) (eq .osid "linux-arch") -}}
 
 #!/bin/sh
 sudo pacman -Sy ttf-jetbrains-mono-nerd ttf-jetbrains-mono
-
-{{- end -}}
 
 {{- end -}}
 
