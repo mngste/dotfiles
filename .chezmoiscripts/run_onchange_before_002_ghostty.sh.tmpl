@@ -10,7 +10,7 @@ sudo dnf install ghostty -y
 #!/bin/sh
 
 # Install ghostty terminal emulator
-yay -S --noconfirm --needed ghostty
+sudo pacman -Sy ghostty
 
 # make ghostty the default terminal
 xdg-settings set default-terminal ghostty
