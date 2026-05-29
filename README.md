@@ -5,20 +5,17 @@ chezmoi init --apply mngste
 ```
 ## install niri
 ```
-sudo dnf install niri
+sudo pacman -Sy niri
 ```
 
 ## install noctalia
 ```
-sudo dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
+sudo yay -S noctalia-shell
 ```
 ```
-sudo dnf install noctalia-shell
+sudo yay -S noctalia-shell-git
 ```
-### activate
-```
-systemctl --user add-wants niri.service noctalia-shell
-```
+
 ### compositor
 [niri](https://docs.noctalia.dev/v4/getting-started/compositor-settings/niri/)
 
