@@ -8,9 +8,6 @@ sudo dnf install starship -y
 #!/bin/sh
 
 # Install ghostty terminal emulator
-yay -S --noconfirm --needed starship
-
-# make ghostty the default terminal
-xdg-settings set default-terminal starship
+sudo pacman -Sy starship
 
 {{ end -}}
