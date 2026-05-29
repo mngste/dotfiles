@@ -1,0 +1,8 @@
+{{ if eq .osid "linux-arch" -}}
+#!/bin/sh
+
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+
+{{ end -}}
