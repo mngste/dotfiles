@@ -8,6 +8,6 @@ sudo dnf install zoxide -y
 {{ else if eq .osid "linux-arch" -}}
 #!/bin/sh
 
-sudo pacman -Sy yazi ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg imagemagick
+sudo pacman -S --needed --noconfirm yazi ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg imagemagick
 
 {{ end -}}
