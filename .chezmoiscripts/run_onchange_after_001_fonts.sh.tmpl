@@ -14,7 +14,7 @@ fc-cache -f -v
 {{- else if and (.personal) (eq .osid "linux-arch") -}}
 
 #!/bin/sh
-sudo pacman -Sy ttf-jetbrains-mono-nerd ttf-jetbrains-mono
+sudo pacman -S --needed --noconfirm ttf-jetbrains-mono-nerd ttf-jetbrains-mono
 
 {{- end -}}
 
