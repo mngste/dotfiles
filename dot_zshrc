@@ -164,6 +164,19 @@ alias gmg='git merge'
 alias gpf='git push --force'
 alias lg='lazygit'
 
+#system arch
+alias update='yay -Syu'
+alias install='yay -S'
+alias remove='yay -Rns'
+alias search='yay -Ss'
+alias info='yay -Si'
+# List explicitly installed
+alias installed='pacman -Qe'
+# List orphans
+alias orphans='pacman -Qtd'
+# Clean cache
+alias cleanup='yay -Sc && yay -Rns $(pacman -Qtdq) 2>/dev/null'
+
 # gcap: commit all and push
 gcap() {
     git commit -a -m $1
