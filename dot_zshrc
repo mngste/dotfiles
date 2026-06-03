@@ -26,7 +26,7 @@ HISTFILE="$HOME/zsh/history"
 HISTSIZE=100000
 SAVEHIST=100000
 
-setopt APPEND_HISTORY
+setopt APPEND_HISTORY 
 setopt SHARE_HISTORY
 setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_SPACE
@@ -74,6 +74,8 @@ zstyle ':completion:*' menu select
 # Example: "doc" can complete to "Documents"
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'  # lowercase input matches upper and lower
 
+# pass-cli completion
+fpath=(~/.zfunc $fpath)
 
 ## ZSH PLUGINS ##
 # Source usefulsh plugins
