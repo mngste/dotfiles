@@ -4,7 +4,7 @@
 #   Prompt:       starship
 #   Navigation:   zoxide, fzf, fd
 #   CLI tools:    eza, bat, nvim, ripgrep
-
+fpath=(~/.zfunc $fpath)
 autoload -Uz compinit
 compinit
 
@@ -73,9 +73,6 @@ zstyle ':completion:*' menu select
 # Make completion case-insensitive
 # Example: "doc" can complete to "Documents"
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'  # lowercase input matches upper and lower
-
-# pass-cli completion
-fpath=(~/.zfunc $fpath)
 
 ## ZSH PLUGINS ##
 # Source usefulsh plugins
