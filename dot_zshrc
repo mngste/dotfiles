@@ -4,6 +4,7 @@
 #   Prompt:       starship
 #   Navigation:   zoxide, fzf, fd
 #   CLI tools:    eza, bat, nvim, ripgrep
+
 fpath=(~/.zfunc $fpath)
 autoload -Uz compinit
 compinit
@@ -56,7 +57,7 @@ function y() {
 }
 
 # =========================================================
-# Smart directory navigation
+# init smart directory navigation & starship
 # =========================================================
 
 # Initialize zoxide - starship - ssh-agent
