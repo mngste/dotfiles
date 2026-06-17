@@ -29,10 +29,10 @@ input {
     }
 }
 
-cursor {
-  xcursor-theme "Bibata-Modern-Ice"
-  xcursor-size 24
-}
+//cursor {
+//  xcursor-theme "Bibata-Modern-Ice"
+//  xcursor-size 24
+//}
 
 // https://niri-wm.github.io/niri/Configuration:-Outputs
 // Remember to uncomment the node by removing "/-"!
