@@ -1,0 +1,7 @@
+{{ if eq .osid "linux-fedora" -}}
+#!/bin/sh
+
+sudo dnf copr enable imput/helium -y
+sudo dnf install helium-bin -y
+
+{{ end -}}
