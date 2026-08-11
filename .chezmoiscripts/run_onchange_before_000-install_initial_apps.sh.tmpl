@@ -10,7 +10,13 @@
      "openssh"
      "ripgrep"
      "shellcheck"
-     "btop" -}}
+     "btop"
+     "tree"
+     "chezmoi"
+     "zsh" 
+     "fastfetch"
+     "gimp"
+     "rofi" -}}
 
 {{ $snaps := list -}}
 {{ $classicSnaps := list -}}
@@ -20,7 +26,7 @@
 {{ end -}}
 
 {{ if eq .osid "linux-fedora" -}}
-{{   $packages = concat $packages (list "chezmoi" "rofi" "fastfetch" "zsh") -}}
+{{   $packages = concat $packages (list "eza" "trezor-common" "syncthing" "zoxide" "neovim" "python3-neovim" ) -}}
 {{ end -}}
 
 {{ if eq .osid "linux-arch" -}}
@@ -41,6 +47,7 @@
      "obs-studio" 
      "nautilus"
      "firefox"
+     "neovim"
    -}}
 {{   $packages = concat $packages $archPackages -}}
 {{ end -}}
@@ -50,7 +57,7 @@
 {{ end -}}
 
 {{ if .personal -}}
-{{   $packages = concat $packages (list "tmux" ) -}}
+{{   $packages = concat $packages (list ) -}}
 {{ end -}}
 
 {{ $sudo := "sudo " -}}
