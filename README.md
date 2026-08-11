@@ -3,30 +3,39 @@
 chezmoi cd
 chezmoi init --apply mngste
 ```
-## install niri
+
+## for fedora
+### proton pass cli
+```
+sudo curl -fsSL https://proton.me/download/pass-cli/install.sh | bash
+```
+visit [proton-drive-cli](https://proton.me/support/drive-cli)
+
+## for arch or nixos
+### install niri
 ```
 sudo pacman -Sy niri
 ```
 
-## install noctalia v5
+### install noctalia v5
 ```
 sudo yay -S noctalia-git
 ```
 
-### compositor
+#### compositor
 [niri v5](https://docs.noctalia.dev/v5/getting-started/compositor-settings/niri/)
 
-## pywalfox
+### pywalfox
 
-### install
+#### install
 ```
 pipx install pywalfox
 ```
-### add browser extension
+#### add browser extension
 ```
 https://addons.mozilla.org/en-US/firefox/addon/pywalfox/
 ```
-### in noctalia
+#### in noctalia
 `
 Open Settings → Color Scheme → Templates → Programs
 Toggle on Firefox (Pywalfox)
