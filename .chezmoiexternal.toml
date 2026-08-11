@@ -22,8 +22,3 @@
     exact = true
     stripComponents = 1
     refreshPeriod = "168h"
-[".tmux/plugins/tpm"]
-    type = "git-repo"
-    url = "https://github.com/tmux-plugins/tpm.git"
-    exact = true
-    refreshPeriod = "168h"
