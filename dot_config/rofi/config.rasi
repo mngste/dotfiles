@@ -7,8 +7,8 @@ configuration {
     drun-match-fields: "name";
     display-run: "menu:";
     display-drun: "アプリ:";
-    terminal: "ghostty";
-    ssh-client: "ssh";
+    terminal: "kitty";
+    ssh-client: "kitten ssh";
     ssh-command: "{terminal} -e {ssh-client} {host} [-p {port}]";
 }
 

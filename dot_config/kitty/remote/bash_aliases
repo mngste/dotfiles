@@ -1,0 +1,38 @@
+# ~/.bash_aliases sur les serveurs (copié par kitten ssh, voir ssh-homelab.conf)
+# Pas de dépendance : uniquement des commandes présentes partout.
+
+# Prompt coloré, hôte en orange pour bien voir qu'on est à distance
+PS1='\[\e[1;33m\]\u@\h\[\e[0m\]:\[\e[1;34m\]\w\[\e[0m\]\$ '
+
+HISTSIZE=10000
+HISTFILESIZE=20000
+HISTCONTROL=ignoreboth:erasedups
+
+# Éditeur : helix si installé, sinon nvim, sinon vi
+if command -v hx >/dev/null 2>&1; then
+    export EDITOR=hx
+elif command -v nvim >/dev/null 2>&1; then
+    export EDITOR=nvim
+else
+    export EDITOR=vi
+fi
+alias v='$EDITOR'
+
+alias ls='ls --color=auto'
+alias ll='ls -lh --color=auto'
+alias la='ls -lah --color=auto'
+alias md='mkdir -p'
+alias count='find . -type f | wc -l'
+
+# git
+alias g='git'
+alias gs='git status --short'
+alias gst='git status'
+
+# docker
+alias d='docker'
+alias dps='docker ps'
+alias dvls='docker volume ls'
+alias dcu='docker compose up -d'
+alias dcd='docker compose down'
+alias dcl='docker compose logs -f --tail=100'
