@@ -1,0 +1,23 @@
+# .zshrc léger pour les serveurs, utilisé seulement pendant une session kitten ssh
+# (ZDOTDIR pointe ici, voir ~/.config/kitty/ssh-homelab.conf).
+# Le ~/.zshrc du serveur n'est ni écrasé ni modifié : on le charge s'il existe.
+
+[ -f "$HOME/.zshrc" ] && source "$HOME/.zshrc"
+
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=10000
+SAVEHIST=10000
+setopt SHARE_HISTORY HIST_IGNORE_DUPS HIST_IGNORE_SPACE AUTOCD NOBEEP
+
+autoload -Uz compinit && compinit -u
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+
+# Prompt coloré, hôte en orange (sauf si le serveur a starship)
+if command -v starship >/dev/null 2>&1; then
+    eval "$(starship init zsh)"
+else
+    PROMPT='%B%F{yellow}%n@%m%f%b:%B%F{blue}%~%f%b%# '
+fi
+
+source "$HOME/.config/kitty-remote/shrc"
