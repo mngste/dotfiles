@@ -13,9 +13,16 @@ compinit
 # env
 # =========================================================
 
-export EDITOR='nvim'
+# Éditeur : helix si installé, sinon nvim
+if (( $+commands[hx] )); then
+  export EDITOR='hx'
+elif (( $+commands[helix] )); then   # Arch : la commande s'appelle helix
+  export EDITOR='helix'; alias hx='helix'
+else
+  export EDITOR='nvim'
+fi
 export GITUSER="mngste"
-export TERM=screen-256color
+# (ne pas forcer TERM : c'est le terminal qui le définit, xterm-kitty)
 export XDG_CONFIG_HOME=$HOME/.config
 export PATH="$HOME/.local/bin:$PATH"
 
@@ -97,6 +104,8 @@ fi
 alias today='date +%Y-%m-%d'
 alias md="mkdir"
 alias update='sudo dnf update && sudo dnf upgrade'
+# ssh : kitten ssh copie terminfo + config sur le serveur (voir ~/.config/kitty/ssh.conf)
+[[ $TERM == xterm-kitty ]] && alias ssh='kitten ssh'
 alias ssh-eval='eval "$(ssh-agent -s)"'
 alias spc='ssh-eval && pass-cli login'
 alias spcl='pass-cli ssh-agent load'
@@ -122,6 +131,7 @@ alias dot='cd $DOTFILES'
 # count files
 alias count='find . -type f | wc -l'
 alias v='nvim'
+alias h='hx'
 alias fv='nvim $(fzfb)'
 
 # tmux alias

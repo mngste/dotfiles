@@ -1,0 +1,58 @@
+{{- /* Kitty (poste avec écran) + Helix (partout, y compris serveurs) */ -}}
+{{ $sudo := "sudo " -}}
+{{ if eq .chezmoi.username "root" -}}
+{{   $sudo = "" -}}
+{{ end -}}
+
+{{ if eq .osid "linux-fedora" -}}
+#!/bin/sh
+set -eu
+
+{{ if not .headless -}}
+{{ $sudo }}dnf install -y kitty
+{{ end -}}
+{{ $sudo }}dnf install -y helix
+
+{{ if .personal -}}
+# Serveurs de langage pour Helix (YAML, compose, Dockerfile, bash, Markdown, TOML)
+{{ $sudo }}dnf install -y nodejs-npm
+{{ $sudo }}npm install -g yaml-language-server bash-language-server \
+  @microsoft/compose-language-service dockerfile-language-server-nodejs
+{{ $sudo }}dnf install -y marksman taplo || echo "marksman/taplo non dispo, ignoré"
+{{ end -}}
+
+{{ else if eq .osid "linux-arch" -}}
+#!/bin/sh
+set -eu
+
+{{ if not .headless -}}
+{{ $sudo }}pacman -S --needed --noconfirm kitty
+{{ end -}}
+# Sur Arch la commande s'appelle `helix` (alias hx dans .zshrc)
+{{ $sudo }}pacman -S --needed --noconfirm helix
+{{ if .personal -}}
+{{ $sudo }}pacman -S --needed --noconfirm yaml-language-server bash-language-server marksman taplo
+{{ end -}}
+
+{{ else if eq .osid "linux-debian" "linux-ubuntu" -}}
+#!/bin/sh
+set -eu
+
+if apt-cache show hx >/dev/null 2>&1; then
+    # Debian 13+ : paquet officiel
+    {{ $sudo }}apt-get install -y hx
+else
+    # Debian 12 / Ubuntu : .deb de la dernière release GitHub
+    arch="$(dpkg --print-architecture)"
+    url="$(curl -fsSL https://api.github.com/repos/helix-editor/helix/releases/latest \
+        | grep -o "https://[^\"]*_${arch}\.deb" | head -n1)" || true
+    if [ -z "$url" ]; then
+        echo "helix : .deb introuvable pour $arch, installe-le à la main" >&2
+        exit 0
+    fi
+    tmp="$(mktemp -d)"
+    curl -fsSL -o "$tmp/helix.deb" "$url"
+    {{ $sudo }}apt-get install -y "$tmp/helix.deb"
+    rm -rf "$tmp"
+fi
+{{ end -}}
