@@ -1,0 +1,10 @@
+# ~/.bash_login sur les serveurs (copié par kitten ssh)
+# kitten ssh lance bash en shell de connexion : bash lit ~/.bash_profile, sinon
+# ~/.bash_login, sinon ~/.profile. Ce fichier charge donc d'abord ~/.profile
+# (comportement normal du serveur), puis notre config.
+# Utile surtout pour root, dont le .bashrc Debian ne lit pas ~/.bash_aliases.
+[ -f "$HOME/.profile" ] && . "$HOME/.profile"
+
+case $- in
+    *i*) [ -f "$HOME/.config/kitty-remote/bash_extra" ] && . "$HOME/.config/kitty-remote/bash_extra" ;;
+esac

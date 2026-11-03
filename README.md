@@ -87,7 +87,7 @@ Dans kitty, `ssh` est un alias de `kitten ssh`, qui envoie à chaque connexion :
 - **sur tous les hôtes** : le terminfo de kitty (plus d'erreur `unknown terminal`) et l'intégration shell ;
 - **sur le homelab** (`192.168.*`, voir `~/.config/kitty/ssh.conf`) : un prompt coloré (hôte en orange), les alias git/docker, `EDITOR` (hx, sinon nvim, sinon vi) et la config Helix. Ça marche avec **bash et zsh**.
 
-Rien n'est écrasé sur le serveur : les fichiers vont dans `~/.config/kitty-remote/`, sauf `~/.bash_aliases`, et le `~/.zshrc` du serveur reste chargé. Aucune installation n'est nécessaire côté serveur, sauf pour utiliser Helix ou nvim.
+Rien n’est écrasé sur le serveur : les fichiers vont dans `~/.config/kitty-remote/`, sauf `~/.bash_login` (qui charge d’abord le `~/.profile` du serveur, pour que ça marche aussi en root) et `~/.bash_aliases`. Le `~/.zshrc` du serveur reste chargé. Aucune installation n'est nécessaire côté serveur, sauf pour utiliser Helix ou nvim.
 
 Pour ajouter des hôtes, ajouter un bloc `hostname` dans `dot_config/kitty/ssh.conf`.
 
