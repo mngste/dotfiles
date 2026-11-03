@@ -1,0 +1,9 @@
+# ~/.ssh/config — géré par chezmoi (dépôt public : rien de privé ici)
+#
+# Les hôtes sont dans ~/.ssh/config.d/ (NON versionné), par ex. ~/.ssh/config.d/homelab.
+# Cette ligne doit rester avant tout bloc Host.
+Include config.d/*
+
+Host *
+    ServerAliveInterval 60
+    ServerAliveCountMax 3

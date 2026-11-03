@@ -89,7 +89,21 @@ Dans kitty, `ssh` est un alias de `kitten ssh`, qui envoie à chaque connexion :
 
 Rien n’est écrasé sur le serveur : les fichiers vont dans `~/.config/kitty-remote/`, sauf `~/.bash_login` (qui charge d’abord le `~/.profile` du serveur, pour que ça marche aussi en root) et `~/.bash_aliases`. Le `~/.zshrc` du serveur reste chargé. Aucune installation n'est nécessaire côté serveur, sauf pour utiliser Helix ou nvim.
 
-Pour ajouter des hôtes, ajouter un bloc `hostname` dans `dot_config/kitty/ssh.conf`.
+#### Hôtes privés (hors GitHub)
+
+Les noms et IP des machines ne sont pas dans le dépôt. Deux fichiers locaux, non versionnés, à créer sur chaque PC :
+
+- `~/.ssh/config.d/homelab` : les blocs `Host` (le `~/.ssh/config` versionné fait `Include config.d/*`) ;
+  ```
+  Host nas
+      HostName 192.168.1.20
+      User root
+  ```
+- `~/.config/kitty/ssh-hosts.conf` : les mêmes noms, pour que kitten ssh y envoie la config (ignoré s'il n'existe pas) ;
+  ```
+  hostname nas proxmox1 docker
+  include ssh-homelab.conf
+  ```
 
 ### Éditeurs
 
