@@ -1,11 +1,3 @@
-# ~/.bash_aliases sur les serveurs (lu par le .bashrc par défaut de Debian/Ubuntu)
+# ~/.bash_aliases sur les serveurs (lu par le .bashrc par défaut des utilisateurs Debian/Ubuntu)
 # Copié par kitten ssh, voir ~/.config/kitty/ssh-homelab.conf
-
-# Prompt coloré, hôte en orange pour bien voir qu'on est à distance
-PS1='\[\e[1;33m\]\u@\h\[\e[0m\]:\[\e[1;34m\]\w\[\e[0m\]\$ '
-
-HISTSIZE=10000
-HISTFILESIZE=20000
-HISTCONTROL=ignoreboth:erasedups
-
-[ -f "$HOME/.config/kitty-remote/shrc" ] && . "$HOME/.config/kitty-remote/shrc"
+[ -f "$HOME/.config/kitty-remote/bash_extra" ] && . "$HOME/.config/kitty-remote/bash_extra"

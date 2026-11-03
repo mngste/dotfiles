@@ -1,0 +1,13 @@
+# ~/.config/kitty-remote/bash_extra — prompt + alias pour bash sur les serveurs
+# Chargé par ~/.bash_login (root, shells de connexion) ou ~/.bash_aliases (utilisateurs Debian).
+# Peut être chargé deux fois sans effet de bord (le dernier chargement gagne).
+
+# Prompt coloré, hôte en orange pour bien voir qu'on est à distance
+PS1='\[\e[1;33m\]\u@\h\[\e[0m\]:\[\e[1;34m\]\w\[\e[0m\]\$ '
+
+HISTSIZE=10000
+HISTFILESIZE=20000
+HISTCONTROL=ignoreboth:erasedups
+shopt -s histappend
+
+[ -f "$HOME/.config/kitty-remote/shrc" ] && . "$HOME/.config/kitty-remote/shrc"
