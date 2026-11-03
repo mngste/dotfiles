@@ -62,6 +62,17 @@ window-rule {
     default-column-width {}
 }
 
+// kitty gère sa transparence lui-même (background_opacity) : pas d'opacité
+// niri en plus, sinon le texte devient transparent lui aussi. On garde le flou.
+window-rule {
+    match app-id="^kitty$"
+    opacity 1.0
+    background-effect {
+        blur true
+        xray false
+    }
+}
+
 window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     open-floating true
