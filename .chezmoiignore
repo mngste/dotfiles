@@ -1,6 +1,6 @@
 install.sh
 README.md
-assets/README.md
+assets
 
 {{ if .headless }}
 # Pas de bureau sur les machines sans écran
@@ -12,9 +12,11 @@ assets/README.md
 .config/alacritty
 .config/ghostty
 .local/bin/capture
+.local/share/backgrounds
 {{ else if ne .osid "linux-fedora" }}
 # Sway : seulement sur Fedora (s'appuie sur sway-config-fedora)
 .config/sway
 .config/waybar/sway.jsonc
 .local/bin/capture
+.local/share/backgrounds
 {{ end }}
