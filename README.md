@@ -118,6 +118,7 @@ Lancés automatiquement par `chezmoi apply` (dans `.chezmoiscripts/`), seulement
 | Script | Fedora | Arch | Debian/Ubuntu |
 |---|---|---|---|
 | `000` paquets de base (git, fzf, ripgrep, bat, btop, zsh…) | ✅ dnf | ✅ pacman | ✅ apt |
+| `000` bureau : Sway sur Fedora, niri/waybar/fuzzel sur Arch | sauf headless | ✅ | |
 | `001` neovim (dernière version) | | | ✅ |
 | `002` kitty + helix (+ LSP sur machine perso) | ✅ | ✅ | helix seul |
 | `003` starship | ✅ | ✅ | |
@@ -126,7 +127,6 @@ Lancés automatiquement par `chezmoi apply` (dans `.chezmoiscripts/`), seulement
 | `006` yay (AUR) | | ✅ | |
 | `007` curseurs Bibata | ✅ | ✅ | |
 | `008` navigateur Helium | ✅ | | |
-| `009` bureau Sway (config Fedora, fuzzel, waybar) | sauf headless | | |
 | après : zsh comme shell par défaut | sauf ephemeral | sauf ephemeral | sauf ephemeral |
 | après : polices JetBrains Mono (Nerd Font) | perso | perso | |
 
@@ -156,7 +156,7 @@ Définis dans `.chezmoi.toml.tmpl`, utilisables dans les templates (`{{ .persona
 
 ### Fedora : bureau Sway
 
-Le script `009` installe Sway avec la config du spin Fedora (`@swaywm` + `sway-config-fedora`). Le dépôt ne contient que les **changements** par rapport à cette config, dans `~/.config/sway/config.d/` :
+Le script `000` installe Sway avec la config du spin Fedora (`@swaywm` + `sway-config-fedora`). Le dépôt ne contient que les **changements** par rapport à cette config, dans `~/.config/sway/config.d/` :
 
 | Fichier | Contenu |
 |---|---|

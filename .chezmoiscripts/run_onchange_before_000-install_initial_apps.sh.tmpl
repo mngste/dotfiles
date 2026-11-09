@@ -29,6 +29,18 @@
 {{   $packages = concat $packages (list "eza" "trezor-common" "syncthing" "zoxide" "neovim" "python3-neovim" ) -}}
 {{ end -}}
 
+{{ if and (eq .osid "linux-fedora") (not .headless) -}}
+{{/* Bureau Sway : groupe Fedora + config du spin Sway (surchargée par ~/.config/sway/config.d) */ -}}
+{{ $fedoraDesktop := list
+     "@swaywm"
+     "sway-config-fedora"
+     "fuzzel"
+     "waybar"
+     "udiskie"
+   -}}
+{{   $packages = concat $packages $fedoraDesktop -}}
+{{ end -}}
+
 {{ if eq .osid "linux-arch" -}}
 {{ $archPackages := list 
      "zsh" 
@@ -77,7 +89,8 @@ set -eufo pipefail
 # fedora
 {{- else if eq .osid "linux-fedora" -}}
 {{ $sudo }}dnf update
-{{ $sudo }}dnf install -y {{ $packages | join " " }}
+# --allowerasing : sway-config-fedora remplace sway-config-upstream si besoin
+{{ $sudo }}dnf install -y --allowerasing {{ $packages | join " " }}
 
 # arch
 {{- else if eq .osid "linux-arch" -}}
