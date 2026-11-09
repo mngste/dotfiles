@@ -43,7 +43,7 @@ chezmoi cd            # ouvre un shell dans le dépôt
 | [niri](https://github.com/YaLTeR/niri) | Gestionnaire de fenêtres Wayland (défilement) | `~/.config/niri/` |
 | [sway](https://swaywm.org/) | Gestionnaire de fenêtres Wayland (tiling), sur Fedora | `~/.config/sway/config.d/` |
 | [noctalia](https://docs.noctalia.dev/) | Barre, notifications, fonds d'écran (lancé par niri) | — |
-| fuzzel, rofi | Lanceurs : fuzzel pour les applis, rofi pour fenêtres, commandes et SSH (même apparence) | `~/.config/fuzzel/`, `~/.config/rofi/` |
+| fuzzel, rofi | Lanceurs d'applications | `~/.config/fuzzel/`, `~/.config/rofi/` |
 | waybar, mako | Barre (niri : `config.jsonc`, Sway : `sway.jsonc`) et notifications | `~/.config/waybar/`, `~/.config/mako/` |
 | alacritty, ghostty | Anciens terminaux, configs gardées | `~/.config/alacritty/`, `~/.config/ghostty/` |
 
@@ -126,7 +126,7 @@ Lancés automatiquement par `chezmoi apply` (dans `.chezmoiscripts/`), seulement
 | `006` yay (AUR) | | ✅ | |
 | `007` curseurs Bibata | ✅ | ✅ | |
 | `008` navigateur Helium | ✅ | | |
-| `009` bureau Sway (config Fedora, fuzzel, rofi, waybar) | sauf headless | | |
+| `009` bureau Sway (config Fedora, fuzzel, waybar) | sauf headless | | |
 | après : zsh comme shell par défaut | sauf ephemeral | sauf ephemeral | sauf ephemeral |
 | après : polices JetBrains Mono (Nerd Font) | perso | perso | |
 
@@ -172,7 +172,6 @@ Un fichier qui porte le même nom qu'un fichier de `/usr/share/sway/config.d/` l
 |---|---|
 | `Super+Entrée` | kitty |
 | `Super+D` | fuzzel (applis) |
-| `Super+Shift+D` | rofi (fenêtres, commandes, SSH) |
 | `Super+B` | Firefox |
 | `Super+Q` | Fermer la fenêtre |
 | `Super+Alt+L` | Verrouiller |

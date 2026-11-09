@@ -1,4 +1,4 @@
-{{- /* Bureau Sway (Fedora, poste avec écran) : config Fedora + lanceurs + barre */ -}}
+{{- /* Bureau Sway (Fedora, poste avec écran) : config Fedora + fuzzel + waybar */ -}}
 {{ if and (eq .osid "linux-fedora") (not .headless) -}}
 #!/bin/sh
 set -eu
@@ -6,5 +6,5 @@ set -eu
 # @swaywm : sway, swaylock, swayidle, grim… ; sway-config-fedora : config du spin Sway
 # --allowerasing remplace sway-config-upstream si le groupe l'a installé
 sudo dnf install -y --allowerasing @swaywm sway-config-fedora
-sudo dnf install -y fuzzel rofi waybar
+sudo dnf install -y fuzzel waybar
 {{ end -}}
