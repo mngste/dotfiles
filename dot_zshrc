@@ -3,7 +3,7 @@
 #                 zsh-history-substring-search
 #   Prompt:       starship
 #   Navigation:   zoxide, fzf, fd
-#   CLI tools:    eza, bat, nvim, ripgrep
+#   CLI tools:    eza, bat, helix, ripgrep
 
 fpath=(~/.zfunc $fpath)
 autoload -Uz compinit
@@ -13,13 +13,13 @@ compinit
 # env
 # =========================================================
 
-# Éditeur : helix si installé, sinon nvim
+# Éditeur : helix si installé, sinon vi
 if (( $+commands[hx] )); then
   export EDITOR='hx'
 elif (( $+commands[helix] )); then   # Arch : la commande s'appelle helix
   export EDITOR='helix'; alias hx='helix'
 else
-  export EDITOR='nvim'
+  export EDITOR='vi'
 fi
 export GITUSER="mngste"
 # (ne pas forcer TERM : c'est le terminal qui le définit, xterm-kitty)
@@ -68,8 +68,9 @@ function y() {
 # =========================================================
 
 # Initialize zoxide - starship - ssh-agent
-eval "$(zoxide init zsh)"
-eval "$(starship init zsh)"
+# (starship n'est pas installé sur Debian/Ubuntu : prompt par défaut)
+(( $+commands[zoxide] )) && eval "$(zoxide init zsh)"
+(( $+commands[starship] )) && eval "$(starship init zsh)"
 
 # =========================================================
 # Completion
@@ -103,7 +104,6 @@ fi
 
 alias today='date +%Y-%m-%d'
 alias md="mkdir"
-alias update='sudo dnf update && sudo dnf upgrade'
 # ssh : kitten ssh copie terminfo + config sur le serveur (voir ~/.config/kitty/ssh.conf)
 [[ $TERM == xterm-kitty ]] && alias ssh='kitten ssh'
 alias ssh-eval='eval "$(ssh-agent -s)"'
@@ -111,28 +111,32 @@ alias spc='ssh-eval && pass-cli login'
 alias spcl='pass-cli ssh-agent load'
 
 #alias cd
-alias nconf='cd $HOME/.config/nvim/'
+alias hconf='cd $HOME/.config/helix/'
 
 #alias system info
 # Better ls
-alias ls='eza --icons'
-# Detailed listing
-alias ll='eza -lh --icons --git'
-# Detailed listing including hidden files
-alias la='eza -lah --icons --git'
-# Tree view
-alias tree='eza --tree --icons'
-# Reuse ls completions for eza (avoids defining a separate completion function)
-compdef eza=ls
+if (( $+commands[eza] )); then
+  alias ls='eza --icons'
+  # Detailed listing
+  alias ll='eza -lh --icons --git'
+  # Detailed listing including hidden files
+  alias la='eza -lah --icons --git'
+  # Tree view
+  alias tree='eza --tree --icons'
+  # Reuse ls completions for eza (avoids defining a separate completion function)
+  compdef eza=ls
+else                                   # Debian 12 : pas d'eza
+  alias ll='ls -lh'
+  alias la='ls -lah'
+fi
 
 # repos
 alias dot='cd $DOTFILES'
 
 # count files
 alias count='find . -type f | wc -l'
-alias v='nvim'
 alias h='hx'
-alias fv='nvim $(fzfb)'
+alias fh='hx $(fzfb)'
 
 # tmux alias
 alias tns='tmux new -s $(echo $(pwd) | xargs basename)'
@@ -174,16 +178,24 @@ alias gmg='git merge'
 alias gpf='git push --force'
 alias lg='lazygit'
 
-#system arch
-alias update='yay -Syu'
-alias install='yay -S'
-alias remove='yay -Rns'
-alias search='yay -Ss'
-alias info='yay -Si'
-# List explicitly installed
-alias installed='pacman -Qe'
-# List orphans
-alias orphans='pacman -Qtd'
+# gestionnaire de paquets selon l'OS
+if (( $+commands[yay] )); then         # Arch
+  alias update='yay -Syu'
+  alias install='yay -S'
+  alias remove='yay -Rns'
+  alias search='yay -Ss'
+  alias info='yay -Si'
+  alias installed='pacman -Qe'         # installés explicitement
+  alias orphans='pacman -Qtd'
+elif (( $+commands[dnf] )); then       # Fedora
+  alias update='sudo dnf upgrade --refresh'
+  alias install='sudo dnf install'
+  alias remove='sudo dnf remove'
+  alias search='dnf search'
+  alias info='dnf info'
+  alias installed='dnf repoquery --userinstalled'
+  alias orphans='dnf repoquery --unneeded'
+fi
 # Clean cache
 alias cleanup='yay -Sc && yay -Rns $(pacman -Qtdq) 2>/dev/null'
 

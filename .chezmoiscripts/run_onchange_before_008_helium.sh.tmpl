@@ -1,7 +1,8 @@
-{{ if eq .osid "linux-fedora" -}}
+{{ if and (eq .osid "linux-fedora") (not .headless) -}}
 #!/bin/sh
+set -eu
 
-sudo dnf copr enable imput/helium -y
-sudo dnf install helium-bin -y
+sudo dnf copr enable -y imput/helium
+sudo dnf install -y helium-bin
 
 {{ end -}}

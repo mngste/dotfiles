@@ -1,2 +1,18 @@
 install.sh
-lazy-lock.json
+README.md
+assets/README.md
+
+{{ if .headless }}
+# Pas de bureau sur les machines sans écran
+.config/niri
+.config/sway
+.config/fuzzel
+.config/waybar
+.config/mako
+.config/alacritty
+.config/ghostty
+{{ else if ne .osid "linux-fedora" }}
+# Sway : seulement sur Fedora (s'appuie sur sway-config-fedora)
+.config/sway
+.config/waybar/sway.jsonc
+{{ end }}

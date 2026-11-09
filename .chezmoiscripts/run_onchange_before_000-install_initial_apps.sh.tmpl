@@ -1,63 +1,66 @@
+{{- /*
+  Paquets natifs de l'OS (dnf / pacman / apt).
+  chezmoi n'est pas dans la liste : il est forcément déjà installé pour lancer ce script.
+*/ -}}
 {{ if eq .osid "linux-debian" "linux-raspbian" "linux-ubuntu" "linux-fedora" "linux-arch" -}}
 
+{{/* Partout, serveurs compris */ -}}
 {{ $packages := list
      "bat"
+     "btop"
      "curl"
+     "fastfetch"
      "fzf"
      "git"
      "git-lfs"
      "jq"
-     "openssh"
      "ripgrep"
      "shellcheck"
-     "btop"
      "tree"
-     "chezmoi"
-     "zsh" 
-     "fastfetch"
-     "gimp"
-     "rofi" -}}
-
-{{ $snaps := list -}}
-{{ $classicSnaps := list -}}
-
-{{ if eq .osid "linux-debian" "linux-ubuntu" -}}
-{{   $packages = concat $packages (list "") -}}
-{{ end -}}
-
-{{ if eq .osid "linux-fedora" -}}
-{{   $packages = concat $packages (list "eza" "trezor-common" "syncthing" "zoxide" "neovim" "python3-neovim" ) -}}
-{{ end -}}
-
-{{ if eq .osid "linux-arch" -}}
-{{ $archPackages := list 
-     "zsh" 
-     "chezmoi" 
-     "eza" 
-     "mako" 
-     "fuzzel" 
-     "base-devel" 
-     "waybar" 
-     "xdg-desktop-portal-gtk" 
-     "xdg-desktop-portal-gnome" 
-     "swaybg" 
-     "swayidle" 
-     "xwayland-satellite" 
-     "udiskie" 
-     "obs-studio" 
-     "nautilus"
-     "firefox"
-     "neovim"
+     "zoxide"
+     "zsh"
    -}}
-{{   $packages = concat $packages $archPackages -}}
+
+{{/* Noms propres à chaque OS (client SSH, fd, eza…) */ -}}
+{{ if eq .osid "linux-fedora" -}}
+{{   $packages = concat $packages (list "openssh-clients" "fd-find" "eza" "syncthing" "trezor-common") -}}
+{{ else if eq .osid "linux-arch" -}}
+{{   $packages = concat $packages (list "openssh" "fd" "eza" "base-devel") -}}
+{{ else -}}
+{{/* Debian / Ubuntu / Raspbian : fd s'appelle fdfind, eza absent de Debian 12 */ -}}
+{{   $packages = concat $packages (list "openssh-client" "fd-find") -}}
 {{ end -}}
 
+{{/* Poste avec écran */ -}}
 {{ if not .headless -}}
-{{   $packages = concat $packages (list "xclip") -}}
-{{ end -}}
+{{   $packages = concat $packages (list "xclip" "gimp") -}}
 
-{{ if .personal -}}
-{{   $packages = concat $packages (list ) -}}
+{{   if eq .osid "linux-fedora" -}}
+{{/*   Bureau Sway : groupe Fedora + config du spin Sway (surchargée par ~/.config/sway/config.d) */ -}}
+{{     $packages = concat $packages (list
+         "@swaywm"
+         "sway-config-fedora"
+         "fuzzel"
+         "waybar"
+         "udiskie"
+       ) -}}
+{{   else if eq .osid "linux-arch" -}}
+{{/*   Bureau niri (niri et noctalia : voir README) */ -}}
+{{     $packages = concat $packages (list
+         "fuzzel"
+         "waybar"
+         "mako"
+         "swaybg"
+         "swayidle"
+         "xwayland-satellite"
+         "xdg-desktop-portal-gtk"
+         "xdg-desktop-portal-gnome"
+         "udiskie"
+         "nautilus"
+         "firefox"
+         "obs-studio"
+       ) -}}
+{{   end -}}
 {{ end -}}
 
 {{ $sudo := "sudo " -}}
@@ -66,34 +69,30 @@
 {{ end -}}
 
 #!/bin/bash
+set -euo pipefail
 
-set -eufo pipefail
+{{ if eq .osid "linux-fedora" -}}
+{{ $sudo }}dnf upgrade -y
+# --allowerasing : sway-config-fedora remplace sway-config-upstream si besoin
+{{ $sudo }}dnf install -y --allowerasing {{ $packages | join " " }}
 
-# debian base
-{{ if eq .osid "linux-debian" "linux-ubuntu" -}}
+{{- else if eq .osid "linux-arch" }}
+{{ $sudo }}pacman -Syu --needed --noconfirm {{ $packages | join " " }}
+
+{{- else }}
 {{ $sudo }}apt-get update
 {{ $sudo }}apt-get install -y {{ $packages | join " " }}
-
-# fedora
-{{- else if eq .osid "linux-fedora" -}}
-{{ $sudo }}dnf update
-{{ $sudo }}dnf install -y {{ $packages | join " " }}
-
-# arch
-{{- else if eq .osid "linux-arch" -}}
-{{ $sudo }}pacman -Syu
-{{ $sudo }}pacman -S --needed --noconfirm {{ $packages | join " " }}
-{{ end -}}
-
-
-
-{{ if lookPath "snap" }}
-{{   range $snaps }}
-( snap info {{ . }} | grep -q ^installed: ) || {{ $sudo }}snap install {{ . }}
-{{   end }}
-{{   range $classicSnaps }}
-( snap info {{ . }} | grep -q ^installed: ) || {{ $sudo }}snap install --classic {{ . }}
-{{   end }}
-{{ end }}
-
+# eza : paquet officiel à partir de Debian 13
+if apt-cache show eza >/dev/null 2>&1; then
+    {{ $sudo }}apt-get install -y eza
+fi
+# Debian renomme fd et bat : liens pour garder les noms utilisés dans .zshrc
+mkdir -p "$HOME/.local/bin"
+for pair in fdfind:fd batcat:bat; do
+    src="${pair%%:*}"; dst="${pair##*:}"
+    if command -v "$src" >/dev/null; then
+        ln -sf "$(command -v "$src")" "$HOME/.local/bin/$dst"
+    fi
+done
+{{- end }}
 {{ end -}}

@@ -177,3 +177,18 @@ tooltip {
   font-size: 12px;
 }
 
+
+/* --- Sway : mode actif (resize…) et espace de travail courant --- */
+#mode {
+  background-color: #1a1b26;
+  color: #e0af68;
+  padding: 0.3rem 0.7rem;
+  margin: 5px 5px 5px 0px;
+  border-radius: 6px;
+}
+
+#workspaces button.focused {
+  color: #99d1db;
+  background-color: rgba(153, 209, 219, 0.1);
+  box-shadow: inset 0 0 0 1px rgba(153, 209, 219, 0.2);
+}

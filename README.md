@@ -36,14 +36,14 @@ chezmoi cd            # ouvre un shell dans le dépôt
 | [kitty](https://sw.kovidgoyal.net/kitty/) | Terminal | `~/.config/kitty/` |
 | [zsh](https://www.zsh.org/) + [starship](https://starship.rs/) | Shell et prompt | `~/.zshrc`, `~/.config/starship/` |
 | [helix](https://helix-editor.com/) | Éditeur (par défaut) | `~/.config/helix/` |
-| [neovim](https://neovim.io/) ([LazyVim](https://www.lazyvim.org/)) | Éditeur | `~/.config/nvim/` |
 | [yazi](https://yazi-rs.github.io/) | Gestionnaire de fichiers en terminal | `~/.config/yazi/` |
 | [btop](https://github.com/aristocratos/btop), [fastfetch](https://github.com/fastfetch-cli/fastfetch) | Monitoring, infos système | `~/.config/btop/`, `~/.config/fastfetch/` |
 | [nb](https://github.com/xwmx/nb) | Notes et favoris en ligne de commande | `~/.nbrc` |
 | [niri](https://github.com/YaLTeR/niri) | Gestionnaire de fenêtres Wayland (défilement) | `~/.config/niri/` |
+| [sway](https://swaywm.org/) | Gestionnaire de fenêtres Wayland (tiling), sur Fedora | `~/.config/sway/config.d/` |
 | [noctalia](https://docs.noctalia.dev/) | Barre, notifications, fonds d'écran (lancé par niri) | — |
-| fuzzel, rofi | Lanceurs d'applications | `~/.config/fuzzel/`, `~/.config/rofi/` |
-| waybar, mako | Barre et notifications (alternative à noctalia) | `~/.config/waybar/`, `~/.config/mako/` |
+| fuzzel | Lanceur d'applications | `~/.config/fuzzel/` |
+| waybar, mako | Barre (niri : `config.jsonc`, Sway : `sway.jsonc`) et notifications | `~/.config/waybar/`, `~/.config/mako/` |
 | alacritty, ghostty | Anciens terminaux, configs gardées | `~/.config/alacritty/`, `~/.config/ghostty/` |
 
 Fonds d'écran Tokyo Night dans [`assets/`](assets/).
@@ -58,7 +58,8 @@ Fonds d'écran Tokyo Night dans [`assets/`](assets/).
 
 | Alias | Commande |
 |---|---|
-| `h` / `v` | helix / nvim |
+| `h`, `fh` | helix, helix sur un fichier choisi avec fzf |
+| `update`, `install`, `remove`, `search` | dnf (Fedora) ou yay (Arch) |
 | `y` | yazi (reste dans le dossier quitté) |
 | `ll`, `la`, `tree` | eza |
 | `g`, `gs`, `gc`, `gp`, `lg` | git, lazygit |
@@ -87,7 +88,7 @@ Dans kitty, `ssh` est un alias de `kitten ssh`, qui envoie à chaque connexion :
 - **sur tous les hôtes** : le terminfo de kitty (plus d'erreur `unknown terminal`) et l'intégration shell ;
 - **sur le homelab** (`192.168.*`, voir `~/.config/kitty/ssh.conf`) : un prompt coloré (hôte en orange), les alias git/docker, `EDITOR` (hx, sinon nvim, sinon vi) et la config Helix. Ça marche avec **bash et zsh**.
 
-Rien n’est écrasé sur le serveur : les fichiers vont dans `~/.config/kitty-remote/`, sauf `~/.bash_login` (qui charge d’abord le `~/.profile` du serveur, pour que ça marche aussi en root) et `~/.bash_aliases`. Le `~/.zshrc` du serveur reste chargé. Aucune installation n'est nécessaire côté serveur, sauf pour utiliser Helix ou nvim.
+Rien n’est écrasé sur le serveur : les fichiers vont dans `~/.config/kitty-remote/`, sauf `~/.bash_login` (qui charge d’abord le `~/.profile` du serveur, pour que ça marche aussi en root) et `~/.bash_aliases`. Le `~/.zshrc` du serveur reste chargé. Aucune installation n'est nécessaire côté serveur, sauf pour utiliser Helix.
 
 #### Hôtes privés (hors GitHub)
 
@@ -105,10 +106,9 @@ Les noms et IP des machines ne sont pas dans le dépôt. Deux fichiers locaux, n
   include ssh-homelab.conf
   ```
 
-### Éditeurs
+### Éditeur
 
-- **Helix** (`hx`, éditeur par défaut) : LSP et Tree-sitter intégrés, aucune extension à gérer. Vérifier les langages avec `hx --health`, apprendre avec `hx --tutor`.
-- **Neovim** (LazyVim) : extras docker, git, json, markdown, python, toml, chezmoi, harpoon, telescope.
+**Helix** (`hx`, éditeur par défaut) : LSP et Tree-sitter intégrés, aucune extension à gérer. Vérifier les langages avec `hx --health`, apprendre avec `hx --tutor`.
 
 ## Scripts d'installation
 
@@ -116,19 +116,19 @@ Lancés automatiquement par `chezmoi apply` (dans `.chezmoiscripts/`), seulement
 
 | Script | Fedora | Arch | Debian/Ubuntu |
 |---|---|---|---|
-| `000` paquets de base (git, fzf, ripgrep, bat, btop, zsh…) | ✅ dnf | ✅ pacman | ✅ apt |
-| `001` neovim (dernière version) | | | ✅ |
+| `000` paquets de base (git, fzf, fd, ripgrep, bat, btop, zoxide, zsh…) | ✅ dnf | ✅ pacman | ✅ apt |
+| `000` bureau : Sway (Fedora), niri + waybar/fuzzel/mako (Arch), gimp | sauf headless | sauf headless | sauf headless |
 | `002` kitty + helix (+ LSP sur machine perso) | ✅ | ✅ | helix seul |
 | `003` starship | ✅ | ✅ | |
 | `004` yazi | ✅ | ✅ | |
 | `005` nb | perso | perso | perso |
 | `006` yay (AUR) | | ✅ | |
-| `007` curseurs Bibata | ✅ | ✅ | |
-| `008` navigateur Helium | ✅ | | |
+| `007` curseurs Bibata | sauf headless | sauf headless | |
+| `008` navigateur Helium | sauf headless | | |
 | après : zsh comme shell par défaut | sauf ephemeral | sauf ephemeral | sauf ephemeral |
-| après : polices JetBrains Mono (Nerd Font) | perso | perso | |
+| après : polices JetBrains Mono (Nerd Font) | perso, sauf headless | perso, sauf headless | |
 
-kitty n'est pas installé sur les machines **headless**.
+Sur les machines **headless**, ni kitty ni le bureau ne sont installés, et les configs de bureau (niri, sway, waybar, fuzzel, mako…) ne sont pas déposées.
 
 ## Profils de machine
 
@@ -151,6 +151,31 @@ Définis dans `.chezmoi.toml.tmpl`, utilisables dans les templates (`{{ .persona
   curl -fsSL https://proton.me/download/pass-cli/install.sh | bash
   ```
 - [Proton Drive CLI](https://proton.me/support/drive-cli)
+
+### Fedora : bureau Sway
+
+Le script `000` installe Sway avec la config du spin Fedora (`@swaywm` + `sway-config-fedora`). Le dépôt ne contient que les **changements** par rapport à cette config, dans `~/.config/sway/config.d/` :
+
+| Fichier | Contenu |
+|---|---|
+| `10-input.conf` | Clavier us/us-intl (`Super+Espace` pour changer), Caps Lock = Ctrl, touchpad |
+| `20-outputs.conf` | Écrans, mêmes positions que niri |
+| `30-look.conf` | Couleurs Tokyo Night, bordures, espaces entre fenêtres |
+| `60-bindings-perso.conf` | Raccourcis repris de niri (ci-dessous) |
+| `90-bar.conf` | Remplace la barre Fedora par waybar (`~/.config/waybar/sway.jsonc`) |
+
+Un fichier qui porte le même nom qu'un fichier de `/usr/share/sway/config.d/` le remplace. **Ne pas créer `~/.config/sway/config`** : il désactiverait toute la config Fedora.
+
+| Raccourci | Action |
+|---|---|
+| `Super+Entrée` | kitty |
+| `Super+D` | fuzzel (applis) |
+| `Super+B` | Firefox |
+| `Super+Q` | Fermer la fenêtre |
+| `Super+Alt+L` | Verrouiller |
+| `Super+H/J/K/L`, `Super+Shift+H/J/K/L` | Focus / déplacer (raccourcis Sway par défaut) |
+
+Pour vérifier : `sway -C 2>&1 | grep -i error` (le code retour ne suffit pas). `swaymsg reload` recharge Sway, `pkill -SIGUSR2 waybar` recharge la barre. Les lignes `exec` (waybar, swayidle) ne sont relancées qu'à la reconnexion.
 
 ### Arch : bureau niri + noctalia
 

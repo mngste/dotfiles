@@ -1,0 +1,19 @@
+// Waybar sous Sway : reprend config.jsonc (niri) et remplace seulement
+// le module des espaces de travail. Tout le reste se règle dans config.jsonc.
+{
+  "include": ["~/.config/waybar/config.jsonc"],
+
+  "modules-left": ["sway/workspaces", "sway/mode", "cpu"],
+
+  "sway/workspaces": {
+    "format": "{name}: {icon}",
+    "format-icons": {
+      "focused": "",
+      "default": ""
+    }
+  },
+
+  "sway/mode": {
+    "format": "{}"
+  }
+}

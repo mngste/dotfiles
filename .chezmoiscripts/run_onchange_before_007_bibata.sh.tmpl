@@ -1,12 +1,16 @@
-{{ if eq .osid "linux-fedora" -}}
+{{ if not .headless -}}
+{{   if eq .osid "linux-fedora" -}}
 #!/bin/sh
+set -eu
 
-sudo dnf copr enable peterwu/rendezvous -y
-sudo dnf install bibata-cursor-themes -y
+sudo dnf copr enable -y peterwu/rendezvous
+sudo dnf install -y bibata-cursor-themes
 
-{{ else if eq .osid "linux-arch" -}}
+{{   else if eq .osid "linux-arch" -}}
 #!/bin/sh
+set -eu
 
-yay -S bibata-cursor-theme-bin --noconfirm
+yay -S --needed --noconfirm bibata-cursor-theme-bin
 
+{{   end -}}
 {{ end -}}

@@ -1,13 +1,14 @@
 {{ if eq .osid "linux-fedora" -}}
 #!/bin/sh
+set -eu
 
-sudo dnf copr enable atim/starship
-sudo dnf install starship -y
+sudo dnf copr enable -y atim/starship
+sudo dnf install -y starship
 
 {{ else if eq .osid "linux-arch" -}}
 #!/bin/sh
+set -eu
 
-# Install ghostty terminal emulator
-sudo pacman -S starship --needed --noconfirm
+sudo pacman -S --needed --noconfirm starship
 
 {{ end -}}
