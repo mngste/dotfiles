@@ -1,7 +1,10 @@
-{{- if (not .ephemeral) -}}
+{{- if not .ephemeral -}}
 #!/bin/sh
+set -eu
 
-set -eufo pipefail
-
-chsh -s /usr/bin/zsh
+# zsh comme shell par défaut (seulement si ce n'est pas déjà le cas)
+zsh_path="$(command -v zsh)"
+if [ "$(getent passwd "$(id -un)" | cut -d: -f7)" != "$zsh_path" ]; then
+    chsh -s "$zsh_path"
+fi
 {{ end -}}

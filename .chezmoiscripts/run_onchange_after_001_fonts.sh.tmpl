@@ -1,22 +1,24 @@
-{{- if and (.personal) (eq .osid "linux-fedora") -}}
+{{- if and .personal (not .headless) -}}
+{{-   if eq .osid "linux-fedora" -}}
 #!/bin/sh
+set -eu
 
-sudo dnf install jetbrains-mono-fonts -y
+sudo dnf install -y jetbrains-mono-fonts
 
-mkdir ~/.local/share/fonts
-echo "Installing Jetbrain nerd font"
-curl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.tar.xz
-unxz JetBrainsMono.tar.xz
-tar xvf JetBrainsMono.tar -C ~/.local/share/fonts
-rm JetBrainsMono.tar
-fc-cache -f -v
-
-{{- else if and (.personal) (eq .osid "linux-arch") -}}
-
+# JetBrains Mono Nerd Font : pas de paquet Fedora, archive de la dernière release
+echo "Installation de JetBrainsMono Nerd Font"
+fonts_dir="$HOME/.local/share/fonts/JetBrainsMonoNerd"
+tmp="$(mktemp -d)"
+curl -fsSL -o "$tmp/JetBrainsMono.tar.xz" \
+    https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.tar.xz
+mkdir -p "$fonts_dir"
+tar -xJf "$tmp/JetBrainsMono.tar.xz" -C "$fonts_dir"
+rm -rf "$tmp"
+fc-cache -f
+{{    else if eq .osid "linux-arch" -}}
 #!/bin/sh
+set -eu
+
 sudo pacman -S --needed --noconfirm ttf-jetbrains-mono-nerd ttf-jetbrains-mono
-
-{{- end -}}
-
-
-
+{{-   end }}
+{{ end -}}

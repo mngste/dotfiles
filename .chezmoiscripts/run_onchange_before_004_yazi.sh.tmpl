@@ -1,12 +1,15 @@
 {{ if eq .osid "linux-fedora" -}}
 #!/bin/sh
+set -eu
 
-sudo dnf copr enable lihaohong/yazi
-sudo dnf install yazi -y
+sudo dnf copr enable -y lihaohong/yazi
+# yazi + aperçus (vidéo, archives, PDF, images)
+sudo dnf install -y yazi ffmpeg-free 7zip poppler-utils ImageMagick
 
 {{ else if eq .osid "linux-arch" -}}
 #!/bin/sh
+set -eu
 
-sudo pacman -S --needed --noconfirm yazi ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg imagemagick
+sudo pacman -S --needed --noconfirm yazi ffmpeg 7zip poppler resvg imagemagick
 
 {{ end -}}

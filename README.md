@@ -36,14 +36,13 @@ chezmoi cd            # ouvre un shell dans le dépôt
 | [kitty](https://sw.kovidgoyal.net/kitty/) | Terminal | `~/.config/kitty/` |
 | [zsh](https://www.zsh.org/) + [starship](https://starship.rs/) | Shell et prompt | `~/.zshrc`, `~/.config/starship/` |
 | [helix](https://helix-editor.com/) | Éditeur (par défaut) | `~/.config/helix/` |
-| [neovim](https://neovim.io/) ([LazyVim](https://www.lazyvim.org/)) | Éditeur | `~/.config/nvim/` |
 | [yazi](https://yazi-rs.github.io/) | Gestionnaire de fichiers en terminal | `~/.config/yazi/` |
 | [btop](https://github.com/aristocratos/btop), [fastfetch](https://github.com/fastfetch-cli/fastfetch) | Monitoring, infos système | `~/.config/btop/`, `~/.config/fastfetch/` |
 | [nb](https://github.com/xwmx/nb) | Notes et favoris en ligne de commande | `~/.nbrc` |
 | [niri](https://github.com/YaLTeR/niri) | Gestionnaire de fenêtres Wayland (défilement) | `~/.config/niri/` |
 | [sway](https://swaywm.org/) | Gestionnaire de fenêtres Wayland (tiling), sur Fedora | `~/.config/sway/config.d/` |
 | [noctalia](https://docs.noctalia.dev/) | Barre, notifications, fonds d'écran (lancé par niri) | — |
-| fuzzel, rofi | Lanceurs d'applications | `~/.config/fuzzel/`, `~/.config/rofi/` |
+| fuzzel | Lanceur d'applications | `~/.config/fuzzel/` |
 | waybar, mako | Barre (niri : `config.jsonc`, Sway : `sway.jsonc`) et notifications | `~/.config/waybar/`, `~/.config/mako/` |
 | alacritty, ghostty | Anciens terminaux, configs gardées | `~/.config/alacritty/`, `~/.config/ghostty/` |
 
@@ -59,7 +58,8 @@ Fonds d'écran Tokyo Night dans [`assets/`](assets/).
 
 | Alias | Commande |
 |---|---|
-| `h` / `v` | helix / nvim |
+| `h`, `fh` | helix, helix sur un fichier choisi avec fzf |
+| `update`, `install`, `remove`, `search` | dnf (Fedora) ou yay (Arch) |
 | `y` | yazi (reste dans le dossier quitté) |
 | `ll`, `la`, `tree` | eza |
 | `g`, `gs`, `gc`, `gp`, `lg` | git, lazygit |
@@ -88,7 +88,7 @@ Dans kitty, `ssh` est un alias de `kitten ssh`, qui envoie à chaque connexion :
 - **sur tous les hôtes** : le terminfo de kitty (plus d'erreur `unknown terminal`) et l'intégration shell ;
 - **sur le homelab** (`192.168.*`, voir `~/.config/kitty/ssh.conf`) : un prompt coloré (hôte en orange), les alias git/docker, `EDITOR` (hx, sinon nvim, sinon vi) et la config Helix. Ça marche avec **bash et zsh**.
 
-Rien n’est écrasé sur le serveur : les fichiers vont dans `~/.config/kitty-remote/`, sauf `~/.bash_login` (qui charge d’abord le `~/.profile` du serveur, pour que ça marche aussi en root) et `~/.bash_aliases`. Le `~/.zshrc` du serveur reste chargé. Aucune installation n'est nécessaire côté serveur, sauf pour utiliser Helix ou nvim.
+Rien n’est écrasé sur le serveur : les fichiers vont dans `~/.config/kitty-remote/`, sauf `~/.bash_login` (qui charge d’abord le `~/.profile` du serveur, pour que ça marche aussi en root) et `~/.bash_aliases`. Le `~/.zshrc` du serveur reste chargé. Aucune installation n'est nécessaire côté serveur, sauf pour utiliser Helix.
 
 #### Hôtes privés (hors GitHub)
 
@@ -106,10 +106,9 @@ Les noms et IP des machines ne sont pas dans le dépôt. Deux fichiers locaux, n
   include ssh-homelab.conf
   ```
 
-### Éditeurs
+### Éditeur
 
-- **Helix** (`hx`, éditeur par défaut) : LSP et Tree-sitter intégrés, aucune extension à gérer. Vérifier les langages avec `hx --health`, apprendre avec `hx --tutor`.
-- **Neovim** (LazyVim) : extras docker, git, json, markdown, python, toml, chezmoi, harpoon, telescope.
+**Helix** (`hx`, éditeur par défaut) : LSP et Tree-sitter intégrés, aucune extension à gérer. Vérifier les langages avec `hx --health`, apprendre avec `hx --tutor`.
 
 ## Scripts d'installation
 
@@ -117,20 +116,19 @@ Lancés automatiquement par `chezmoi apply` (dans `.chezmoiscripts/`), seulement
 
 | Script | Fedora | Arch | Debian/Ubuntu |
 |---|---|---|---|
-| `000` paquets de base (git, fzf, ripgrep, bat, btop, zsh…) | ✅ dnf | ✅ pacman | ✅ apt |
-| `000` bureau : Sway sur Fedora, niri/waybar/fuzzel sur Arch | sauf headless | ✅ | |
-| `001` neovim (dernière version) | | | ✅ |
+| `000` paquets de base (git, fzf, fd, ripgrep, bat, btop, zoxide, zsh…) | ✅ dnf | ✅ pacman | ✅ apt |
+| `000` bureau : Sway (Fedora), niri + waybar/fuzzel/mako (Arch), gimp | sauf headless | sauf headless | sauf headless |
 | `002` kitty + helix (+ LSP sur machine perso) | ✅ | ✅ | helix seul |
 | `003` starship | ✅ | ✅ | |
 | `004` yazi | ✅ | ✅ | |
 | `005` nb | perso | perso | perso |
 | `006` yay (AUR) | | ✅ | |
-| `007` curseurs Bibata | ✅ | ✅ | |
-| `008` navigateur Helium | ✅ | | |
+| `007` curseurs Bibata | sauf headless | sauf headless | |
+| `008` navigateur Helium | sauf headless | | |
 | après : zsh comme shell par défaut | sauf ephemeral | sauf ephemeral | sauf ephemeral |
-| après : polices JetBrains Mono (Nerd Font) | perso | perso | |
+| après : polices JetBrains Mono (Nerd Font) | perso, sauf headless | perso, sauf headless | |
 
-kitty n'est pas installé sur les machines **headless**.
+Sur les machines **headless**, ni kitty ni le bureau ne sont installés, et les configs de bureau (niri, sway, waybar, fuzzel, mako…) ne sont pas déposées.
 
 ## Profils de machine
 
