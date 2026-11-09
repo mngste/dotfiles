@@ -117,7 +117,7 @@ Lancés automatiquement par `chezmoi apply` (dans `.chezmoiscripts/`), seulement
 | Script | Fedora | Arch | Debian/Ubuntu |
 |---|---|---|---|
 | `000` paquets de base (git, fzf, fd, ripgrep, bat, btop, zoxide, zsh…) | ✅ dnf | ✅ pacman | ✅ apt |
-| `000` bureau : Sway (Fedora), niri + waybar/fuzzel/mako (Arch), gimp | sauf headless | sauf headless | sauf headless |
+| `000` bureau : Sway + Thunar (Fedora), niri + waybar/fuzzel/mako (Arch), gimp | sauf headless | sauf headless | sauf headless |
 | `002` kitty + helix (+ LSP sur machine perso) | ✅ | ✅ | helix seul |
 | `003` starship | ✅ | ✅ | |
 | `004` yazi | ✅ | ✅ | |
@@ -163,6 +163,7 @@ Le script `000` installe Sway avec la config du spin Fedora (`@swaywm` + `sway-c
 | `30-look.conf` | Couleurs Tokyo Night, bordures, espaces entre fenêtres |
 | `60-bindings-perso.conf` | Raccourcis repris de niri (ci-dessous) |
 | `90-bar.conf` | Remplace la barre Fedora par waybar (`~/.config/waybar/sway.jsonc`) |
+| `95-autostart-perso.conf` | udiskie (montage automatique des clés USB) |
 
 Un fichier qui porte le même nom qu'un fichier de `/usr/share/sway/config.d/` le remplace. **Ne pas créer `~/.config/sway/config`** : il désactiverait toute la config Fedora.
 
@@ -171,6 +172,7 @@ Un fichier qui porte le même nom qu'un fichier de `/usr/share/sway/config.d/` l
 | `Super+Entrée` | kitty |
 | `Super+D` | fuzzel (applis) |
 | `Super+B` | Firefox |
+| `Super+E` | Thunar (fichiers) |
 | `Super+Q` | Fermer la fenêtre |
 | `Super+Alt+L` | Verrouiller |
 | `Super+H/J/K/L`, `Super+Shift+H/J/K/L` | Focus / déplacer (raccourcis Sway par défaut) |
