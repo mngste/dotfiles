@@ -3,6 +3,10 @@
 {
   "include": ["~/.config/waybar/config.jsonc"],
 
+  // Sous niri, margin-bottom -10 laisse les fenêtres remonter sous la barre
+  // (niri a ses propres marges). Sous Sway elles chevauchaient le bas des modules.
+  "margin-bottom": 0,
+
   "modules-left": ["sway/workspaces", "sway/mode", "cpu"],
 
   "sway/workspaces": {

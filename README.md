@@ -126,6 +126,7 @@ Lancés automatiquement par `chezmoi apply` (dans `.chezmoiscripts/`), seulement
 | `007` curseurs Bibata | sauf headless | sauf headless | |
 | `008` navigateur Helium | sauf headless | | |
 | après : zsh comme shell par défaut | sauf ephemeral | sauf ephemeral | sauf ephemeral |
+| après : applis KDE du démarrage (Xwayland Video Bridge) réservées à Plasma | sauf headless | | |
 | après : polices JetBrains Mono (Nerd Font) | perso, sauf headless | perso, sauf headless | |
 
 Sur les machines **headless**, ni kitty ni le bureau ne sont installés, et les configs de bureau (niri, sway, waybar, fuzzel, mako…) ne sont pas déposées.
