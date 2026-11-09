@@ -1,8 +1,5 @@
 [user]
-	mail = mangouste@mosaurus.com
 	name = mngste
 	email = mangouste@mosaurus.com
-[core]
-    editor = nvim
 [init]
     defaultBranch = main
