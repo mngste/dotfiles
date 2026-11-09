@@ -38,7 +38,8 @@
 {{   if eq .osid "linux-fedora" -}}
 {{/*   Bureau Sway : groupe Fedora + config du spin Sway (surchargée par ~/.config/sway/config.d)
        Thunar : explorateur ; gvfs : corbeille, réseau ; tumbler : miniatures
-       grim, slurp, wl-clipboard, libnotify : captures d'écran (~/.local/bin/capture) */ -}}
+       grim, slurp, wl-clipboard, libnotify : captures d'écran (~/.local/bin/capture)
+       blueman, pavucontrol, nm-connection-editor : clics sur la barre waybar */ -}}
 {{     $packages = concat $packages (list
          "@swaywm"
          "sway-config-fedora"
@@ -52,6 +53,9 @@
          "slurp"
          "wl-clipboard"
          "libnotify"
+         "blueman"
+         "pavucontrol"
+         "nm-connection-editor"
        ) -}}
 {{   else if eq .osid "linux-arch" -}}
 {{/*   Bureau niri (niri et noctalia : voir README) */ -}}
@@ -66,6 +70,9 @@
          "xdg-desktop-portal-gnome"
          "udiskie"
          "nautilus"
+         "blueman"
+         "pavucontrol"
+         "nm-connection-editor"
          "firefox"
          "obs-studio"
        ) -}}

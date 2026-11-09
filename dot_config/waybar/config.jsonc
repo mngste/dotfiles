@@ -16,6 +16,7 @@
     "pulseaudio", 
     "backlight",
     "battery",
+    "custom/power"
   ],
 
   "niri/workspaces": {
@@ -37,6 +38,7 @@
         "connected": "󰂱",
         },
     "on-click": "blueman-manager",
+    "on-click-right": "bluetoothctl power toggle",
     "tooltip-format-connected":"{device_enumerate}"
   },
 
@@ -78,7 +80,8 @@
     "format-ethernet": "󰈀 ",
     "format-disconnected": "󰤠 ",
     "interval": 5,
-    "tooltip-format": "{essid} ({signalStrength}%)",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+    "tooltip-format-ethernet": "{ifname} : {ipaddr}",
     "on-click": "nm-connection-editor"
 
  },
@@ -87,7 +90,7 @@
     "interval": 1,
     "format": "  {icon0}{icon1}{icon2}{icon3} {usage:>2}%",
     "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
-    "on-click": "kitty -e htop"
+    "on-click": "kitty -e btop"
   },
 
   "memory": {
@@ -108,7 +111,8 @@
     "format-icons": {
       "default": ["", "", " "]
     },
-    "on-click": "pavucontrol"
+    "on-click": "pavucontrol",
+    "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
   },
 
   "battery": {
@@ -128,10 +132,10 @@
         "format-icons": ["", "", "", "", ""]
   },
   
-  "custom/lock": {
-  "tooltip": false,
-  "on-click": "sh -c '(sleep 0s; swaylock)' & disown",
-  "format" : ""
+  "custom/power": {
+    "format": "⏻",
+    "tooltip-format": "Verrouiller, déconnexion, veille, redémarrer, éteindre",
+    "on-click": "~/.local/bin/menu-alimentation"
   },
 
 }
