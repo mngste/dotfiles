@@ -36,13 +36,17 @@
 {{   $packages = concat $packages (list "xclip" "gimp") -}}
 
 {{   if eq .osid "linux-fedora" -}}
-{{/*   Bureau Sway : groupe Fedora + config du spin Sway (surchargée par ~/.config/sway/config.d) */ -}}
+{{/*   Bureau Sway : groupe Fedora + config du spin Sway (surchargée par ~/.config/sway/config.d)
+       Thunar : explorateur ; gvfs : corbeille, réseau ; tumbler : miniatures */ -}}
 {{     $packages = concat $packages (list
          "@swaywm"
          "sway-config-fedora"
          "fuzzel"
          "waybar"
          "udiskie"
+         "Thunar"
+         "gvfs"
+         "tumbler"
        ) -}}
 {{   else if eq .osid "linux-arch" -}}
 {{/*   Bureau niri (niri et noctalia : voir README) */ -}}
