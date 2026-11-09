@@ -1,2 +1,6 @@
 install.sh
 lazy-lock.json
+{{ if or .headless (ne .osid "linux-fedora") }}
+.config/sway
+.config/waybar/sway.jsonc
+{{ end }}

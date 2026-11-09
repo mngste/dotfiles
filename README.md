@@ -41,9 +41,10 @@ chezmoi cd            # ouvre un shell dans le dépôt
 | [btop](https://github.com/aristocratos/btop), [fastfetch](https://github.com/fastfetch-cli/fastfetch) | Monitoring, infos système | `~/.config/btop/`, `~/.config/fastfetch/` |
 | [nb](https://github.com/xwmx/nb) | Notes et favoris en ligne de commande | `~/.nbrc` |
 | [niri](https://github.com/YaLTeR/niri) | Gestionnaire de fenêtres Wayland (défilement) | `~/.config/niri/` |
+| [sway](https://swaywm.org/) | Gestionnaire de fenêtres Wayland (tiling), sur Fedora | `~/.config/sway/config.d/` |
 | [noctalia](https://docs.noctalia.dev/) | Barre, notifications, fonds d'écran (lancé par niri) | — |
-| fuzzel, rofi | Lanceurs d'applications | `~/.config/fuzzel/`, `~/.config/rofi/` |
-| waybar, mako | Barre et notifications (alternative à noctalia) | `~/.config/waybar/`, `~/.config/mako/` |
+| fuzzel, rofi | Lanceurs : fuzzel pour les applis, rofi pour fenêtres, commandes et SSH (même apparence) | `~/.config/fuzzel/`, `~/.config/rofi/` |
+| waybar, mako | Barre (niri : `config.jsonc`, Sway : `sway.jsonc`) et notifications | `~/.config/waybar/`, `~/.config/mako/` |
 | alacritty, ghostty | Anciens terminaux, configs gardées | `~/.config/alacritty/`, `~/.config/ghostty/` |
 
 Fonds d'écran Tokyo Night dans [`assets/`](assets/).
@@ -125,6 +126,7 @@ Lancés automatiquement par `chezmoi apply` (dans `.chezmoiscripts/`), seulement
 | `006` yay (AUR) | | ✅ | |
 | `007` curseurs Bibata | ✅ | ✅ | |
 | `008` navigateur Helium | ✅ | | |
+| `009` bureau Sway (config Fedora, fuzzel, rofi, waybar) | sauf headless | | |
 | après : zsh comme shell par défaut | sauf ephemeral | sauf ephemeral | sauf ephemeral |
 | après : polices JetBrains Mono (Nerd Font) | perso | perso | |
 
@@ -151,6 +153,32 @@ Définis dans `.chezmoi.toml.tmpl`, utilisables dans les templates (`{{ .persona
   curl -fsSL https://proton.me/download/pass-cli/install.sh | bash
   ```
 - [Proton Drive CLI](https://proton.me/support/drive-cli)
+
+### Fedora : bureau Sway
+
+Le script `009` installe Sway avec la config du spin Fedora (`@swaywm` + `sway-config-fedora`). Le dépôt ne contient que les **changements** par rapport à cette config, dans `~/.config/sway/config.d/` :
+
+| Fichier | Contenu |
+|---|---|
+| `10-input.conf` | Clavier us/us-intl (`Super+Espace` pour changer), Caps Lock = Ctrl, touchpad |
+| `20-outputs.conf` | Écrans, mêmes positions que niri |
+| `30-look.conf` | Couleurs Tokyo Night, bordures, espaces entre fenêtres |
+| `60-bindings-perso.conf` | Raccourcis repris de niri (ci-dessous) |
+| `90-bar.conf` | Remplace la barre Fedora par waybar (`~/.config/waybar/sway.jsonc`) |
+
+Un fichier qui porte le même nom qu'un fichier de `/usr/share/sway/config.d/` le remplace. **Ne pas créer `~/.config/sway/config`** : il désactiverait toute la config Fedora.
+
+| Raccourci | Action |
+|---|---|
+| `Super+Entrée` | kitty |
+| `Super+D` | fuzzel (applis) |
+| `Super+Shift+D` | rofi (fenêtres, commandes, SSH) |
+| `Super+B` | Firefox |
+| `Super+Q` | Fermer la fenêtre |
+| `Super+Alt+L` | Verrouiller |
+| `Super+H/J/K/L`, `Super+Shift+H/J/K/L` | Focus / déplacer (raccourcis Sway par défaut) |
+
+Pour vérifier : `sway -C 2>&1 | grep -i error` (le code retour ne suffit pas). `swaymsg reload` recharge Sway, `pkill -SIGUSR2 waybar` recharge la barre. Les lignes `exec` (waybar, swayidle) ne sont relancées qu'à la reconnexion.
 
 ### Arch : bureau niri + noctalia
 

@@ -1,20 +1,11 @@
+/* Tokyo Night : mêmes couleurs que fuzzel (~/.config/fuzzel/fuzzel.ini, section [colors]) */
 * {
-  bg0     : #1e1e2e;
-  bg1     : #181825;
-  bg2     : #11111b;
-  bg3     : #313244;
-
-  fg0     : #cdd6f4;
-  fg1     : #bac2de;
-  fg2     : #a6adc8;
-
-  red     : #f38ba8;
-  green   : #a6e3a1;
-  yellow  : #f9e2af;
-  blue    : #89b4fa;   /* light mocha blue */
-  magenta : #cba6f7;
-  cyan    : #94e2d5;
-
-  accent  : #89b4fa;
-  urgent  : #f38ba8;
+  bg        : #16161e;   /* background */
+  fg        : #c0caf5;   /* text, selection-text */
+  match     : #2ac3de;   /* match, selection-match */
+  selection : #343a55;   /* selection */
+  border    : #27a1b9;   /* border */
+  dim       : #565f89;   /* placeholder */
+  red       : #f7768e;
+  blue      : #7aa2f7;
 }
