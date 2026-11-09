@@ -11,8 +11,10 @@ assets/README.md
 .config/mako
 .config/alacritty
 .config/ghostty
+.local/bin/capture
 {{ else if ne .osid "linux-fedora" }}
 # Sway : seulement sur Fedora (s'appuie sur sway-config-fedora)
 .config/sway
 .config/waybar/sway.jsonc
+.local/bin/capture
 {{ end }}

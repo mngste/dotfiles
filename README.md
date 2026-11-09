@@ -174,6 +174,7 @@ Un fichier qui porte le même nom qu'un fichier de `/usr/share/sway/config.d/` l
 | `Super+D` | fuzzel (applis) |
 | `Super+B` | Firefox |
 | `Super+E` | Thunar (fichiers) |
+| `Impr` / `Shift+Impr` / `Super+Impr` | Capture d'une zone / de l'écran / de la fenêtre (`~/Images/Captures` + presse-papiers) |
 | `Super+Q` | Fermer la fenêtre |
 | `Super+Alt+L` | Verrouiller |
 | `Super+H/J/K/L`, `Super+Shift+H/J/K/L` | Focus / déplacer (raccourcis Sway par défaut) |

@@ -52,8 +52,24 @@
 
   "clock": {
     "timezone": "Europe/Paris",
-    "tooltip": false,
     "format": "{:%H:%M:%S  -  %A, %d}",
+    // Survol : calendrier du mois ; molette : mois précédent / suivant
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "month",
+      "weeks-pos": "left",
+      "on-scroll": 1,
+      "format": {
+        "months": "<span color='#c0caf5'><b>{}</b></span>",
+        "weeks": "<span color='#565f89'>{}</span>",
+        "weekdays": "<span color='#7aa2f7'><b>{}</b></span>",
+        "today": "<span color='#2ac3de'><b><u>{}</u></b></span>"
+      }
+    },
+    "actions": {
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down"
+    },
     "interval": 1
   },
 

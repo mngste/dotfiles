@@ -37,7 +37,8 @@
 
 {{   if eq .osid "linux-fedora" -}}
 {{/*   Bureau Sway : groupe Fedora + config du spin Sway (surchargée par ~/.config/sway/config.d)
-       Thunar : explorateur ; gvfs : corbeille, réseau ; tumbler : miniatures */ -}}
+       Thunar : explorateur ; gvfs : corbeille, réseau ; tumbler : miniatures
+       grim, slurp, wl-clipboard, libnotify : captures d'écran (~/.local/bin/capture) */ -}}
 {{     $packages = concat $packages (list
          "@swaywm"
          "sway-config-fedora"
@@ -47,6 +48,10 @@
          "Thunar"
          "gvfs"
          "tumbler"
+         "grim"
+         "slurp"
+         "wl-clipboard"
+         "libnotify"
        ) -}}
 {{   else if eq .osid "linux-arch" -}}
 {{/*   Bureau niri (niri et noctalia : voir README) */ -}}
