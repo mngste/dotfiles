@@ -1,0 +1,25 @@
+#!/bin/sh
+# Menu verrouiller / déconnexion / veille / redémarrer / éteindre (fuzzel).
+# Marche sous Sway et niri. Lancé par Super+Shift+E et le bouton ⏻ de waybar.
+set -eu
+
+choix="$(printf '%s\n' \
+    "  Verrouiller" \
+    "󰍃  Se déconnecter" \
+    "󰤄  Mettre en veille" \
+    "  Redémarrer" \
+    "  Éteindre" \
+    | fuzzel --dmenu --prompt "> " --lines 5 --width 22)" || exit 0
+
+case "$choix" in
+    *Verrouiller*)
+        if command -v swaylock >/dev/null; then swaylock -f; else loginctl lock-session; fi ;;
+    *déconnecter*)
+        if [ -n "${SWAYSOCK:-}" ]; then swaymsg exit
+        elif [ -n "${NIRI_SOCKET:-}" ]; then niri msg action quit --skip-confirmation
+        else loginctl terminate-session "${XDG_SESSION_ID:-}"
+        fi ;;
+    *veille*)    systemctl suspend ;;
+    *Redémarrer*) systemctl reboot ;;
+    *Éteindre*)  systemctl poweroff ;;
+esac

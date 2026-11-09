@@ -46,7 +46,7 @@ chezmoi cd            # ouvre un shell dans le dépôt
 | waybar, mako | Barre (niri : `config.jsonc`, Sway : `sway.jsonc`) et notifications | `~/.config/waybar/`, `~/.config/mako/` |
 | alacritty, ghostty | Anciens terminaux, configs gardées | `~/.config/alacritty/`, `~/.config/ghostty/` |
 
-Fonds d'écran Tokyo Night dans [`assets/`](assets/).
+Fonds d'écran Tokyo Night dans [`assets/`](assets/). Sous Sway, `~/.local/share/backgrounds/wallpaper.jpg` est un lien vers l'un d'eux (à changer dans `dot_local/share/backgrounds/symlink_wallpaper.jpg.tmpl`).
 
 ### Shell (zsh)
 
@@ -163,6 +163,7 @@ Le script `000` installe Sway avec la config du spin Fedora (`@swaywm` + `sway-c
 | `30-look.conf` | Couleurs Tokyo Night, bordures, espaces entre fenêtres |
 | `50-rules-perso.conf` | Firefox sur l'espace 1, kitty sur l'espace 2 |
 | `60-bindings-perso.conf` | Raccourcis repris de niri (ci-dessous) |
+| `60-bindings-screenshot.conf` | Captures d'écran (remplace celui de Fedora) |
 | `90-bar.conf` | Remplace la barre Fedora par waybar (`~/.config/waybar/sway.jsonc`) |
 | `95-autostart-perso.conf` | udiskie (montage automatique des clés USB) |
 
@@ -176,6 +177,7 @@ Un fichier qui porte le même nom qu'un fichier de `/usr/share/sway/config.d/` l
 | `Super+E` | Thunar (fichiers) |
 | `Impr` / `Shift+Impr` / `Super+Impr` | Capture d'une zone / de l'écran / de la fenêtre (`~/Images/Captures` + presse-papiers) |
 | `Super+Q` | Fermer la fenêtre |
+| `Super+Shift+E` | Menu verrouiller / déconnexion / veille / redémarrer / éteindre (aussi le bouton ⏻ de la barre) |
 | `Super+Alt+L` | Verrouiller |
 | `Super+H/J/K/L`, `Super+Shift+H/J/K/L` | Focus / déplacer (raccourcis Sway par défaut) |
 
