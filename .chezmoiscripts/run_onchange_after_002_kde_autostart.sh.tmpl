@@ -1,0 +1,18 @@
+{{- if and (eq .osid "linux-fedora") (not .headless) -}}
+#!/bin/sh
+set -eu
+
+# Applis KDE lancées au démarrage, utiles seulement sous Plasma.
+# Sous Sway elles gênent (Xwayland Video Bridge : fenêtre invisible rangée
+# à côté des autres, zone noire). On copie leur lanceur dans
+# ~/.config/autostart avec OnlyShowIn=KDE : elles démarrent toujours sous
+# Plasma, plus sous Sway.
+mkdir -p "$HOME/.config/autostart"
+for name in org.kde.xwaylandvideobridge.desktop; do
+    src="/etc/xdg/autostart/$name"
+    [ -f "$src" ] || continue
+    grep -v -e '^OnlyShowIn=' -e '^NotShowIn=' "$src" \
+        | sed '/^\[Desktop Entry\]/a OnlyShowIn=KDE;' \
+        > "$HOME/.config/autostart/$name"
+done
+{{ end -}}
