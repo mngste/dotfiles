@@ -161,6 +161,7 @@ Le script `000` installe Sway avec la config du spin Fedora (`@swaywm` + `sway-c
 | `10-input.conf` | Clavier us/us-intl (`Super+Espace` pour changer), Caps Lock = Ctrl, touchpad |
 | `20-outputs.conf` | Écrans, mêmes positions que niri |
 | `30-look.conf` | Couleurs Tokyo Night, bordures, espaces entre fenêtres |
+| `50-rules-perso.conf` | Firefox sur l'espace 1, kitty sur l'espace 2 |
 | `60-bindings-perso.conf` | Raccourcis repris de niri (ci-dessous) |
 | `90-bar.conf` | Remplace la barre Fedora par waybar (`~/.config/waybar/sway.jsonc`) |
 | `95-autostart-perso.conf` | udiskie (montage automatique des clés USB) |
@@ -173,6 +174,7 @@ Un fichier qui porte le même nom qu'un fichier de `/usr/share/sway/config.d/` l
 | `Super+D` | fuzzel (applis) |
 | `Super+B` | Firefox |
 | `Super+E` | Thunar (fichiers) |
+| `Impr` / `Shift+Impr` / `Super+Impr` | Capture d'une zone / de l'écran / de la fenêtre (`~/Images/Captures` + presse-papiers) |
 | `Super+Q` | Fermer la fenêtre |
 | `Super+Alt+L` | Verrouiller |
 | `Super+H/J/K/L`, `Super+Shift+H/J/K/L` | Focus / déplacer (raccourcis Sway par défaut) |
