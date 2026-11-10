@@ -178,6 +178,7 @@ Un fichier qui porte le même nom qu'un fichier de `/usr/share/sway/config.d/` l
 | `Super+E` | Thunar (fichiers) |
 | `Impr` / `Shift+Impr` / `Super+Impr` | Capture d'une zone / de l'écran / de la fenêtre (`~/Images/Captures` + presse-papiers) |
 | `Super+Q` | Fermer la fenêtre |
+| `Super+Tab` | Revenir à l'espace précédent |
 | `Super+Shift+E` | Menu verrouiller / déconnexion / veille / redémarrer / éteindre (aussi le bouton ⏻ de la barre) |
 | `Super+Alt+L` | Verrouiller |
 | `Super+H/J/K/L`, `Super+Shift+H/J/K/L` | Focus / déplacer (raccourcis Sway par défaut) |
