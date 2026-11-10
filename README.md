@@ -182,6 +182,9 @@ Un fichier qui porte le même nom qu'un fichier de `/usr/share/sway/config.d/` l
 | `Super+Shift+E` | Menu verrouiller / déconnexion / veille / redémarrer / éteindre (aussi le bouton ⏻ de la barre) |
 | `Super+Alt+L` | Verrouiller |
 | `Super+H/J/K/L`, `Super+Shift+H/J/K/L` | Focus / déplacer (raccourcis Sway par défaut) |
+| `Super+Ctrl+←/→` | Passer sur l'écran de gauche / droite |
+| `Super+Ctrl+Shift+←/→` | Envoyer la fenêtre sur l'écran de gauche / droite |
+| `Super+Alt+Shift+←/→` | Envoyer l'espace de travail sur l'écran de gauche / droite |
 
 Pour vérifier : `sway -C 2>&1 | grep -i error` (le code retour ne suffit pas). `swaymsg reload` recharge Sway, `pkill -SIGUSR2 waybar` recharge la barre. Les lignes `exec` (waybar, swayidle) ne sont relancées qu'à la reconnexion.
 
