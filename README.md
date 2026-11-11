@@ -117,7 +117,7 @@ Lancés automatiquement par `chezmoi apply` (dans `.chezmoiscripts/`), seulement
 | Script | Fedora | Arch | Debian/Ubuntu |
 |---|---|---|---|
 | `000` paquets de base (git, fzf, fd, ripgrep, bat, btop, zoxide, zsh…) | ✅ dnf | ✅ pacman | ✅ apt |
-| `000` bureau : Sway + Thunar (Fedora), niri + waybar/fuzzel/mako (Arch), gimp | sauf headless | sauf headless | sauf headless |
+| `000` bureau : Sway + Thunar et archives (Fedora), niri + waybar/fuzzel/mako (Arch), gimp | sauf headless | sauf headless | sauf headless |
 | `002` kitty + helix (+ LSP sur machine perso) | ✅ | ✅ | helix seul |
 | `003` starship | ✅ | ✅ | |
 | `004` yazi | ✅ | ✅ | |

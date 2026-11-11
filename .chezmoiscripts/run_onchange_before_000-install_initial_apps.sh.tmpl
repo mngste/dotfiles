@@ -17,6 +17,7 @@
      "ripgrep"
      "shellcheck"
      "tree"
+     "unzip"
      "zoxide"
      "zsh"
    -}}
@@ -37,7 +38,8 @@
 
 {{   if eq .osid "linux-fedora" -}}
 {{/*   Bureau Sway : groupe Fedora + config du spin Sway (surchargée par ~/.config/sway/config.d)
-       Thunar : explorateur ; gvfs : corbeille, réseau ; tumbler : miniatures
+       Thunar : explorateur ; gvfs : corbeille, réseau ; tumbler : miniatures ;
+       thunar-archive-plugin + xarchiver : « Extraire ici » au clic droit
        grim, slurp, wl-clipboard, libnotify : captures d'écran (~/.local/bin/capture)
        blueman, pavucontrol, nm-connection-editor : clics sur la barre waybar */ -}}
 {{     $packages = concat $packages (list
@@ -49,6 +51,8 @@
          "Thunar"
          "gvfs"
          "tumbler"
+         "thunar-archive-plugin"
+         "xarchiver"
          "grim"
          "slurp"
          "wl-clipboard"
