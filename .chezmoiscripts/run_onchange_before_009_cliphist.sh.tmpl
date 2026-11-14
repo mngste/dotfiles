@@ -1,0 +1,12 @@
+{{ if and (eq .osid "linux-fedora") (not .headless) -}}
+#!/bin/sh
+set -eu
+
+# cliphist : historique du presse-papiers (Super+V sous Sway).
+# Dans les dépôts Fedora à partir de la version 44 ; sinon dépôt COPR.
+if ! sudo dnf install -y cliphist; then
+    sudo dnf copr enable -y alternateved/cliphist
+    sudo dnf install -y cliphist
+fi
+
+{{ end -}}

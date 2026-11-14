@@ -1,0 +1,20 @@
+#!/bin/sh
+# Historique du presse-papiers (cliphist + fuzzel). Lancé par Super+V sous Sway.
+#   presse-papiers           choisir une entrée et la recopier
+#   presse-papiers supprimer choisir une entrée et l'effacer de l'historique
+#   presse-papiers vider     tout effacer
+set -eu
+
+case "${1:-choisir}" in
+    choisir)
+        cliphist list | fuzzel --dmenu --with-nth 2 --prompt "> " \
+            | cliphist decode | wl-copy ;;
+    supprimer)
+        cliphist list | fuzzel --dmenu --with-nth 2 --prompt "supprimer > " \
+            | cliphist delete ;;
+    vider)
+        cliphist wipe
+        notify-send "Presse-papiers" "Historique vidé" 2>/dev/null || true ;;
+    *)
+        echo "usage : presse-papiers [choisir|supprimer|vider]" >&2; exit 1 ;;
+esac

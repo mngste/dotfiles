@@ -126,6 +126,7 @@ Lancés automatiquement par `chezmoi apply` (dans `.chezmoiscripts/`), seulement
 | `007` curseurs Bibata | sauf headless | sauf headless | |
 | `008` navigateur Helium | sauf headless | | |
 | après : zsh comme shell par défaut | sauf ephemeral | sauf ephemeral | sauf ephemeral |
+| `009` cliphist (dépôts Fedora, sinon COPR) | sauf headless | | |
 | après : applis KDE du démarrage (Xwayland Video Bridge) réservées à Plasma | sauf headless | | |
 | après : polices JetBrains Mono (Nerd Font) | perso, sauf headless | perso, sauf headless | |
 
@@ -166,7 +167,7 @@ Le script `000` installe Sway avec la config du spin Fedora (`@swaywm` + `sway-c
 | `60-bindings-perso.conf` | Raccourcis repris de niri (ci-dessous) |
 | `60-bindings-screenshot.conf` | Captures d'écran (remplace celui de Fedora) |
 | `90-bar.conf` | Remplace la barre Fedora par waybar (`~/.config/waybar/sway.jsonc`) |
-| `95-autostart-perso.conf` | udiskie (montage automatique des clés USB) |
+| `95-autostart-perso.conf` | udiskie (montage automatique des clés USB), cliphist (historique du presse-papiers) |
 
 Un fichier qui porte le même nom qu'un fichier de `/usr/share/sway/config.d/` le remplace. **Ne pas créer `~/.config/sway/config`** : il désactiverait toute la config Fedora.
 
@@ -176,6 +177,7 @@ Un fichier qui porte le même nom qu'un fichier de `/usr/share/sway/config.d/` l
 | `Super+D` | fuzzel (applis) |
 | `Super+B` | Firefox |
 | `Super+E` | Thunar (fichiers) |
+| `Super+V` / `Super+Shift+V` | Historique du presse-papiers : recopier / effacer une entrée (`presse-papiers vider` pour tout effacer) |
 | `Impr` / `Shift+Impr` / `Super+Impr` | Capture d'une zone / de l'écran / de la fenêtre (`~/Images/Captures` + presse-papiers) |
 | `Super+Q` | Fermer la fenêtre |
 | `Super+Tab` | Revenir à l'espace précédent |
