@@ -1,0 +1,21 @@
+{{ if not .headless -}}
+{{   if eq .osid "linux-fedora" -}}
+#!/bin/sh
+set -eu
+
+# Brave : dépôt RPM officiel (fichier .repo déposé directement, marche avec dnf5)
+if [ ! -f /etc/yum.repos.d/brave-browser.repo ]; then
+    sudo curl -fsSLo /etc/yum.repos.d/brave-browser.repo \
+        https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
+fi
+sudo dnf install -y brave-browser
+
+{{   else if eq .osid "linux-arch" -}}
+#!/bin/sh
+set -eu
+
+# Brave : paquet AUR (binaire officiel repackagé)
+yay -S --needed --noconfirm brave-bin
+
+{{   end -}}
+{{ end -}}
