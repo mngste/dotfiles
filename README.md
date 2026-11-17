@@ -127,6 +127,7 @@ Lancés automatiquement par `chezmoi apply` (dans `.chezmoiscripts/`), seulement
 | `008` navigateur Helium | sauf headless | | |
 | après : zsh comme shell par défaut | sauf ephemeral | sauf ephemeral | sauf ephemeral |
 | `009` cliphist (dépôts Fedora, sinon COPR) | sauf headless | | |
+| `010` navigateur Brave (dépôt officiel / AUR `brave-bin`) | sauf headless | sauf headless | |
 | après : applis KDE du démarrage (Xwayland Video Bridge) réservées à Plasma | sauf headless | | |
 | après : polices JetBrains Mono (Nerd Font) | perso, sauf headless | perso, sauf headless | |
 
