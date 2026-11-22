@@ -38,7 +38,7 @@ input {
 // Remember to uncomment the node by removing "/-"!
 
 output "Lenovo Group Limited 27U-10 UR339CX0" {
-    mode "3840x2160@120.003"
+    mode "3840x2160@59.997"
     scale 1.5
     position x=0 y=0
 }

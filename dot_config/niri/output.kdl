@@ -4,7 +4,7 @@
 // Disposition : externe en haut (2560x1440 logiques avec scale 1.5),
 // portable juste en dessous, centré : x = (2560-1920)/2 = 320, y = 1440.
 output "Lenovo Group Limited 27U-10 UR339CX0" {
-    mode "3840x2160@120.003"
+    mode "3840x2160@59.997"
     scale 1.5
     position x=0 y=0
 }
