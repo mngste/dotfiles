@@ -1,5 +1,10 @@
-output "DP-5" {
-    mode "3840x2160@60.000"
+// L'écran externe est désigné par "marque modèle série" : la config suit l'écran
+// quel que soit le port (HDMI, DP, USB-C, dock...).
+// Infos des écrans : niri msg outputs
+// Disposition : externe en haut (2560x1440 logiques avec scale 1.5),
+// portable juste en dessous, centré : x = (2560-1920)/2 = 320, y = 1440.
+output "Lenovo Group Limited 27U-10 UR339CX0" {
+    mode "3840x2160@120.003"
     scale 1.5
     position x=0 y=0
 }
@@ -8,5 +13,5 @@ output "eDP-1" {
     mode "1920x1080@60.008"
     scale 1
     transform "normal"
-    position x=2560 y=0
+    position x=320 y=1440
 }
