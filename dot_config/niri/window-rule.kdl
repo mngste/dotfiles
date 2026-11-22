@@ -64,8 +64,10 @@ window-rule {
 
 // kitty gère sa transparence lui-même (background_opacity) : pas d'opacité
 // niri en plus, sinon le texte devient transparent lui aussi. On garde le flou.
+// Il s'ouvre sur l'écran du portable (ignoré si le portable est éteint).
 window-rule {
     match app-id="^kitty$"
+    open-on-output "eDP-1"
     opacity 1.0
     background-effect {
         blur true
