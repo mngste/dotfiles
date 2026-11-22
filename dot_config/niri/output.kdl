@@ -1,5 +1,8 @@
-output "DP-5" {
-    mode "3840x2160@60.000"
+// L'écran externe est désigné par "marque modèle série" : la config suit l'écran
+// quel que soit le port (HDMI, DP, USB-C, dock...).
+// Infos des écrans : niri msg outputs
+output "Lenovo Group Limited 27U-10 UR339CX0" {
+    mode "3840x2160@120.003"
     scale 1.5
     position x=0 y=0
 }
